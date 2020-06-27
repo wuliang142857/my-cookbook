@@ -30,7 +30,7 @@ const NAV = [
 const HEAD = [["link", { rel: "icon", href: "/wuliang142857.png" }]];
 
 module.exports = ctx => ({
-    dist: path.dirname(path.dirname(__dirname)),
+    dest: path.join(path.dirname(path.dirname(__dirname)), "dist"),
     title: "GISTer's Cookbook",
     description: `多年来一直没有很好的沉淀`,
     host: "0.0.0.0",
