@@ -1,6 +1,8 @@
 const path = require("path");
 const os = require("os");
 const moment = require("moment");
+require("moment/locale/zh-cn");
+moment.locale(`zh-cn`);
 
 /**
  * 导航页
@@ -29,29 +31,26 @@ const HEAD = [["link", { rel: "icon", href: "/wuliang142857.png" }]];
 
 module.exports = ctx => ({
     dist: path.dirname(path.dirname(__dirname)),
-    title: "Cookbook & Gist ...",
-    description: "个人沉淀",
+    title: "GISTer's Cookbook",
+    description: `多年来一直没有很好的沉淀`,
     host: "0.0.0.0",
     port: "8080",
     temp: path.join(os.tmpdir(), "my-cookbook"),
     head: HEAD,
     cache: true,
     markdown: {
-        lineNumbers: false
+        lineNumbers: false,
+        extendMarkdown: md => {
+            md.use(require("markdown-it-mark"));
+            md.use(require("markdown-it-fontawesome"));
+        }
     },
     themeConfig: {
         nav: NAV,
         sidebarDepth: 2,
         lastUpdated: "上次更新",
-        searchMaxSuggestoins: 10,
-        serviceWorker: {
-            updatePopup: {
-                message: "New content is available.",
-                buttonText: "Refresh"
-            }
-        },
         editLinks: true,
-        editLinkText: "在 GitHub 上编辑此页 ！"
+        editLinkText: "在 GitHub 上编辑此页"
     },
     plugins: [
         // 页面滚动时自动激活侧边栏链接的插件
@@ -63,13 +62,21 @@ module.exports = ctx => ({
             }
         ],
         ["@vuepress/back-to-top", true],
+        // last-updated 插件
         [
             "@vuepress/last-updated",
             {
                 transformer: (timestamp, lang) => {
-                    moment.locale(lang);
                     return moment(timestamp).fromNow();
                 }
+            }
+        ],
+        ["@vuepress/medium-zoom", true],
+        ["@vuepress/nprogress", true],
+        [
+            "@vuepress/search",
+            {
+                searchMaxSuggestions: 10
             }
         ]
     ]

@@ -1,8 +1,3 @@
----
-sidebar: auto
-sidebarDepth: 2
----
-
 - [搜索引擎](search-engine)
 - [Node](node)
 - [工程构建](build)
