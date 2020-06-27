@@ -30,7 +30,7 @@ const NAV = [
 const HEAD = [["link", { rel: "icon", href: "/wuliang142857.png" }]];
 
 module.exports = ctx => ({
-    dest: path.join(path.dirname(path.dirname(__dirname)), "dist"),
+    dest: path.join(path.dirname(path.dirname(__dirname)), "www.wuliang.me"),
     title: "GISTer's Cookbook",
     description: `多年来一直没有很好的沉淀`,
     host: "0.0.0.0",
@@ -50,17 +50,10 @@ module.exports = ctx => ({
         sidebarDepth: 2,
         lastUpdated: "上次更新",
         editLinks: true,
-        editLinkText: "在 GitHub 上编辑此页"
+        editLinkText: "在 GitHub 上编辑此页",
+        smoothScroll: true
     },
     plugins: [
-        // 页面滚动时自动激活侧边栏链接的插件
-        [
-            "@vuepress/active-header-links",
-            {
-                sidebarLinkSelector: ".sidebar-link",
-                headerAnchorSelector: ".header-anchor"
-            }
-        ],
         ["@vuepress/back-to-top", true],
         // last-updated 插件
         [

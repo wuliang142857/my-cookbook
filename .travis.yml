@@ -13,4 +13,4 @@ before_install:
 script:
 - yarn run docs:build
 after_success:
-- scp -rp ./dist/* wuliang@sh1.wuliang.me:/home/wuliang/any-proxy/html/www.wuliang.me
+- scp -rp ./www.wuliang.me wuliang@sh1.wuliang.me:/home/wuliang/any-proxy/html/
