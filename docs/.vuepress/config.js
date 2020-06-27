@@ -49,7 +49,11 @@ module.exports = ctx => ({
         nav: NAV,
         sidebarDepth: 2,
         lastUpdated: "上次更新",
-        editLinks: true,
+        repo: 'https://github.com/wuliang142857/my-cookbook', // 启用到 GitHub 仓库的链接，显示在页面右上角
+        repoLabel: 'GitHub',                        // repo 链接显示的名字
+        docsDir: 'docs',                            // 使用 GitHub 仓库中哪个目录下的文档
+        docsBranch: 'master',                       // 指向 GitHub 仓库的哪个分支
+        editLinks: true,                            // 启用快速编辑的链接，显示在文章末尾的左下角
         editLinkText: "在 GitHub 上编辑此页",
         smoothScroll: true
     },
