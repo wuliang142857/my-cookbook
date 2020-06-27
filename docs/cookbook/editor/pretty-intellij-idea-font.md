@@ -18,7 +18,7 @@ tags:
 
 ## 如何修改Intellij IDEA的启动JDK
 
-::: info
+::: tip
 
 Help -> Find Action -> Switch Boot JDK
 
