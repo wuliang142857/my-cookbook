@@ -1,16 +1,16 @@
 language: node_js
 node_js:
-- 10.21.0
+- 12.18.3
 cache:
   yarn: true
 before_install:
-- openssl aes-256-cbc -K $encrypted_0a77839c4e42_key -iv $encrypted_0a77839c4e42_iv
+- openssl aes-256-cbc -K $encrypted_9b2d7e19d83c_key -iv $encrypted_9b2d7e19d83c_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - export PATH="$HOME/.yarn/bin:$PATH"
 - chmod 600 ~/.ssh/id_rsa
-- echo -e "Host sh1.wuliang.me\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- echo -e "Host hk1.wuliang.me\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
 - yarn run docs:build
 after_success:
-- scp -rp ./dist/* wuliang@sh1.wuliang.me:/home/wuliang/any-proxy/html/www.wuliang.me
+- scp -rp ./dist/* root@hk1.wuliang.me:/opt/html/www.wuliang.me
