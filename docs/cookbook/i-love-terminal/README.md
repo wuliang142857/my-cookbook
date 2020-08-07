@@ -1,1 +1,2 @@
 - [putty-nd：XShell的轻量级开源工具，满足你所有的日常需求](putty-nd.md)
+- [解决ssh登录慢](speed-login-via-ssh.md)
