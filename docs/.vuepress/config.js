@@ -81,14 +81,12 @@ module.exports = ctx => ({
         [
             'vuepress-plugin-comment',
             {
-                choosen: 'gitalk',
+                choosen: 'valine',
+                // options选项中的所有参数，会传给Valine的配置
                 options: {
-                    clientID: '80816f10844345fa8d94',
-                    clientSecret: 'a69583e0cf72286a3ddb9e43d3b8895e622b8d07',
-                    repo: 'my-cookbook',
-                    owner: 'wuliang142857',
-                    admin: ['wuliang142857'],
-                    distractionFreeMode: false
+                    el: '#valine-vuepress-comment',
+                    appId: 'RPEr1etI7IPrusDEMQ41U91l-9Nh9j0Va',
+                    appKey: 'KtfsRaflEFgVaWsum6Sf08gw'
                 }
             }
         ]

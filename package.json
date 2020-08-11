@@ -12,13 +12,12 @@
     "markdown-it-fontawesome": "^0.3.0",
     "markdown-it-mark": "^3.0.0",
     "moment": "^2.27.0",
-    "vuepress": "^1.5.2"
+    "vuepress": "^1.5.2",
+    "vuepress-plugin-comment": "^0.7.3"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "dependencies": {
-    "vuepress-plugin-comment": "^0.7.3"
-  }
+  "dependencies": {}
 }
