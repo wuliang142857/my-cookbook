@@ -7,8 +7,7 @@ moment.locale(`zh-cn`);
 /**
  * 导航页
  */
-const NAV = [
-    {
+const NAV = [{
         text: "首页",
         link: "/"
     },
@@ -18,16 +17,19 @@ const NAV = [
     },
     {
         text: "关于我",
-        items: [
-            {
-                text: "Github",
-                link: "https://github.com/wuliang142857"
-            }
-        ]
+        items: [{
+            text: "Github",
+            link: "https://github.com/wuliang142857"
+        }]
     }
 ];
 
-const HEAD = [["link", { rel: "icon", href: "/wuliang142857.png" }]];
+const HEAD = [
+    ["link", {
+        rel: "icon",
+        href: "/wuliang142857.png"
+    }]
+];
 
 module.exports = ctx => ({
     dest: path.join(path.dirname(path.dirname(__dirname)), "dist"),
@@ -50,10 +52,10 @@ module.exports = ctx => ({
         sidebarDepth: 2,
         lastUpdated: "上次更新",
         repo: 'https://github.com/wuliang142857/my-cookbook', // 启用到 GitHub 仓库的链接，显示在页面右上角
-        repoLabel: 'GitHub',                        // repo 链接显示的名字
-        docsDir: 'docs',                            // 使用 GitHub 仓库中哪个目录下的文档
-        docsBranch: 'master',                       // 指向 GitHub 仓库的哪个分支
-        editLinks: true,                            // 启用快速编辑的链接，显示在文章末尾的左下角
+        repoLabel: 'GitHub', // repo 链接显示的名字
+        docsDir: 'docs', // 使用 GitHub 仓库中哪个目录下的文档
+        docsBranch: 'master', // 指向 GitHub 仓库的哪个分支
+        editLinks: true, // 启用快速编辑的链接，显示在文章末尾的左下角
         editLinkText: "在 GitHub 上编辑此页",
         smoothScroll: true
     },
@@ -74,6 +76,20 @@ module.exports = ctx => ({
             "@vuepress/search",
             {
                 searchMaxSuggestions: 10
+            }
+        ],
+        [
+            'vuepress-plugin-comment',
+            {
+                choosen: 'gitalk',
+                options: {
+                    clientID: '80816f10844345fa8d94',
+                    clientSecret: 'a69583e0cf72286a3ddb9e43d3b8895e622b8d07',
+                    repo: 'my-cookbook',
+                    owner: 'wuliang142857',
+                    admin: ['wuliang142857'],
+                    distractionFreeMode: false
+                }
             }
         ]
     ]
