@@ -27,18 +27,17 @@ export default ({
      * 路由切换事件处理
      */
     router.beforeEach(async (to, from, next) => {
-        console.log("切换路由", to.fullPath, from.fullPath);
-
-        //发送cnzz的pv统计
-        if (typeof _czc === "undefined") {
-            console.log("下载CNZZ");
-            await getScript("https://s9.cnzz.com/z_stat.php?id=1279171235&web_id=1279171235");
-
-        }
-        if (typeof _czc !== "undefined") {
-            if (to.path) {
-                _czc.push(["_trackPageview", to.fullPath, from.fullPath]);
-                console.log("上报cnzz统计", to.fullPath);
+        if (typeof window !== "undefined") {
+    
+            //发送cnzz的pv统计
+            if (typeof _czc === "undefined") {
+                await getScript("https://s9.cnzz.com/z_stat.php?id=1279171235&web_id=1279171235");
+    
+            }
+            if (typeof _czc !== "undefined") {
+                if (to.path) {
+                    _czc.push(["_trackPageview", to.fullPath, from.fullPath]);
+                }
             }
         }
         // continue
