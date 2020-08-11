@@ -7,7 +7,7 @@ tags:
 
 突然有一天，可能经过了系统更新，Windows 10每次启动时，都不能自动连接到无线网络了。提示：“需要执行操作”。
 
-![20190829041605894.jpg](https://ww1.sinaimg.cn/large/703708dcly1gcg0byp69ij206w02a0sj.jpg)
+![20190829041605894.jpg](https://tva1.sinaimg.cn/large/703708dcly1gcg0byp69ij206w02a0sj.jpg)
 
 分析原因：
 

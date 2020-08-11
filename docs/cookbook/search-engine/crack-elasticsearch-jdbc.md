@@ -150,7 +150,7 @@ curl -XPUT "http://<es_host>:<es_port>/_xpack/license?acknowledge=true" -H "Cont
 
 也可以使用[kibana](https://www.elastic.co/cn/products/kibana)来更新：
 
-![Image-2019-12-11-001.png](https://ww1.sinaimg.cn/large/703708dcly1g9t31s4hoyj20ps0gndgt.jpg)
+![Image-2019-12-11-001.png](https://tva1.sinaimg.cn/large/703708dcly1g9t31s4hoyj20ps0gndgt.jpg)
 
 现在我们的白金版已经激活了：
-![Image-2019-12-11-002.png](https://ww1.sinaimg.cn/large/703708dcly1g9t32ji9msj20fn0a40sy.jpg)
+![Image-2019-12-11-002.png](https://tva1.sinaimg.cn/large/703708dcly1g9t32ji9msj20fn0a40sy.jpg)
