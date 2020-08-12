@@ -4,6 +4,8 @@ tags:
     - goland
 ---
 
+# 解决goland的中文乱码问题
+
 编辑器配置：
 
 ![Image-2020-08-12-004.png](http://tva1.sinaimg.cn/large/703708dcly1ghodvr56myj215r0s6n0w.jpg)
