@@ -8,7 +8,7 @@ tags:
 
 编辑器配置：
 
-![Image-2020-08-12-004.png](http://tva1.sinaimg.cn/large/703708dcly1ghodvr56myj215r0s6n0w.jpg)
+![Image-2020-08-12-004.png](https://tva1.sinaimg.cn/large/703708dcly1ghodvr56myj215r0s6n0w.jpg)
 
 goland JVM配置：
 
@@ -18,7 +18,7 @@ goland JVM配置：
 -Dfile.encoding=UTF8
 ````
 
-![Image-2020-08-12-005.png](http://tva1.sinaimg.cn/large/703708dcly1ghody8vwzhj20yp0b9q4n.jpg)
+![Image-2020-08-12-005.png](https://tva1.sinaimg.cn/large/703708dcly1ghody8vwzhj20yp0b9q4n.jpg)
 
 
 
