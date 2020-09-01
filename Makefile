@@ -18,3 +18,6 @@ build:
 clean:
 	rm -rf $(CURRENT_PATH)/$(DIST_PATH)
 
+init-username:
+	git config user.name "wuliang142857"
+	git config user.email "wuliang142857@gmail.com"
