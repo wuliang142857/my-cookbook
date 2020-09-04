@@ -1,5 +1,9 @@
 # Linux才是我的最爱
 
+# 玩转树莓派
+
+- [使用树莓派来创建NAS服务器](set-up-nas-via-raspberry.md)
+
 # 虽然我现在用的是Mac
 
 - [如何更改Mac默认的截图文件名和存储路径](some-tips-for-snapshot-on-mac.md)
