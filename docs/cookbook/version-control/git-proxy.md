@@ -7,11 +7,13 @@ tags:
     - socks5
 ---
 # 背景
+
 国内从[github](https://github.com/)中clone实在太慢了，而且还经常压根连不上。
 
 于是就想着干脆通过代理吧，参考网上的一些方法，总结一下git使用Socks5代理的合理设置。
 
 ## 需求
+
 先总结一下我对git使用代理的需求：
 - 支持`ssh://`和`https://`两种协议
 - 仅clone github时使用代理，其他地址比如公司内部的gitlab地址不使用代理
