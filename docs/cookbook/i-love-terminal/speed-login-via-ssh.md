@@ -7,7 +7,7 @@ sidebar: auto
 
 ## 第一招：可能是DNS反向解析的问题
 
-修改==/etc/ssh/sshd_config==文件，添加/修改：
+修改 ==/etc/ssh/sshd_config== 文件，添加/修改：
 
 ````ini
 UseDNS no
@@ -21,7 +21,7 @@ service ssh restart
 
 ## 第二招：关闭GSSAPIAuthentication
 
-修改==/etc/ssh/ssh_config==文件，添加/修改：
+修改 ==/etc/ssh/ssh_config== 文件，添加/修改：
 
 ````ini
 GSSAPIAuthentication no

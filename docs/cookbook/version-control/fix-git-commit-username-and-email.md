@@ -26,5 +26,5 @@ Arguments:
         Email what you expected
 ````
 
-这个脚本可以支持对用户名和email的修改：==--unexpected-username== 和 ==--unexpected-email== 两者必须至少指定一个；==--expected-username== 和 ==--expected-email== 也必须至少指定一个。
+这个脚本可以支持对用户名和email的修改：`--unexpected-username` 和 `--unexpected-email` 两者必须至少指定一个；`--expected-username` 和 `--expected-email` 也必须至少指定一个。
 
