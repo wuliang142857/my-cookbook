@@ -1,8 +1,7 @@
----
-title: 激活Windows自带的图片浏览
----
+# 激活Windows自带的图片浏览
 
 Windows自带的图片浏览莫名其妙地丢失了，用这段注册表代码重新找回：
+
 ````
 Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]

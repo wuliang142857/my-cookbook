@@ -1,9 +1,3 @@
----
-title: 解决goland的中文乱码问题
-tags:
-    - goland
----
-
 # 解决goland的中文乱码问题
 
 编辑器配置：

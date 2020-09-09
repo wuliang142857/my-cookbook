@@ -1,12 +1,11 @@
 ---
-title: 解决ssh登录慢
-tags:
-    - ssh
+sidebar: auto
 ---
+# 解决ssh登录慢的问题
 
 如果ssh登录慢，可以尝试用如下两种方式解决：
 
-# 第一招：可能是DNS反向解析的问题
+## 第一招：可能是DNS反向解析的问题
 
 修改==/etc/ssh/sshd_config==文件，添加/修改：
 
@@ -20,7 +19,7 @@ UseDNS no
 service ssh restart
 ````
 
-# 第二招：关闭GSSAPIAuthentication
+## 第二招：关闭GSSAPIAuthentication
 
 修改==/etc/ssh/ssh_config==文件，添加/修改：
 

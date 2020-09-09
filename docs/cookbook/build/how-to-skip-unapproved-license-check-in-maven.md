@@ -1,16 +1,16 @@
 ---
-title: 解决org.apache.rat:apache-rat-plugin check, Too many unapproved license
-date: 2020-02-05 15:47:29
-tags:
-    - Maven
+sidebar: auto
 ---
+# 解决org.apache.rat:apache-rat-plugin check, Too many unapproved license
+
 在Maven打包时，遇到报错信息：
+
 ````
 [ERROR] Failed to execute goal org.apache.rat:apache-rat-plugin:0.8:check (default) on project hbase: Too many unapproved licenses: 513 -> [Help 1]
 ````
 这个是因为有大量源文件缺少版权的头部信息。两种解决办法：
 
-# 方法一：在各个源文件的头部添加版权信息
+## 方法一：在各个源文件的头部添加版权信息
 ````java
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -31,7 +31,7 @@ tags:
  */
 ````
 
-# 方法二：跳过检查
+## 方法二：跳过检查
 在maven命令中，添加参数：
 ````bash
 -Dlicense.skip=true -Drat.ignoreErrors=true 
@@ -42,5 +42,5 @@ apache-rat:check -Drat.numUnapprovedLicenses=9999
 ````
 其中`rat.numUnapprovedLicenses`是需要检查源文件的阈值，可以设置得大一点。
 
-# 参考
+## 参考
 - [解决org.apache.rat:apache-rat-plugin:0.8:check (default) on project hbase: Too many unapproved license](https://blog.csdn.net/plgy_Y/article/details/78098285)

@@ -1,16 +1,14 @@
 ---
-title: 使用Swagger来构建我们的API文档
-date: 2019-12-11 19:59:40
-tags:
-    - swagger
+sidebar: auto
 ---
+# 使用Swagger来构建我们的API文档
 
 构建API文档的工具其实很多，比如我之前写C++时用得比较多的[doxygen](http://www.doxygen.nl/)、还有我们团队用的比较频繁的[APIDOC](https://apidocjs.com/)。
 但整体而言，我还是比较喜欢[Swagger](https://swagger.io/)。
 
-# Swagger在SpringBoot中的配置
+## Swagger在SpringBoot中的配置
 总结一下Swagger在SpringBoot中的配置：
-## 在pom.xml中增加依赖
+### 在pom.xml中增加依赖
 ````xml
 <dependencies>
     <dependency>
@@ -26,7 +24,7 @@ tags:
     </dependency>
 </dependencies>
 ````
-## 配置Configuration
+### 配置Configuration
 ````java
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,7 +62,7 @@ public class SwaggerConfig {
 ````
 一般而言，这样配置后就可以了，访问`http://<host>:<port>/swagger-ui.html`就可以看到相应的API文档了。
 
-## 出现Whitelabel Error Page的解决办法
+### 出现Whitelabel Error Page的解决办法
 但有时候会出现`Whitelabel Error Page`，解决办法：自定义`swagger-ui.html`等资源的路径。
 ````java
 import org.springframework.context.annotation.Configuration;

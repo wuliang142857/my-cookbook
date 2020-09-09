@@ -1,13 +1,9 @@
 ---
-title: 使用树莓派来创建NAS服务器
-date: 2019-06-29 21:34:05
-tags:
-    - 树莓派
-    - NAS
-    - Samba
+sidebar: auto
 ---
+# 使用树莓派来创建NAS服务器
 
-# 背景
+## 背景
 
 如果不了解 ==NAS== 什么的，请自行百度。我想要说的是，目前NAS服务器都太多了，不带硬盘的竟然都得2000+元
 
@@ -35,15 +31,15 @@ tags:
 
 把硬盘装到硬盘盒中，USB接入树莓派，150+670=820就搞定了，是不是很划算。
 
-# 树莓派安装
+## 树莓派安装
 
 这块内容可以自行百度，很简单的，没啥好说的
 
-# RAID设置
+## RAID设置
 
 关于RAID我以前也没配置过，因此这块对我来说可以尝试一下，记录一下。大体参考^[1]^
 
-## Step 1：安装mdadm
+### Step 1：安装mdadm
 
 关于mdadm的介绍，可以参见[wikipedia/mdadm](https://en.wikipedia.org/wiki/Mdadm)，安装办法大致类似：
 
@@ -51,7 +47,7 @@ tags:
 apt-get install mdadm
 ````
 
-## Step 2：确认硬盘都识别出来了
+### Step 2：确认硬盘都识别出来了
 
 ````bash
 fdisk -l
@@ -59,7 +55,7 @@ fdisk -l
 
 看一下就可以
 
-## Step 3：检查硬盘是否已经被现有的 RAID 使用
+### Step 3：检查硬盘是否已经被现有的 RAID 使用
 
 ````bash
 mdadm --examine /dev/sd[a-e]
@@ -73,7 +69,7 @@ mdadm --examine /dev/sd[a-e]
 
 ![](https://tva1.sinaimg.cn/large/703708dcly1g7vw3nem4wj218e0jwgt6)
 
-## Step 4：创建RAID分区
+### Step 4：创建RAID分区
 
 这里需要注意一下，一般我们创建分区使用**fdisk**命令，但fdisk单个分区最大只能2T，而我们既然做NAS，同时都是比较大的硬盘，比如我这里一块8T、两块4T的，因此我们得上[parted](https://www.gnu.org/software/parted/)了。
 
@@ -98,7 +94,7 @@ mdadm --examine /dev/sd[a-e]1
 
 ![](https://tva1.sinaimg.cn/large/703708dcly1g7vw3ry57nj212e0r410f)
 
-## Step 5：创建 RAID md 设备
+### Step 5：创建 RAID md 设备
 
 ````bash
 mdadm --create /dev/md0 --level=stripe --raid-devices=5 /dev/sd[a-e]1
@@ -112,7 +108,7 @@ cat /proc/mdstat
 
 ![](https://tva1.sinaimg.cn/large/703708dcly1g7vw3u4r8jj21b20b8djq)
 
-## Step 6：给RAID设备创建文件系统
+### Step 6：给RAID设备创建文件系统
 
 用`mkfs.ext4`来格式化`/dev/md0`
 
@@ -135,15 +131,15 @@ chown -hR pi:pi /mnt/raid0
 
 
 
-# 用Samba来做目录共享
+## 用Samba来做目录共享
 
-## 安装Samba
+### 安装Samba
 
 ````bash
 apt-get install samba
 ````
 
-## 共享一个目录
+### 共享一个目录
 
 我们在之前的`/mnt/raid0`目录下在创建一个`public`目录作为被共享的目录
 
@@ -165,23 +161,23 @@ Samba的配置还是比较简单的，最要在`/etc/samba/smb.conf`下追加对
 	force group = pi
 ````
 
-## 为Samba用户设置密码
+### 为Samba用户设置密码
 
 ````shell
 smbpasswd -a pi
 ````
 
-## 重启Samba
+### 重启Samba
 
 ````shell
 service smbd restart
 ````
 
-# 结束
+## 结束
 
 好了，我们使用树莓派+Samba创建NAS服务的基本设置已经完成了
 
-# 参考
+## 参考
 
 - [[1] 在 Linux 下使用 RAID（二）：使用 mdadm 工具创建软件 RAID 0 （条带化）](https://linux.cn/article-6087-1.html)
 - [[2] Using parted to create a RAID primary partition](https://plone.lucidsolutions.co.nz/linux/io/using-parted-to-create-a-raid-primary-partition)

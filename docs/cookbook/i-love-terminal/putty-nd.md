@@ -1,9 +1,4 @@
----
-title: putty-nd：XShell的轻量级开源工具，满足你所有的日常需求
-tags:
-    - terminal
-    - ssh
----
+# putty-nd：XShell的轻量级开源工具，满足你所有的日常需求
 
 自从公司不让用XShell后，就不得不寻找一款替代品。细数一下想要的需求功能点：
 

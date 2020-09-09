@@ -1,15 +1,4 @@
----
-title: Jetbrains系列产品最新破解办法
-tags:
-    - Intellij IDEA
-    - WebStorm
-    - PyCharm
-    - Goland
-    - DataGrid
-    - PhpStorm
-    - RubyMine
-    - Android Studio
----
+# Jetbrains系列产品最新破解办法
 
 自从[知了](https://zhile.io/2018/08/25/jetbrains-license-server-crack.html)不再维护[Jetbrains](https://www.jetbrains.com/)家的破解后，破解就成了一件头疼的事情。
 

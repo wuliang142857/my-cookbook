@@ -49,7 +49,7 @@ module.exports = ctx => ({
     },
     themeConfig: {
         nav: NAV,
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         lastUpdated: "上次更新",
         repo: 'https://github.com/wuliang142857/my-cookbook', // 启用到 GitHub 仓库的链接，显示在页面右上角
         repoLabel: 'GitHub', // repo 链接显示的名字

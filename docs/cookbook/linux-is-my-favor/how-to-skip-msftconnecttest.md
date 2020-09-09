@@ -1,10 +1,4 @@
----
-title: 如何解决开机总是有一个弹窗http://www.msftconnecttest.com/redirect
-date: 2020-03-02 23:41:28
-tags:
-	- Windows
----
-
+# 如何解决开机总是有一个弹窗http://www.msftconnecttest.com/redirect
 最近电脑每次连上网络后，都会在浏览器上弹出一个窗口，打开的是`http://www.msftconnecttest.com/redirect`
 
 想关闭这无聊的微软：
