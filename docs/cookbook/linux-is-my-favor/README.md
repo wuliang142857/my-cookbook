@@ -1,5 +1,7 @@
 # Linux才是我的最爱
 
+- [在Ubuntu 18.04中，设置合上笔记本盖子不修改的方法](disable-suspend-when-close-on-ubuntu.md)
+
 # 玩转树莓派
 
 - [使用树莓派来创建NAS服务器](set-up-nas-via-raspberry.md)
