@@ -43,6 +43,12 @@ sgx 2 supported: 0
 
 这种情况，可以去BIOS中开启。
 
+Thinkpad在如下中开启：
+
+![IMG_5345.JPG](https://tva1.sinaimg.cn/large/703708dcly1gj6cyqahs3j23402c0b2b.jpg)
+
+![IMG_5346.JPG](https://tva1.sinaimg.cn/large/703708dcly1gj6czg86awj23402c07wj.jpg)
+
 ### 最终效果
 
 最终只要`sgx available: 1`并且`sgx [1|2] supported`中其中有一个是`1`就说明CPU已经支持并开启了SGX特性。
