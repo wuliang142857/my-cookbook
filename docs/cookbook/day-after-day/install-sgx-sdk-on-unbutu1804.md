@@ -95,8 +95,17 @@ sudo systemctl status aesmd
 使用示例程序来验证一下
 
 ````bash
-cd SampleCode/LocalAttestation
-make SGX_MODE=SIM
-./bin/app
+cd SampleCode/SampleEnclave
+make
+./app
+````
+
+如果看到类似的信息，说明启动成功了：
+
+````
+Checksum(0x0x7ffe295733c0, 100) = 0xfffd4143
+Info: executing thread synchronization, please wait...
+Info: SampleEnclave successfully returned.
+Enter a character before exit ...
 ````
 
