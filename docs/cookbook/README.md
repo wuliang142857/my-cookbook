@@ -7,5 +7,5 @@
 - [代码编辑器](editor/)
 - [Linux才是我的最爱](linux-is-my-favor/)
 - [不是因为我穷，而是太贵了](crack/)
+- [日复一日](day-after-day/)
 - [我的书签](bookmarks/)
-
