@@ -14,8 +14,6 @@
 
 这哥们提供的是针对[Charles](https://www.charlesproxy.com/)的破解工具：[https://www.zzzmode.com/mytools/charles/](https://www.zzzmode.com/mytools/charles/)，支持最新&历史多个版本。
 
-crack-charles.md)
-
 # 三、最新Jetbrains破解工具
 
 自从[知了](https://zhile.io/2018/08/25/jetbrains-license-server-crack.html)不再维护[Jetbrains](https://www.jetbrains.com/)家的破解后，破解就成了一件头疼的事情。

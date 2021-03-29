@@ -9,6 +9,7 @@ sidebar: auto
 ## Swagger在SpringBoot中的配置
 总结一下Swagger在SpringBoot中的配置：
 ### 在pom.xml中增加依赖
+
 ````xml
 <dependencies>
     <dependency>

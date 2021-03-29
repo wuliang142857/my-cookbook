@@ -21,7 +21,7 @@
 ## 安装依赖
 
 ````bash
-sudo apt-get install build-essential ocaml automake autoconf libtool wget python libssl-dev git cmake perl libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip
+sudo apt-get install build-essential ocaml automake autoconf libtool wget python libssl-dev git cmake perl libssl-dev libcurl4-openssl-dev protobuf-compiler libprotobuf-dev debhelper cmake reprepro unzip ocamlbuild
 ````
 
 ## 编译&安装
@@ -40,7 +40,7 @@ git checkout sgx_2.11
 # 下载依赖
 make preparation
 # 安装一些优化后的编译工具
-sudo cp external/toolset/ubuntu18.04/{as,ld,ld.gold,objdump} /usr/local/bin
+sudo cp -v external/toolset/ubuntu18.04/{as,ld,ld.gold,objdump} /usr/local/bin
 ````
 
 ::: tip
