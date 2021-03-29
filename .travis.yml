@@ -5,7 +5,7 @@ cache:
   yarn: true
 script:
 - yarn run docs:build
-- sed -s -i 's#present wuliang142857#present wuliang142857 <div><a href="https://beian.miit.gov.cn">$DOMAIN_LABEL</a></div>#g' dist/index.html
+- sed -s -i 's#present wuliang142857#present wuliang142857 <div><a href="https://beian.miit.gov.cn">&#27993;&#73;&#67;&#80;&#22791;&#49;&#55;&#48;&#53;&#53;&#55;&#56;&#55;&#21495;&#45;&#49;</a></div>#g' dist/index.html
 after_success:
 - curl -LO https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64
 - chmod a+x ossutil64
