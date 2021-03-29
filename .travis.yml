@@ -5,7 +5,7 @@ cache:
   yarn: true
 script:
 - yarn run docs:build
-- sed -s -i 's#Copyright © 2017-present wuliang142857#Copyright © 2017-present wuliang142857<div><a href="https://beian.miit.gov.cn">浙ICP备17055787号-1</a></div>#g' dist/index.html
+- sed -s -i 's#present wuliang142857#present wuliang142857<div><a href="https://beian.miit.gov.cn">浙ICP备17055787号-1</a></div>#g' dist/index.html
 after_success:
 - curl -LO https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64
 - chmod a+x ossutil64
