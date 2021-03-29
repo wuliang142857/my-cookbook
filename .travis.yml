@@ -9,4 +9,4 @@ script:
 after_success:
 - curl -LO https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64
 - chmod a+x ossutil64
-- ./ossutil64 --endpoint=$OSS_ENDPOINT --access-key-id=$OSS_ACCESS_KEY_ID --access-key-secret=$OSS_ACCESS_KEY_SECRET cp -r dist/* oss://$OSS_BUCKET_NAME/
+- ./ossutil64 --endpoint=$OSS_ENDPOINT --access-key-id=$OSS_ACCESS_KEY_ID --access-key-secret=$OSS_ACCESS_KEY_SECRET cp -r -f dist/ oss://$OSS_BUCKET_NAME/
