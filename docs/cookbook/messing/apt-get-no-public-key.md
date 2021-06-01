@@ -1,6 +1,6 @@
 # GPG error The following signatures couldn't be verified because the public key is not available NO_PUBKEY 解决办法
 
-在`apt-get update`时，如果遇到 ==NO_PUBLIC== 错误：
+用[ubuntu](https://ubuntu.com/)的同学应该都会遇到过这个问题，在`apt-get update`时，如果遇到 ==NO_PUBLIC== 错误：
 
 ::: warning
 

@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # npm离线安装
 ## 背景
 想使用[pm2](https://pm2.keymetrics.io/)来管理进程，但因为线上环境不能访问外网，又没有内部源。因此就想看看npm能否离线安装包。

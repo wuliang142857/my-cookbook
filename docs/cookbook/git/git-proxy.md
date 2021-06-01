@@ -73,7 +73,6 @@ git config --global http.proxy http://proxy.com:1234
 ## 参考
 
 - [如何为 Git 设置代理？](https://segmentfault.com/q/1010000000118837)：此问答上大家各抒己见介绍了多种代理的办法，有对有错，可以自行参考实践。
-
 - [Short tip: Clone Git repository via SSH and SOCKS proxy](https://cstan.io/?p=11673&lang=en)：关于`socks5h://`和`socks5://`的区别
 - [Only use a proxy for certain git urls/domains?](https://stackoverflow.com/questions/16067534/only-use-a-proxy-for-certain-git-urls-domains)：`https://`协议下，如何只针对github地址使用代理
 - [git 1.8.5 RelNotes](https://github.com/git/git/blob/bb80ee09974667a1db6bbc5e33574ed869b76a88/Documentation/RelNotes/1.8.5.txt#L69-L78)

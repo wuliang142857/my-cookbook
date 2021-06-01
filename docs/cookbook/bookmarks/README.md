@@ -1,4 +1,4 @@
-# 我的一些书签
+# 我的书签
 
 - [Gremlin中文文档](http://tinkerpop-gremlin.cn/)
 
