@@ -11,13 +11,13 @@
  - [GPG error The following signatures couldn't be verified because the public key is not available NO_PUBKEY 解决办法](apt-get-no-public-key.md)
  - [Linux下设置主机名（hostname）的最完整方法](setup-hostname-in-linux.md)
  - [解决ssh登录慢的问题](speed-login-via-ssh.md)
+ - [删除Docker中的APT的缓存](remove-apt-cache-in-docker.md)
 
 # MacOS也需要折腾一番
- 
+
  - [如何更改Mac默认的截图文件名和存储路径](some-tips-for-snapshot-on-mac.md)
  - [iTerm2下使用rz和sz](iterm2-zmodem.md)
  - [为HHKB Professional 2映射R_Shift+ESC到波浪号](remap-rshift-ecs-to-tilde-for-hhkb.md)
-   
 # Windows折腾记
 
  - [putty-nd：XShell的轻量级开源工具](putty-nd.md)
