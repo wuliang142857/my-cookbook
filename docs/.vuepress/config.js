@@ -8,9 +8,9 @@ moment.locale(`zh-cn`);
  * 导航页
  */
 const NAV = [{
-        text: "首页",
-        link: "/"
-    },
+    text: "首页",
+    link: "/"
+},
     {
         text: "Cookbook",
         link: "/cookbook/"
@@ -71,24 +71,18 @@ module.exports = ctx => ({
             }
         ],
         ["@vuepress/medium-zoom", true],
-        ["@vuepress/nprogress", true],
         [
             "@vuepress/search",
             {
                 searchMaxSuggestions: 10
             }
         ],
-        [
-            'vuepress-plugin-comment',
-            {
-                choosen: 'valine',
-                // options选项中的所有参数，会传给Valine的配置
-                options: {
-                    el: '#valine-vuepress-comment',
-                    appId: 'RPEr1etI7IPrusDEMQ41U91l-9Nh9j0Va',
-                    appKey: 'KtfsRaflEFgVaWsum6Sf08gw'
-                }
-            }
-        ]
+        ['@mr-hope/sitemap', {
+            hostname: "https://www.wuliang.me",
+            // 排除无实际内容的页面
+            exclude: ["/404.html"]
+        }
+        ],
+        ["vuepress-plugin-baidu-autopush", true]
     ]
 });
