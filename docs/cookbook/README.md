@@ -1,5 +1,5 @@
 # My Cookbook
- 
+
  - [我的书签](bookmarks/)
  - [工程构建](build/)
  - [不是因为我穷，而是太贵了](crack/)
@@ -8,7 +8,7 @@
  - [ElasticSearch](elasticsearch/)
  - [git](git/)
  - [瞎折腾](messing/)
- - [镜像加速](mirrors/)
+ - [镜像加速](accelerate/)
  - [Node](node/)
 
 
