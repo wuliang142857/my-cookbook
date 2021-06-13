@@ -15,8 +15,8 @@
     "vuepress-plugin-baidu-autopush": "^1.0.1"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs && sed -s -i 's#present wuliang142857#present wuliang142857 <div><a href=\"https://beian.miit.gov.cn\">浙ICP备17055787号-1</a></div>#g' dist/index.html"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "dependencies": {}
 }
