@@ -7,13 +7,13 @@ NPM_LIKE=$(shell { command -v yarnpkg || command -v cnpm || command -v npm; } 2>
 .PHONY:dev
 
 dev:
-	$(NPM_LIKE) run docs:dev
+	$(NPM_LIKE) run dev
 
 install:
 	$(NPM_LIKE) install --registry=https://registry.npm.taobao.org
 
 build:
-	$(NPM_LIKE) run docs:build
+	$(NPM_LIKE) run build
 
 clean:
 	rm -rf $(CURRENT_PATH)/$(DIST_PATH)
