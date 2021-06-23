@@ -12,6 +12,7 @@
  - [Linux下设置主机名（hostname）的最完整方法](setup-hostname-in-linux.md)
  - [解决ssh登录慢的问题](speed-login-via-ssh.md)
  - [删除Docker中的APT的缓存](remove-apt-cache-in-docker.md)
+ - [如何设置core dump时coredump文件的路径和文件名](how-to-setup-coredump-filename-etc.md)
 
 # MacOS也需要折腾一番
 
