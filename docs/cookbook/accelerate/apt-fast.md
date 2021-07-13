@@ -37,4 +37,5 @@ cp apt-fast/apt-fast.conf /etc
 然后可以编辑一下`/etc/apt-fast.conf`,以修改缺省采用`apt`命令和线程数等等。
 
 ## 参考
+
  - [ilikenwf/apt-fast](https://github.com/ilikenwf/apt-fast)
