@@ -13,6 +13,7 @@
  - [解决ssh登录慢的问题](speed-login-via-ssh.md)
  - [删除Docker中的APT的缓存](remove-apt-cache-in-docker.md)
  - [如何设置core dump时coredump文件的路径和文件名](how-to-setup-coredump-filename-etc.md)
+ - [如何在Docker容器中得到IP地址](can-i-get-ip-address-inside-my-docker-container.md)
 
 # MacOS也需要折腾一番
 
@@ -25,3 +26,4 @@
  - [激活Windows自带的图片浏览](enable-windows-picture-viewer.md)
  - [如何解决开机总是有一个弹窗http://www.msftconnecttest.com/redirect](how-to-skip-msftconnecttest.md)
  - [Windows10连接无线“需要执行操作”或无网络问题的解决方法](needs-action-when-connect-wireless-in-windows10.md)
+
