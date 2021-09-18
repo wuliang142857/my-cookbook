@@ -7,12 +7,9 @@ moment.locale(`zh-cn`);
 /**
  * 导航页
  */
-const NAV = [{
-    text: "首页",
-    link: "/"
-},
+const NAV = [
     {
-        text: "Cookbook",
+        text: "我的笔记",
         link: "/cookbook/"
     }
 ];
