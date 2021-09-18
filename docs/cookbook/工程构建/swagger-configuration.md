@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # 使用Swagger来构建我们的API文档
 
 构建API文档的工具其实很多，比如我之前写C++时用得比较多的[doxygen](http://www.doxygen.nl/)、还有我们团队用的比较频繁的[APIDOC](https://apidocjs.com/)。

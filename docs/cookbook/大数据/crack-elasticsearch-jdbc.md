@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # ElasticSearch使用JDBC协议
 [ElasticSearch](https://www.elastic.co/cn/products/elasticsearch)自**6.3.2**版本开始支持[JDBC协议](https://www.elastic.co/guide/en/elasticsearch/reference/master/sql-jdbc.html)。也就是说，我们可以用**SQL**来查询ElasticSearch。
 

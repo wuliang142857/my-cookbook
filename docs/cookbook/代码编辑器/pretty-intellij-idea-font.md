@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # 美化Intellij IDEA的字体显示
 
 ## 替换默认的启动JDK

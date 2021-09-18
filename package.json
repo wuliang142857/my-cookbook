@@ -12,7 +12,9 @@
     "markdown-it-mark": "3.0.1",
     "moment": "2.29.1",
     "vuepress": "1.8.2",
-    "vuepress-plugin-baidu-autopush": "^1.0.1"
+    "vuepress-plugin-autobar": "boboidream/vuepress-bar",
+    "vuepress-plugin-baidu-autopush": "^1.0.1",
+    "vuepress-plugin-permalink-pinyin": "^1.0.0"
   },
   "scripts": {
     "dev": "vuepress dev docs",

@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # 如何在MacOS下编译hadoop 
 
 # 一、缘由

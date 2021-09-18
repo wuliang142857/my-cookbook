@@ -14,13 +14,6 @@ const NAV = [{
     {
         text: "Cookbook",
         link: "/cookbook/"
-    },
-    {
-        text: "关于我",
-        items: [{
-            text: "Github",
-            link: "https://github.com/wuliang142857"
-        }]
     }
 ];
 
@@ -60,6 +53,15 @@ module.exports = ctx => ({
         smoothScroll: true
     },
     plugins: [
+        ["autobar", {
+            stripNumbers: true,
+            maxLevel: 5,
+            pinyinNav: false,
+            setHomepage: "top",
+            multipleSideBar: true,
+            skipEmptyNavbar: true,
+            skipEmptySidebar: true,
+        }],
         ["@vuepress/back-to-top", true],
         // last-updated 插件
         [
@@ -83,6 +85,10 @@ module.exports = ctx => ({
             exclude: ["/404.html"]
         }
         ],
-        ["vuepress-plugin-baidu-autopush", true]
+        ["vuepress-plugin-baidu-autopush", true],
+        ['permalink-pinyin', {
+            lowercase: false,
+            separator: '-'
+        }]
     ]
 });

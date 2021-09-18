@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # 解决org.apache.rat:apache-rat-plugin check, Too many unapproved license
 
 在Maven打包时，遇到报错信息：
