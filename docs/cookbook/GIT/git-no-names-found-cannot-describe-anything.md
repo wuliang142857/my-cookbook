@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # 解决当git describe时出现“No names found, cannot describe anything”的错误
 ## 背景
 

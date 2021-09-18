@@ -1,6 +1,3 @@
----
-sidebar: auto
----
 # git使用Socks5代理的合理配置
 ## 背景
 
