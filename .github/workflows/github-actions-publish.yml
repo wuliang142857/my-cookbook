@@ -16,14 +16,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
-          OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
-          OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-          OSS_BUCKET_NAME: ${{ secrets.OSS_BUCKET_NAME }}
+          oss-endpoint: ${{ secrets.OSS_ENDPOINT }}
+          oss-access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          oss-access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+          oss-bucket-name: ${{ secrets.OSS_BUCKET_NAME }}
       - name: Install dependencies
         run: yarn install
       - name: Build
         run: yarn run build
       - run: curl -LO https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64
       - run: chmod a+x ossutil64
-      - run: ./ossutil64 --endpoint=${{ SUPER_SECRET }} --access-key-id=${{ OSS_ACCESS_KEY_ID }} --access-key-secret=${{ OSS_ACCESS_KEY_SECRET }} cp -r -f dist/ oss://${{ OSS_BUCKET_NAME }}/
+      - run: ./ossutil64 --endpoint=${{ oss-endpoint }} --access-key-id=${{ oss-access-key-id }} --access-key-secret=${{ oss-access-key-secret }} cp -r -f dist/ oss://${{ oss-bucket-name }}/
