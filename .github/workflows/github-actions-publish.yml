@@ -23,4 +23,4 @@ jobs:
         run: yarn run build
       - run: curl -LO https://gosspublic.alicdn.com/ossutil/1.7.7/ossutil64
       - run: chmod a+x ossutil64
-      - run: ./ossutil64 --endpoint=${{ secrets.OSS_ENDPOINT }} --access-key-id=${{ secrets.OSS_ACCESS_KEY_ID }} --access-key-secret=${{ secrets.OSS_ACCESS_KEY_SECRET }} cp -r -f dist/ oss://${{ secrets.OSS_BUCKET_NAME }}/
+      - run: ./ossutil64 --endpoint=oss-cn-shanghai.aliyuncs.com --access-key-id=${{ secrets.OSS_ACCESS_KEY_ID }} --access-key-secret=${{ secrets.OSS_ACCESS_KEY_SECRET }} cp -r -f dist/ oss://${{ secrets.OSS_BUCKET_NAME }}/
