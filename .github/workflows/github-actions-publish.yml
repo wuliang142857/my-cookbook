@@ -23,7 +23,7 @@ jobs:
       - run: curl -LO https://gosspublic.alicdn.com/ossutil/1.7.1/ossutil64
       - run: chmod a+x ossutil64
       - shell: bash
-        env:
+        with:
           OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
           OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
           OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
