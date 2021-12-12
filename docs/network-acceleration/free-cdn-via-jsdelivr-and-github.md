@@ -2,7 +2,7 @@
 icon: cdn
 ---
 
-# 使用jsDelivr+Github作为免费CDN
+# 使用jsDelivr and Github作为免费CDN
 
 最近发现通过 `https://cdn.jsdelivr.net/gh/Github用户名/Github仓库名@版本号/文件路径` 来访问Github的资源。
 

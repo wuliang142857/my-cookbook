@@ -2,7 +2,7 @@
 icon: macos
 ---
 
-# 为HHKB Professional 2映射R_Shift+ESC到波浪号
+# 为HHKB Professional 2映射R_Shift-ESC到波浪号
 
 ## 背景
 
