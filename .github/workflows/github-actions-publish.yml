@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --no-lockfile
       - name: Build
         run: yarn run build
       - run: curl -LO https://gosspublic.alicdn.com/ossutil/1.7.7/ossutil64
