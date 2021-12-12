@@ -15,9 +15,9 @@ icon: putty
 最终，发现了基于[putty](https://www.putty.org/)的[putty-nd](https://sourceforge.net/p/putty-nd/wiki/Home/)这款工具，感觉真心不错，满足我上述的所有需求。
 来几张截图吧：
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gh4jasw2x7j20n70crtbj.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.reiyzovro7k.jpg)
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gh4jerwl9bj20pi0hr415.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.1eu2gaddxe8w.jpg)
 
 目前市面上的其他选择：
 
