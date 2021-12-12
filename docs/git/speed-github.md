@@ -16,6 +16,6 @@ icon: github
 当然，最简单的方式可以使用现成的浏览器插件：[Fast-GitHub](https://fhefh2015.github.io/Fast-GitHub/)。
 插件安装完成后，在访问Github的仓库上，会自动出现 ==加速== 按钮：
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gr6atv68dtj219s0sgn5c.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.44ubu3ubey60.jpg)
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gr6awh7xdnj220y13wn3x.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.6w7tkllotq80.jpg)
