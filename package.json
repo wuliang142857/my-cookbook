@@ -1,24 +1,21 @@
 {
-  "name": "my-cookbook",
-  "version": "0.1.0",
-  "description": "个人文档沉淀",
-  "license": "MIT",
-  "devDependencies": {
-    "@mr-hope/vuepress-plugin-sitemap": "^1.18.0",
-    "@vuepress/plugin-back-to-top": "1.8.2",
-    "@vuepress/plugin-medium-zoom": "1.8.2",
-    "@vuepress/plugin-search": "^1.8.2",
-    "markdown-it-fontawesome": "^0.3.0",
-    "markdown-it-mark": "3.0.1",
-    "moment": "2.29.1",
-    "vuepress": "1.8.2",
-    "vuepress-plugin-autobar": "boboidream/vuepress-bar",
-    "vuepress-plugin-baidu-autopush": "^1.0.1",
-    "vuepress-plugin-permalink-pinyin": "^1.0.0"
-  },
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
-  },
-  "dependencies": {}
+    "name": "my-cookbook",
+    "version": "0.2.0",
+    "description": "我的个人知识沉淀",
+    "license": "MIT",
+    "author": {
+        "name": "wuliang142857",
+        "email": "wuliang142857@gmail.com",
+        "url": "https://www.wuliang.me/"
+    },
+    "scripts": {
+        "build": "vuepress build docs",
+        "dev": "vuepress dev docs"
+    },
+    "devDependencies": {
+        "axios": "0.24.0",
+        "lodash": "^4.17.21",
+        "vuepress": "1.8.2",
+        "vuepress-theme-hope": "1.21.0"
+    }
 }
