@@ -10,11 +10,11 @@ icon: clion
 
 STEP 1：在CLion中重命令项目名：
 
-![](https://tva1.sinaimg.cn/large/008jQjtOly1gtdrfc9pmbj317611sann.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.wqc205x3vmo.jpg)
 
 STEP 2：修改CMakeLists.txt中的名称
 
-![](https://tva1.sinaimg.cn/large/008jQjtOly1gtdrgoyvh5j30pw01umy6.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.g9dui2vfzoo.jpg)
 
 STEP 3：修改`.name`文件
 

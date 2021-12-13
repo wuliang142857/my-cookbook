@@ -8,11 +8,11 @@ icon: intellijidea
 
 [Intellij IDEA](https://www.jetbrains.com/idea/)默认使用安装包里的[OpenJDK](https://openjdk.java.net/)，渲染出来的菜单字体毛边非常多，例如：
 
-[![Image-2019-07-11-001.png](https://tva1.sinaimg.cn/large/703708dcly1g7vw2ir52nj20l30u0448)](https://tva1.sinaimg.cn/large/703708dcly1g7vw2ir52nj20l30u0448)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.52lyr4vgtgk0.jpg)
 
 今天意外发现，将Intellij IDEA的启动JDK修改成[Oracle JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)后，菜单的字体好多了。
 
-[![Image-2019-07-10-001.png](https://tva1.sinaimg.cn/large/703708dcly1g7vw2lfgz0j20lw0u07ag)](https://tva1.sinaimg.cn/large/703708dcly1g7vw2lfgz0j20lw0u07ag)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.5xqs4cypbu80.jpg)
 
 ### 如何修改Intellij IDEA的启动JDK
 
@@ -27,7 +27,7 @@ Help -> Find Action -> Switch Boot JDK
 
 我个人比较喜欢的是[Monoca](https://en.wikipedia.org/wiki/Monaco_(typeface))，效果如下：
 
-![](https://tva1.sinaimg.cn/large/703708dcly1g7vw2nus48j20wx0il0wc)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.5k9ugbb2nt00.jpg)
 
 另外，在github上发现一个可以下载常见的编码字体的仓库：[ProgrammingFonts/ProgrammingFonts](https://github.com/ProgrammingFonts/ProgrammingFonts)
 
