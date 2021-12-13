@@ -49,9 +49,9 @@ sgx 2 supported: 0
 
 Thinkpad在如下中开启：
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gj6cyqahs3j23402c0b2b.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.1u2ewr78uz0g.jpg)
 
-![](https://tva1.sinaimg.cn/large/703708dcly1gj6czg86awj23402c07wj.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.6mtavnnmblg0.jpg)
 
 ### 最终效果
 

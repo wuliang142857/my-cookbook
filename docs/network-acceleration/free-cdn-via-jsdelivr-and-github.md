@@ -20,7 +20,7 @@ PS：
 
 [jsDelivr](https://www.jsdelivr.com/)作为免费CDN的一个非常大的优势就在于它在我们国内也有大量的节点：
 
-![Screenshot2021-06-11 20.24.42.png](https://tva1.sinaimg.cn/large/008jQjtOly1grelkcjawaj31qu0wqdsq.jpg)
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211213/1.2houipfxj0s0.jpg)
 
 图片来源于：[https://www.jsdelivr.com/network)
 
