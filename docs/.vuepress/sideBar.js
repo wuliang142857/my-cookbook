@@ -75,6 +75,13 @@ module.exports = sidebarConfig({
             children: listMarkdownFiles(path.join(docsPath, "network-acceleration"))
         },
         {
+            title: "PYTHON",
+            icon: "python",
+            prefix: "python/",
+            collapsable: false,
+            children: listMarkdownFiles(path.join(docsPath, "python"))
+        },
+        {
             title: "可信执行环境",
             icon: "tee",
             prefix: "tee/",
