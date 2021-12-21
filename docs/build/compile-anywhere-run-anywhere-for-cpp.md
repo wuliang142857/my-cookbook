@@ -66,7 +66,9 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 ![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211220/传统的构建方案.2tzqlkgs76c0.png)
 
-以构建[pyyaml](https://github.com/yaml/pyyaml)为例，因为缺少[libyaml](https://github.com/yaml/libyaml)而构建失败。
+以构建[pyyaml](https://github.com/yaml/pyyaml)为例，因为缺少[libyaml](https://github.com/yaml/libyaml)而构建失败：
+
+![](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20211221/Screenshot2021-12-20-15.52.07.77gerfcc5cw0.png)
 
 ### 2.2 预构建的构建方案
 
