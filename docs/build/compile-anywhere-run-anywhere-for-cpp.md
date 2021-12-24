@@ -110,7 +110,7 @@ SWIG是一种“胶水工具”（Glue Code），它将用C和C++编写的程序
 
 ### 3.3 使用napi来简化Node调用C/C++
 
-对于Node来调用C/C++，其实Node官方文档上已经有比较详细的文档（[https://nodejs.org/api/addons.html](https://nodejs.org/api/addons.html)）。根据官方文档，推荐采用[napi(https://github.com/nodejs/node-addon-api)](https://github.com/nodejs/node-addon-api)的方案。
+对于Node来调用C/C++，其实Node官方文档上已经有比较详细的文档（https://nodejs.org/api/addons.html](https://nodejs.org/api/addons.html)）。根据官方文档，推荐采用[napi(https://github.com/nodejs/node-addon-api)](https://github.com/nodejs/node-addon-api)的方案。
 
 此外，如果项目是基于[CMake](https://cmake.org/)来构建，因此还可以搭配[cmake-js(https://github.com/cmake-js/cmake-js)](https://github.com/cmake-js/cmake-js)来搭配使用，简化napi的构建。
 
