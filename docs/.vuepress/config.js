@@ -12,7 +12,7 @@ module.exports = config({
     temp: path.join(os.tmpdir(), "my-cookbook"),
     host: "0.0.0.0",
     port: "8080",
-    cache: true,
+    cache: false,
 
     locales: {
         "/": {lang: "zh-CN"},
