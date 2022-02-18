@@ -1,3 +1,8 @@
+---
+icon: git
+---
+
+
 # git status中文乱码问题解决
 
 当使用`git status`时，发现中文显示的是乱码：
