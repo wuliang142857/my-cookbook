@@ -42,7 +42,7 @@ module.exports = sidebarConfig({
         {
             title: "GIT",
             icon: "git",
-            prefix: "git/",
+            prefix: "version-control/",
             collapsable: false,
             children: listMarkdownFiles(path.join(docsPath, "git")),
         },
