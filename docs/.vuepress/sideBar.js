@@ -40,11 +40,11 @@ module.exports = sidebarConfig({
             children: listMarkdownFiles(path.join(docsPath, "crack"))
         },
         {
-            title: "GIT",
-            icon: "git",
+            title: "版本控制",
+            icon: "version-control",
             prefix: "version-control/",
             collapsable: false,
-            children: listMarkdownFiles(path.join(docsPath, "git")),
+            children: listMarkdownFiles(path.join(docsPath, "version-control")),
         },
         {
             title: "瞎折腾",
