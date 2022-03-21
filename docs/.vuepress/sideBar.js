@@ -47,11 +47,11 @@ module.exports = sidebarConfig({
             children: listMarkdownFiles(path.join(docsPath, "version-control")),
         },
         {
-            title: "瞎折腾",
-            icon: "hodgepodge",
-            prefix: "hodgepodge/",
+            title: "容器",
+            icon: "container",
+            prefix: "container/",
             collapsable: false,
-            children: listMarkdownFiles(path.join(docsPath, "hodgepodge")),
+            children: listMarkdownFiles(path.join(docsPath, "container")),
         },
         {
             title: "IDE",
@@ -87,6 +87,13 @@ module.exports = sidebarConfig({
             prefix: "tee/",
             collapsable: false,
             children: listMarkdownFiles(path.join(docsPath, "tee"))
+        },
+        {
+            title: "瞎折腾",
+            icon: "hodgepodge",
+            prefix: "hodgepodge/",
+            collapsable: false,
+            children: listMarkdownFiles(path.join(docsPath, "hodgepodge")),
         }
     ],
 })
