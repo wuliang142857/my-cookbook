@@ -61,6 +61,13 @@ module.exports = sidebarConfig({
             children: listMarkdownFiles(path.join(docsPath, "ide"))
         },
         {
+            title: "Golang",
+            icon: "golang",
+            prefix: "golang/",
+            collapsable: false,
+            children: listMarkdownFiles(path.join(docsPath, "golang"))
+        },
+        {
             title: "JavaScript",
             icon: "javascript",
             prefix: "javascript/",
@@ -68,18 +75,18 @@ module.exports = sidebarConfig({
             children: listMarkdownFiles(path.join(docsPath, "javascript"))
         },
         {
+            title: "Python",
+            icon: "python",
+            prefix: "python/",
+            collapsable: false,
+            children: listMarkdownFiles(path.join(docsPath, "python"))
+        },
+        {
             title: "网络加速",
             icon: "acceleration",
             prefix: "network-acceleration/",
             collapsable: false,
             children: listMarkdownFiles(path.join(docsPath, "network-acceleration"))
-        },
-        {
-            title: "PYTHON",
-            icon: "python",
-            prefix: "python/",
-            collapsable: false,
-            children: listMarkdownFiles(path.join(docsPath, "python"))
         },
         {
             title: "可信执行环境",
