@@ -41,7 +41,7 @@ module.exports = config({
 
         footer: {
             display: true,
-            copyright: 'MIT Licensed | Copyright © 2019-present wuliang142857 | <a href="https://beian.miit.gov.cn">浙ICP备17055787号-1</a>',
+            copyright: 'MIT Licensed | Copyright © 2019-present wuliang142857 | <a href="https://beian.miit.gov.cn">浙ICP备17055787号-1</a> | 联系方式: 15988854319',
         },
 
         comment: false,
