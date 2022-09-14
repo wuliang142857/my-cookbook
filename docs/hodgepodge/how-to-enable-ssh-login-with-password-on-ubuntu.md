@@ -8,7 +8,7 @@ icon: ubuntu
 
 新安装完成的ubuntu 20.04.4，不允许使用ssh密码登录，报错信息：
 
-````console
+````
 Permission denied (publickey)
 ````
 

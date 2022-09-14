@@ -10,7 +10,7 @@ icon: webpack
 
 今天遇到一个问题，使用TypeScript语法来配置webpack时，提示是：
 
-````console
+````
 '"devServer"' does not exist in type 'Configuration'
 ````
 

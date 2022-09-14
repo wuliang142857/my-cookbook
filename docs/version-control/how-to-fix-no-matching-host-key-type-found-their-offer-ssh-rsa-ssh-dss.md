@@ -8,7 +8,7 @@ icon: git
 
 在使用[MSYS2](https://www.msys2.org/)中push代码时，发现出现了这么一个错误：
 
-````console
+````
 Unable to negotiate with A.B.C.D port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
 fatal: Could not read from remote repository.
 
