@@ -60,13 +60,13 @@ module.exports = sidebarConfig({
             collapsable: false,
             children: listMarkdownFiles(path.join(docsPath, "ide"))
         },
-        {
-            title: "Golang",
-            icon: "golang",
-            prefix: "golang/",
-            collapsable: false,
-            children: listMarkdownFiles(path.join(docsPath, "golang"))
-        },
+        // {
+        //     title: "Golang",
+        //     icon: "golang",
+        //     prefix: "golang/",
+        //     collapsable: false,
+        //     children: listMarkdownFiles(path.join(docsPath, "golang"))
+        // },
         {
             title: "JavaScript",
             icon: "javascript",
