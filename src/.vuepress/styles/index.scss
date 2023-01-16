@@ -1,0 +1,16 @@
+// place your custom styles here
+
+@import '//at.alicdn.com/t/c/font_3005078_28ub83lljvw.css';
+
+@import url("https://cdn.jsdelivr.net/gh/wuliang142857/webfonts/css/monaco.css");
+
+body {
+    -webkit-font-smoothing: antialiased;
+    // https://www.zaera.cn/2821.html
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+code, pre {
+    font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace;
+    font-size: 16px !important;
+}

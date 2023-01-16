@@ -2,8 +2,6 @@
 icon: ubuntu
 ---
 
-
-
 # ubuntu 20.04.4允许使用密码SSH登录
 
 新安装完成的ubuntu 20.04.4，不允许使用ssh密码登录，报错信息：
