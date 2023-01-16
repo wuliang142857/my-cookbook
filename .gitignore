@@ -6,5 +6,5 @@ node_modules/
 .deploy*/
 .idea/*
 dist/*
-.cache/*
-.temp/*
+src/.vuepress/.cache/*
+src/.vuepress/.temp/*

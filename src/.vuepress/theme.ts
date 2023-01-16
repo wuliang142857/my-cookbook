@@ -40,14 +40,14 @@ export default hopeTheme({
     },
   },
 
-  encrypt: {
-    config: {
-      "/demo/encrypt.html": ["1234"],
-      "/zh/demo/encrypt.html": ["1234"],
-    },
-  },
-
   plugins: {
+    copyCode: {
+      duration: 1000
+    },
+    photoSwipe: true,
+    copyright: false,
+    
+    
     // If you don’t need comment feature, you can remove following option
     // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
     // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
@@ -55,11 +55,11 @@ export default hopeTheme({
       /**
        * Using Giscus
        */
-      // provider: "Giscus",
-      // repo: "vuepress-theme-hope/giscus-discussions",
-      // repoId: "R_kgDOG_Pt2A",
-      // category: "Announcements",
-      // categoryId: "DIC_kwDOG_Pt2M4COD69",
+      provider: "Giscus",
+      repo: "wuliang142857/my-cookbook",
+      repoId: "MDEwOlJlcG9zaXRvcnkyNzUyOTYxNzY=",
+      category: "Q&A",
+      categoryId: "DIC_kwDOEGivsM4CTnyc",
 
       /**
        * Using Twikoo
@@ -70,8 +70,8 @@ export default hopeTheme({
       /**
        * Using Waline
        */
-      provider: "Waline",
-      serverURL: "https://vuepress-theme-hope-comment.vercel.app",
+      // provider: "Waline",
+      // serverURL: "https://www.wuliang.me",
     },
 
     // Disable features you don’t want here
