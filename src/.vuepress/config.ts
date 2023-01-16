@@ -2,13 +2,20 @@ import {defineUserConfig} from "vuepress";
 import theme from "./theme.js";
 import * as path from "path";
 import * as os from "os";
+import {containerPlugin} from "@vuepress/plugin-container";
+import {externalLinkIconPlugin} from "@vuepress/plugin-external-link-icon";
+import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
+import {nprogressPlugin} from "@vuepress/plugin-nprogress";
+import {activeHeaderLinksPlugin} from "@vuepress/plugin-active-header-links";
+import {gitPlugin} from "@vuepress/plugin-git";
+import {tocPlugin} from "@vuepress/plugin-toc";
+import {shikiPlugin} from "@vuepress/plugin-shiki";
+import {searchPlugin} from "@vuepress/plugin-search";
 
 export default defineUserConfig({
   base: "/",
 
   dest: path.join(path.dirname(path.dirname(__dirname)), "dist"),
-  temp: path.join(os.tmpdir(), "my-cookbook", "temp"),
-  cache: path.join(os.tmpdir(), "my-cookbook", "cache"),
   host: "0.0.0.0",
   port: 8080,
 
@@ -23,5 +30,43 @@ export default defineUserConfig({
   theme,
 
   shouldPrefetch: false,
+  
+  plugins: [
+    containerPlugin({
+      type: "tip",
+      locales: {
+        "/": {
+          defaultInfo: "提示"
+        }
+      }
+    }),
+    externalLinkIconPlugin({
+      locales: {
+        "/": {
+          openInNewWindow: '在新窗口打开',
+        }
+      }
+    }),
+    mediumZoomPlugin(),
+    nprogressPlugin(),
+    activeHeaderLinksPlugin(),
+    gitPlugin({
+      createdTime: true,
+      updatedTime: true,
+      contributors: true
+    }),
+    tocPlugin(),
+    shikiPlugin({
+      theme: "github-light",
+    }),
+    searchPlugin({
+      locales: {
+        "/": {
+          placeholder: '搜索',
+        }
+      },
+      maxSuggestions: 10,
+    })
+  ]
 
 });

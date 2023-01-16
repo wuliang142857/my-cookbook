@@ -10,7 +10,41 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
 }
 
-code, pre {
+// nprogress样式
+// https://v2.vuepress.vuejs.org/zh/reference/plugin/nprogress.html
+:root {
+  --nprogress-color: #29d;
+  --nprogress-z-index: 1031;
+}
+
+// https://v2.vuepress.vuejs.org/zh/reference/plugin/medium-zoom.html
+:root {
+  --medium-zoom-z-index: 100;
+  --medium-zoom-bg-color: #ffffff;
+  --medium-zoom-opacity: 1;
+}
+
+// https://v2.vuepress.vuejs.org/zh/reference/plugin/external-link-icon.html
+:root {
+  --external-link-icon-color: #aaa;
+}
+
+// https://v2.vuepress.vuejs.org/zh/reference/plugin/search.html
+:root {
+  --search-bg-color: #ffffff;
+  --search-accent-color: #3eaf7c;
+  --search-text-color: #2c3e50;
+  --search-border-color: #eaecef;
+
+  --search-item-text-color: #5d81a5;
+  --search-item-focus-bg-color: #f3f4f5;
+
+  --search-input-width: 8rem;
+  --search-result-width: 20rem;
+}
+
+
+div[class*=language-] pre, div[class*=language-] pre[class*=language-] {
     font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace;
     font-size: 16px !important;
 }
