@@ -20,12 +20,12 @@ git clone https://github.com/wuliang142857/my-cookbook.git
 ## 🚀 开发环境运行
 
 ```bash
-<npm_like> docs:dev
+<npm_like> run docs:dev
 ```
 
 
 ## 🚀 静态文件构建
 
 ```bash
-<npm_like> docs:build
+<npm_like> run docs:build
 ```
