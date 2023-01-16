@@ -3,11 +3,11 @@ import { zhNavbar } from "./navbar";
 import { zhSidebar } from "./sidebar";
 
 export default hopeTheme({
-  hostname: "https://www.wuliang.me/",
+  hostname: "https://www.wuliang142857.me/",
 
   author: {
     name: "wuliang142857",
-    url: "https://www.wuliang.me/",
+    url: "https://www.wuliang142857.me/",
   },
 
   iconAssets: "iconfont",
@@ -17,7 +17,7 @@ export default hopeTheme({
   repo: "wuliang142857/my-cookbook",
 
   docsDir: "demo/theme-docs/src",
-
+  
   locales: {
     /**
      * Chinese locale config
@@ -46,6 +46,7 @@ export default hopeTheme({
     },
     photoSwipe: true,
     copyright: false,
+    autoCatalog: false,
     
     
     // If you don’t need comment feature, you can remove following option
