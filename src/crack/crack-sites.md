@@ -16,20 +16,6 @@ icon: crack
 
 ## 三、最新Jetbrains破解工具
 
-自从[知了](https://zhile.io/2018/08/25/jetbrains-license-server-crack.html)不再维护[Jetbrains](https://www.jetbrains.com/)家的破解后，破解就成了一件头疼的事情。
+自从[知了](https://zhile.io/2018/08/25/jetbrains-license-server-crack.html)不再直接维护[Jetbrains](https://www.jetbrains.com/)家的破解后，破解就成了一件头疼的事情。
 
-幸亏有一天找到了如下破解办法：[http://lookdiv.com/](http://lookdiv.com/)
-
-具体用法：
-
-- 关注公众号
-- 进入公众号后【激活密钥】
-- 然后在[http://lookdiv.com/](http://lookdiv.com/)上输入【网站密钥】
-- 就可以得到破解序列号了。
-
-::: tip
-
-这个序列号可能总是要换
-
-:::
-
+不过他变相提供了工具：[ja-netfilter](https://zhile.io/2021/11/29/ja-netfilter-javaagent-lib.html)。不过估计考虑到不再被封的原因，ja-netfilter本身只是一个工具，不包含任何具体的破解内容。如果想开箱即用，可以用现成的包：[jetbra.in](https://3.jetbra.in/)。
