@@ -2,7 +2,7 @@
   "name": "my-cookbook",
   "version": "0.3.0",
   "description": "我的个人知识沉淀",
-  "license": "MIT",
+  "license": "LGPL",
   "type": "module",
   "scripts": {
     "docs:build": "vuepress build src",
