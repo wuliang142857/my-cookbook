@@ -47,6 +47,7 @@ export default hopeTheme({
     photoSwipe: true,
     copyright: false,
     autoCatalog: false,
+    readingTime: false,
     
     
     // If you don’t need comment feature, you can remove following option
