@@ -29,7 +29,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: 'MIT Licensed | Copyright © 2019-present wuliang142857 | <a href="https://beian.miit.gov.cn">浙ICP备17055787号-1</a>',
+      footer: 'MIT Licensed | Copyright © 2019-present wuliang142857',
 
       displayFooter: true,
 
