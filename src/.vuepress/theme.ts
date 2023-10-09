@@ -29,7 +29,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: 'MIT Licensed | Copyright © 2019-present wuliang142857',
+      footer: 'LGPL Licensed | Copyright © 2019-present wuliang142857',
 
       displayFooter: true,
 
