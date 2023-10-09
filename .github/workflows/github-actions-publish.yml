@@ -19,18 +19,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-      
       - name: Install dependencies
-        run: pnpm install
+        run: yarn install --no-lockfile
         
       - name: Build
-        run: pnpm run docs:build
+        run: yarn run docs:build
         
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
