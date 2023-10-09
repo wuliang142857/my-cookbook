@@ -25,8 +25,8 @@ jobs:
       - name: Build
         run: yarn run docs:build
         
-      - name: Publish
-        uses: cloudflare/wrangler-action@2.0.0
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
