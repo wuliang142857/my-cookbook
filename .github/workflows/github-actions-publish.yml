@@ -30,4 +30,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages publish deploy --branch=main --project-name=cookbook --commit-dirty=true
+          command: pages dist --branch=main --project-name=cookbook --commit-dirty=true
