@@ -18,13 +18,6 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
-      text: "CRACK",
-      icon: "crack",
-      prefix: "crack/",
-      link: "crack/",
-      children: "structure",
-    },
-    {
       text: "版本控制",
       icon: "version-control",
       prefix: "version-control/",

@@ -45,6 +45,11 @@ body {
 
 
 div[class*=language-] pre, div[class*=language-] pre[class*=language-] {
-    font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace;
+    font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace !important;
+    font-size: 16px !important;
+}
+
+code {
+    font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace !important;
     font-size: 16px !important;
 }
