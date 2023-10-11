@@ -5,11 +5,11 @@ icon: thunder
 
 今天找到一款可以在Linux使用的迅雷，看里面的内容貌似是从安卓上迁移过来的。非常神奇。
 
-下载地址：[thunder-1.0.0.1_amd64.deb](https://stupid-proxy.wuliang142857.workers.dev/https://github.com/wuliang142857/pictures-hosting/raw/main/20220218/thunder-1.0.0.1_amd64.deb)
+下载地址：[thunder-1.0.0.1_amd64.deb](https://github.com/wuliang142857/pictures-hosting/raw/main/20220218/thunder-1.0.0.1_amd64.deb)
 
 效果图片：
 
-![Screenshot2022-03-14-22](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20220314/Screenshot2022-03-14-22.39vip5j62la0.png)
+![Screenshot2022-03-14-22](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220314/Screenshot2022-03-14-22.39vip5j62la0.png)
 
 
 

@@ -14,7 +14,7 @@ icon: webpack
 '"devServer"' does not exist in type 'Configuration'
 ````
 
-![Screenshot2022-03-14-23](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20220314/Screenshot2022-03-14-23.4kkasqyb5oo0.png)
+![Screenshot2022-03-14-23](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220314/Screenshot2022-03-14-23.4kkasqyb5oo0.png)
 
 尝试解决一下：
 

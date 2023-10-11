@@ -7,7 +7,7 @@ icon: git
 
 当使用`git status`时，发现中文显示的是乱码：
 
-![Screenshot2022-02-09-14](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20220209/Screenshot2022-02-09-14.2up54u4kcfu0.png)
+![Screenshot2022-02-09-14](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220209/Screenshot2022-02-09-14.2up54u4kcfu0.png)
 
 原因：
 
@@ -19,4 +19,4 @@ icon: git
 git config --global core.quotepath false
 ````
 
-![Screenshot2022-02-09-14](https://cdn.jsdelivr.net/gh/wuliang142857/pictures-hosting@main/20220209/Screenshot2022-02-09-14.606ewqtvu4o0.png)
+![Screenshot2022-02-09-14](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220209/Screenshot2022-02-09-14.606ewqtvu4o0.png)

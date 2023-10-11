@@ -62,8 +62,8 @@ export const zhSidebar = sidebar({
     {
       text: "网络加速",
       icon: "acceleration",
-      prefix: "network-acceleration/",
-      link: "network-acceleration/",
+      prefix: "speed-my-network/",
+      link: "speed-my-network/",
       children: "structure",
     },
     {
