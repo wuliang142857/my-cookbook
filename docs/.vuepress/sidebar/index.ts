@@ -4,41 +4,6 @@ export const zhSidebar = sidebar({
   "/": [
     "",
     {
-      text: "大数据",
-      icon: "bigdata",
-      prefix: "bigdata/",
-      link: "bigdata/",
-      children: "structure",
-    },
-    {
-      text: "软件构建",
-      icon: "build",
-      prefix: "build/",
-      link: "build/",
-      children: "structure",
-    },
-    {
-      text: "版本控制",
-      icon: "version-control",
-      prefix: "version-control/",
-      link: "version-control/",
-      children: "structure",
-    },
-    {
-      text: "容器",
-      icon: "container",
-      prefix: "container/",
-      link: "container/",
-      children: "structure",
-    },
-    {
-      text: "编辑器",
-      icon: "editor",
-      prefix: "editor/",
-      link: "editor/",
-      children: "structure",
-    },
-    {
       text: "C++",
       icon: "cpp",
       prefix: "cpp/",
@@ -60,17 +25,47 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "软件构建",
+      icon: "build",
+      prefix: "build/",
+      link: "build/",
+      children: "structure",
+    },
+    {
+      text: "版本控制",
+      icon: "version-control",
+      prefix: "version-control/",
+      link: "version-control/",
+      children: "structure",
+    },
+    {
+      text: "大数据",
+      icon: "bigdata",
+      prefix: "bigdata/",
+      link: "bigdata/",
+      children: "structure",
+    },
+
+
+    {
+      text: "虚拟化",
+      icon: "virtual",
+      prefix: "virtual/",
+      link: "virtual/",
+      children: "structure",
+    },
+    {
+      text: "编辑器",
+      icon: "editor",
+      prefix: "editor/",
+      link: "editor/",
+      children: "structure",
+    },
+    {
       text: "网络加速",
       icon: "acceleration",
       prefix: "speed-my-network/",
       link: "speed-my-network/",
-      children: "structure",
-    },
-    {
-      text: "可信执行环境",
-      icon: "tee",
-      prefix: "tee/",
-      link: "tee/",
       children: "structure",
     },
     {

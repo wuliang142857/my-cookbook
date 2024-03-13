@@ -2,7 +2,7 @@
 icon: cmake
 ---
 
-# CMAKE輸出所有的變量
+# CMake输出所有的变量
 
 有時候爲了調試看看CMAKE定義了哪些變量，可以在CMakeLists.txt中加入：
 

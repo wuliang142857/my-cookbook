@@ -8,7 +8,7 @@ icon: cpp
 
 因为我们公司的主要技术栈都是JAVA，JAVA在跨平台特性的口号就是：一次编写，到处运行（Write Once, Run Anywhere）。当然，这主要归功于JAVA虚拟机（JVM）的作用。
 
->![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/JAVA虚拟机提供的语言无关性.1gr3ag7hyxxc.png)
+>![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/java.gss6g6kla20.webp)
 >
 >图片摘自《深入理解Java虚拟机》Java虚拟机提供的语言无关性
 
@@ -16,13 +16,13 @@ icon: cpp
 
 以C语言为例，代码构建可以分为：预处理（PreProcessing）、编译（Compiling）、链接（Linking）三个过程。
 
->![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/GCC编译过程分解.292zc3az5msk.png)
+>![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/java.1e3kya1kse1s.webp)
 >
 >图片摘自《程序员的自我修养：链接、装载与库》第二章《编译和链接》
 
 但JAVA在编译过程中其实没有链接，链接是由JVM再启动、加载类的过程中去完成的：
 
->![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/类的生命周期.6gojni4g4lk0.png)
+>![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/java.3zd7d3f5qcw0.webp)
 >
 >图片摘自《深入理解Java虚拟机》类的生命周期
 
@@ -30,7 +30,7 @@ JAVA虚拟机这些设计的孰是孰非并不是我想去讨论的，这里我�
 
 并不是每种编程语言都有类似的虚拟机，[Golang](https://go.dev/)等语言也自带一种新的方式，我称之为：随处编译，到处运行（Compile Anywhere, Run AnyWhere）。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/golang的交叉编译.671gkjoum5s0.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/1710316589639.webp)
 
 简而言之，这种**随处编译，到处运行**就是*同一份代码，在任何一个操作系统上，都可以编译出其他操作系统的执行文件*。
 
@@ -44,7 +44,7 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 以我们目前的一个案例举例，目前我们需要提供一个核心加密组件，这个组件需要为不同语言类型的应用提供SDK。那么现在怎么办？
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/核心组件被多个语言类型的应用调研.5ll3wt5nfdc0.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/1710316639727.webp)
 
 当然，有些同学可能会说，很好办呀，核心加密组件包装成Restful服务，然后或提供RESTful API、或提供基于RESTful API的各语言版本的SDK即可。
 
@@ -52,7 +52,7 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 因此，我们调用采用提供原生SDK（Native SDK）的方案，也就是核心加解密库用C/C++开发，然后针对各种语言提供相应的基于动态库文件的SDK。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/核心组件SDK遇到的问题.3pc8gbm2wc20.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/1710316684924.webp)
 
 采用原生SDK的方案，同样也带来一个问题，因为操作系统和编程语言各个版本的差异，我们需要针对各种操作各种编程语言的不同版本分别构建相应的SDK。
 
@@ -60,11 +60,9 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 传统的构建方案是在我本业务应用构建前，通过构建工具提供的钩子（Hook），拉取基础库的代码，然后进行相应的构建。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/核心组件被多个语言类型的应用调研.5ll3wt5nfdc0.png)
-
 这种构建方式遇到的核心问题在于需要提供基础库的编译环境，有时候这种环境往往还挺复杂：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/传统的构建方案.2tzqlkgs76c0.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/1710316774421.webp)
 
 以构建[pyyaml](https://github.com/yaml/pyyaml)为例，因为缺少[libyaml](https://github.com/yaml/libyaml)而构建失败：
 
@@ -74,7 +72,7 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 因为是针对公司的项目，因此可能的操作系统版本和语言版本其实可枚举，那么我们就完全可以将C/C++基础库预编译完成；在业务应用启动时，只需要根据运行环境加载对应版本的基础库文件即可。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/预构建方案.2r1arv0vros0.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/1710316815301.webp)
 
 ## 三、整体方案
 
@@ -84,7 +82,7 @@ Golang通过*编译选项*的差别，来告诉编译器目标格式究竟是什
 
 然后在每个环境中，根据环境变量等工具可以分别提供多个版本的JDK、Python、NODE等。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211220/整体方案.2e1asmgllg4k.png)
+![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/java.92pvvpu51x.webp)
 
 正如此图所示，最后我们只需运行`make`一条命令即可实现**随处编译，到处运行**。
 
