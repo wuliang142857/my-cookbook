@@ -8,7 +8,10 @@ export default hopeTheme({
   author: {
     name: "wuliang142857",
     url: "https://www.wuliang142857.me/",
+    email: "wuliang142857@gmail.com"
   },
+  lastUpdated: false,
+  pageInfo: false,
 
   iconAssets: "iconfont",
 
@@ -16,7 +19,7 @@ export default hopeTheme({
 
   repo: "wuliang142857/my-cookbook",
 
-  docsDir: "demo/theme-docs/src",
+  docsDir: "docs",
   
   locales: {
     /**
@@ -55,11 +58,6 @@ export default hopeTheme({
       /**
        * Using Giscus
        */
-      provider: "Giscus",
-      repo: "wuliang142857/my-cookbook",
-      repoId: "MDEwOlJlcG9zaXRvcnkyNzUyOTYxNzY=",
-      category: "Q&A",
-      categoryId: "DIC_kwDOEGivsM4CTnyc",
 
       /**
        * Using Twikoo
