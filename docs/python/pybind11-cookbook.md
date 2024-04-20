@@ -12,7 +12,7 @@ icon: python
 
 这个问题在Windows上会出现，在Mac和Linux上貌似都没有出现。现象是类似这样的代码：
 
-```c++
+```cpp
 #include <pybind11/embed.h>
 void main() {
    pybind11::scoped_interpreter guard{};
@@ -52,7 +52,7 @@ ModuleNotFoundError: No module named 'encodings'`
 
 当然，更方便的方法可以通过如下代码来自动设置：
 
-```c++
+```cpp
 #include <boost/dll.hpp>
 
 #ifndef _WIN32
@@ -102,7 +102,7 @@ At:
 
 解决办法：
 
-```c++
+```cpp
 // 在初始化阶段
 #ifdef __linux__
     auto pythonLibrary = boost::dll::symbol_location(Py_Initialize).string();
@@ -126,7 +126,7 @@ At:
 
 实现方法倒是很简单，也就是把Python的stdout和stderr分别指向一个类的属性中：
 
-```c++
+```cpp
 #include <pybind11/iostream.h>
 
 /**
