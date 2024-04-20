@@ -118,6 +118,10 @@ At:
 #endif
 ```
 
+参考资料：
+
+- [Import c-module from interpreter embedded in dlopen shared object raises undefined symbol (unix-only) ](https://github.com/pybind/pybind11/issues/3555)
+
 # 如何捕获stdout和stderr
 
 实现方法倒是很简单，也就是把Python的stdout和stderr分别指向一个类的属性中：
