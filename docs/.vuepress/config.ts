@@ -66,7 +66,7 @@ export default defineUserConfig({
         }
       },
       maxSuggestions: 10,
-    })
+    }),
   ]
 
 });

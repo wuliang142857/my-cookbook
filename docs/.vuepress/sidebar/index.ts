@@ -4,6 +4,13 @@ export const zhSidebar = sidebar({
   "/": [
     "",
     {
+      text: "大数据",
+      icon: "bigdata",
+      prefix: "bigdata/",
+      link: "bigdata/",
+      children: "structure",
+    },
+    {
       text: "C++",
       icon: "cpp",
       prefix: "cpp/",
@@ -11,10 +18,24 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
-      text: "Python",
-      icon: "python",
-      prefix: "python/",
-      link: "python/",
+      text: "数据库",
+      icon: "database",
+      prefix: "database/",
+      link: "database/",
+      children: "structure",
+    },
+    {
+      text: "编辑器",
+      icon: "editor",
+      prefix: "editor/",
+      link: "editor/",
+      children: "structure",
+    },
+    {
+      text: "Go",
+      icon: "go",
+      prefix: "go/",
+      link: "go/",
       children: "structure",
     },
     {
@@ -24,41 +45,13 @@ export const zhSidebar = sidebar({
       link: "javascript/",
       children: "structure",
     },
-    {
-      text: "软件构建",
-      icon: "build",
-      prefix: "build/",
-      link: "build/",
-      children: "structure",
-    },
-    {
-      text: "版本控制",
-      icon: "version-control",
-      prefix: "version-control/",
-      link: "version-control/",
-      children: "structure",
-    },
-    {
-      text: "大数据",
-      icon: "bigdata",
-      prefix: "bigdata/",
-      link: "bigdata/",
-      children: "structure",
-    },
 
 
     {
-      text: "虚拟化",
-      icon: "virtual",
-      prefix: "virtual/",
-      link: "virtual/",
-      children: "structure",
-    },
-    {
-      text: "编辑器",
-      icon: "editor",
-      prefix: "editor/",
-      link: "editor/",
+      text: "Python",
+      icon: "python",
+      prefix: "python/",
+      link: "python/",
       children: "structure",
     },
     {
@@ -74,6 +67,20 @@ export const zhSidebar = sidebar({
       prefix: "toy/",
       link: "toy/",
       children: "structure",
-    }
+    },
+    {
+      text: "版本控制",
+      icon: "version-control",
+      prefix: "version-control/",
+      link: "version-control/",
+      children: "structure",
+    },
+    {
+      text: "虚拟化",
+      icon: "virtual",
+      prefix: "virtual/",
+      link: "virtual/",
+      children: "structure",
+    },
   ]
 });
