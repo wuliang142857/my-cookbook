@@ -52,8 +52,6 @@ export const zhSidebar = sidebar({
       link: "javascript/",
       children: "structure",
     },
-
-
     {
       text: "Python",
       icon: "python",
@@ -87,6 +85,13 @@ export const zhSidebar = sidebar({
       icon: "virtual",
       prefix: "virtual/",
       link: "virtual/",
+      children: "structure",
+    },
+    {
+      text: "地图",
+      icon: "map",
+      prefix: "map/",
+      link: "map/",
       children: "structure",
     },
   ]
