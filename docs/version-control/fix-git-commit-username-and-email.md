@@ -4,9 +4,7 @@ icon: git
 
 # 批量修改git提交的用户名和Email
 
-有时候git配置错了用户名和邮箱，想修改过来，可以用如下这个脚本：
-
-[fix-git-username-email.sh](https://gist.github.com/wuliang142857/cd2a505273dedcd80677c9f7526bec54)
+有时候git配置错了用户名和邮箱，想修改过来，可以用如下这个脚本：[fix-git-username-email.sh](https://gist.github.com/wuliang142857/cd2a505273dedcd80677c9f7526bec54)
 
 使用方法：
 

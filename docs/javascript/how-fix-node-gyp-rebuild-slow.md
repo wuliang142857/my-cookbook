@@ -15,7 +15,7 @@ NODE_GYP_DIR=$HOME/.node-gyp
 rm -rf $NODE_GYP_DIR
 mkdir -pv $NODE_GYP_DIR/$NODE_VERSION
 
-wget -qO- https://npm.taobao.org/mirrors/node/v$NODE_VERSION/node-v$NODE_VERSION.tar.gz | tar xz --strip-components 1 - -C $NODE_GYP_DIR/$NODE_VERSION
+wget -qO- https://registry.npmmirror.com/-/binary/node/v$NODE_VERSION/node-v$NODE_VERSION.tar.gz | tar xz --strip-components 1 - -C $NODE_GYP_DIR/$NODE_VERSION
 
 # 创建一个标记文件
 printf "9\n"> $NODE_GYP_DIR/$NODE_VERSION/installVersion

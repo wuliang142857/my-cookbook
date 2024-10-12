@@ -39,6 +39,13 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "Java",
+      icon: "java",
+      prefix: "java/",
+      link: "java/",
+      children: "structure",
+    },
+    {
       text: "JavaScript",
       icon: "javascript",
       prefix: "javascript/",
