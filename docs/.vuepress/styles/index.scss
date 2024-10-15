@@ -52,4 +52,17 @@ div[class*=language-] pre, div[class*=language-] pre[class*=language-] {
 code {
     font-family: Monaco, MonacoRegular, Consolas, 'Andale Mono', 'Lucida Console', monospace !important;
     font-size: 16px !important;
+    text-wrap: wrap;
+}
+#main-content {
+    .breadcrumb {
+        max-width: 100% !important;
+    }
+    .page-title {
+        max-width: 100% !important;
+    }
+    //width: 1024px !important;
+    .theme-hope-content {
+        max-width: 100% !important;
+    }
 }

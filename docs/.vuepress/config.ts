@@ -1,14 +1,10 @@
 import {defineUserConfig} from "vuepress";
 import theme from "./theme.js";
 import * as path from "path";
-import * as os from "os";
 import {containerPlugin} from "@vuepress/plugin-container";
-import {externalLinkIconPlugin} from "@vuepress/plugin-external-link-icon";
 import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
 import {nprogressPlugin} from "@vuepress/plugin-nprogress";
 import {activeHeaderLinksPlugin} from "@vuepress/plugin-active-header-links";
-import {gitPlugin} from "@vuepress/plugin-git";
-import {tocPlugin} from "@vuepress/plugin-toc";
 import {shikiPlugin} from "@vuepress/plugin-shiki";
 import {searchPlugin} from "@vuepress/plugin-search";
 import {feed, seo, sitemap} from "vuepress-theme-hope";
@@ -55,22 +51,9 @@ export default defineUserConfig({
         }
       }
     }),
-    externalLinkIconPlugin({
-      locales: {
-        "/": {
-          openInNewWindow: '在新窗口打开',
-        }
-      }
-    }),
     mediumZoomPlugin(),
     nprogressPlugin(),
     activeHeaderLinksPlugin(),
-    gitPlugin({
-      createdTime: true,
-      updatedTime: true,
-      contributors: true
-    }),
-    tocPlugin(),
     shikiPlugin({
       theme: "github-light",
     }),
