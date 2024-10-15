@@ -11,6 +11,7 @@ import {gitPlugin} from "@vuepress/plugin-git";
 import {tocPlugin} from "@vuepress/plugin-toc";
 import {shikiPlugin} from "@vuepress/plugin-shiki";
 import {searchPlugin} from "@vuepress/plugin-search";
+import {feed, seo, sitemap} from "vuepress-theme-hope";
 
 export default defineUserConfig({
   base: "/",
@@ -32,6 +33,20 @@ export default defineUserConfig({
   shouldPrefetch: false,
   
   plugins: [
+    sitemap({
+      hostname: "https://www.wuliang142857.me/",
+      lastUpdated: true,
+      changefreq: "always"
+    }),
+    seo({
+      hostname: "https://www.wuliang142857.me/"
+    }),
+    feed({
+      atom: true,
+      json: true,
+      rss: true,
+      author: "wuliang142857"
+    }),
     containerPlugin({
       type: "tip",
       locales: {
