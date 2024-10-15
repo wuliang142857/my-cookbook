@@ -12,7 +12,7 @@ icon: postgresql
 
 ## 部署架构
 
-![](https://github.com/wuliang142857/pictures-hosting/raw/main/20240902/集群版PostgreSQL.8l0123rmbl.jpg)
+![](https://image-hosting.wuliang142857.me/20240902/集群版PostgreSQL.8l0123rmbl.jpg)
 
 对应的IP（这样下面有所对照）：
 

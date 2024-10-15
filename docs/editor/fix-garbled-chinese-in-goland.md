@@ -6,7 +6,7 @@ icon: golang
 
 编辑器配置：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.5oc2c74mwqw0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.5oc2c74mwqw0.jpg)
 
 goland JVM配置：
 
@@ -16,7 +16,7 @@ goland JVM配置：
 -Dfile.encoding=UTF8
 ````
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.4g88ftu8qys0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.4g88ftu8qys0.jpg)
 
 
 

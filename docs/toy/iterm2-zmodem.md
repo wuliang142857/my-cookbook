@@ -36,7 +36,7 @@ Parameters:         /usr/local/bin/iterm2-zmodem rz
 
 类似：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.7dmu8xqryt00.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.7dmu8xqryt00.jpg)
 
 ### 目标机器上安装lrzsz
 

@@ -6,11 +6,11 @@ icon: ppt
 
 昨天在公司做了一个技术分享，因为是将PPT发送给分享的组织者，用TA的电脑进行投屏分享。在分享过程中，发现自己之前调好的一些图形竟然发现了偏移：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211225/Screenshot2021-12-24-19.01.39.2vgm3sl0tkg0.png)
+![](https://image-hosting.wuliang142857.me/20211225/Screenshot2021-12-24-19.01.39.2vgm3sl0tkg0.png)
 
 而在我本机的效果是：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211225/Screenshot2021-12-24-19.00.19.1qiesm3ws40w.png)
+![](https://image-hosting.wuliang142857.me/20211225/Screenshot2021-12-24-19.00.19.1qiesm3ws40w.png)
 
 当然还误以为是Mac和Windows的PPT兼容性问题。
 
@@ -18,7 +18,7 @@ icon: ppt
 
 选择内嵌字体后，效果果然拉满：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211225/Screenshot2021-12-24-19.08.53.3z9k6nmrs7k0.png)
+![](https://image-hosting.wuliang142857.me/20211225/Screenshot2021-12-24-19.08.53.3z9k6nmrs7k0.png)
 
 ## 参考
 

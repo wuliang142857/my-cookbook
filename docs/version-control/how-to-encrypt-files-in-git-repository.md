@@ -26,7 +26,7 @@ gpg --full-generate-key
 gpg --list-keys
 ```
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/Xnip2024-03-13_22-50-25.6ik1j8h403.webp)
+![](https://image-hosting.wuliang142857.me/20240313/Xnip2024-03-13_22-50-25.6ik1j8h403.webp)
 
 STEP 2，我们分别编写一个加密脚本和解密脚本。
 
@@ -99,7 +99,7 @@ STEP 4，配置哪些文件需要经过上述的过滤器
 
 这样就实现了当push时自动加密，pull时解密：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20240313/Xnip2024-03-13_22-58-05.8s322qa90e.webp)
+![](https://image-hosting.wuliang142857.me/20240313/Xnip2024-03-13_22-58-05.8s322qa90e.webp)
 
 ## 其他注意事项
 

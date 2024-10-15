@@ -8,11 +8,11 @@ icon: raspberrypi
 
 如果不了解 ==NAS== 什么的，请自行百度。我想要说的是，目前NAS服务器都太多了，不带硬盘的竟然都得2000+元
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.61p27vbl1jc0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.61p27vbl1jc0.jpg)
 
 想想其实NAS又不是什么高科技的玩意，简单架构无非如此：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.138rzv5sujeo.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.138rzv5sujeo.jpg)
 
 - 最底层是一个Linux操作系统，当然Windows其实也可以，无所谓什么
 - 目前大多数NAS都支持插多块硬盘，这无非是用[RAID](https://zh.wikipedia.org/wiki/RAID)来做一个硬盘矩阵，就是让多块物理硬盘做成一个逻辑硬盘，说得直白点，就是看上去想是一块硬盘；当然，如果你只有一块硬盘，就可以忽略
@@ -23,7 +23,7 @@ icon: raspberrypi
 
 首先先看一下的最终的效果：
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.6tb2093hcp00.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.6tb2093hcp00.jpg)
 
 我的方案：
 
@@ -62,13 +62,13 @@ fdisk -l
 mdadm --examine /dev/sd[a-e]
 ````
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.i5is66y4fds.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.i5is66y4fds.jpg)
 
 如果几块硬盘都是"No md superblock detected on /dev/sd*"之类的，说明就OK了。
 
 否则可以**mkfs.ext4**之类的命令把硬盘重新格式化一把。
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.1dpzra7621uo.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.1dpzra7621uo.jpg)
 
 ### Step 4：创建RAID分区
 
@@ -78,7 +78,7 @@ mdadm --examine /dev/sd[a-e]
 parted /dev/sde
 ````
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.5735fn1ztfg0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.5735fn1ztfg0.jpg)
 
 这里需要注意一点，我们需要把硬盘的分区创建为RAID类型，在parted中设置为raid类型的命令是：
 
@@ -93,7 +93,7 @@ mdadm --examine /dev/sd[a-e]
 mdadm --examine /dev/sd[a-e]1
 ````
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.3lalu34c5py0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.3lalu34c5py0.jpg)
 
 ### Step 5：创建 RAID md 设备
 
@@ -107,7 +107,7 @@ mdadm --create /dev/md0 --level=stripe --raid-devices=5 /dev/sd[a-e]1
 cat /proc/mdstat
 ````
 
-![](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20211213/1.5h0kpku9mao0.jpg)
+![](https://image-hosting.wuliang142857.me/20211213/1.5h0kpku9mao0.jpg)
 
 ### Step 6：给RAID设备创建文件系统
 

@@ -9,11 +9,11 @@ icon: virtualbox
 
 在 *设置->显示* 中，启用 *远程桌面*：
 
-![Screenshot2022-04-18-15](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220418/Screenshot2022-04-18-15.388xlmn6knc0.png)
+![Screenshot2022-04-18-15](https://image-hosting.wuliang142857.me/20220418/Screenshot2022-04-18-15.388xlmn6knc0.png)
 
 在 *设置->网络->网卡1->端口转发* 中，新增一条 *端口转发规则*：
 
-![Screenshot2022-04-18-15](https://jsd.cdn.zzko.cn/gh/wuliang142857/pictures-hosting@main/20220418/Screenshot2022-04-18-15.2k248jj3t6w0.png)
+![Screenshot2022-04-18-15](https://image-hosting.wuliang142857.me/20220418/Screenshot2022-04-18-15.2k248jj3t6w0.png)
 
 其中：
 

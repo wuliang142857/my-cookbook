@@ -37,7 +37,7 @@ graph TB
 因此，我们可以设想一下，除了用户界面的交互因为每款编辑器的实现不一样以致于很难统一和复用外，其余的所谓后台分析引擎其实完全可以设计成针对一门语言一个分析引擎，然后被不同的编辑器复用。
 ### 语言服务器协议（Language Server Protocol）的意义
 [语言服务器协议（Language Server Protocol,LSP）](https://microsoft.github.io/language-server-protocol/)的意义也就是类似如此，它由微软最早提出，期望通过定义清楚代码编辑过程中用户所期望的编辑器能够提供的所有特性，将此定义为一套协议，称为## 语言服务器协议（Language Server Protocol，简称：LSP），那么不同语言只要实现这套协议即可，即：语言服务（Language Server）。让代码编辑器的开发者从无止境的抽象语法树等等事情中解放出来，安心做好编辑器本身。
-![lsp-languages-editors](https://cdn.staticaly.com/gh/wuliang142857/pictures-hosting@main/20220915/lsp-languages-editors.185f7ccqdfs0.png)
+![lsp-languages-editors](https://image-hosting.wuliang142857.me/20220915/lsp-languages-editors.185f7ccqdfs0.png)
 上图摘自[vscode/Language Server Extension Guide](https://code.visualstudio.com/api/language-extensions/language-server-extension-guide)，很清楚地解释了有LSP和没有LSP对代码编辑器开发者本身的差异。
 ## LSP的工作过程
 在我们大致弄明白了LSP的作用后，下面我们来解析一下LSP的工作过程。
@@ -168,7 +168,7 @@ interface NotificationMessage extends Message {
 除了请求消息和响应消息外，LSP还定义中一种消息类型：通知（`NotificationMessage`）。通知的工作方式和`event`类似，没有响应消息。
 ## 具体的通信过程
 这里，我们以[LSP官网的例子](https://microsoft.github.io/language-server-protocol/overviews/lsp/overview/) 来介绍代码编辑器的语言服务器具体的通信/交互过程。
-![language-server-sequence](https://cdn.staticaly.com/gh/wuliang142857/pictures-hosting@main/20220916/language-server-sequence.wcuftuw894w.png)
+![language-server-sequence](https://image-hosting.wuliang142857.me/20220916/language-server-sequence.wcuftuw894w.png)
 PS：上图中的`Development Tool`就是我们此文中的代码编辑器。
 上图中具体的通信过程咱们展开介绍一下： ^6e18a1
 - 首先当用户打开一份代码文档后，编辑器发送一个`NotificationMessage`，具体的内容：`text/Document/didOpen;Params:document`。
@@ -233,7 +233,7 @@ LSP虽然定义好了关于编程语言在语言特性、和编辑器的通信�
 目前LSP官方上已经给出了诸多语言的Language Server的实现：[Implementations/Language Servers](https://microsoft.github.io/language-server-protocol/implementors/servers/)。
 我们这个DEMO是针对Python语言，因此就选用：[palantir/python-language-server](https://github.com/palantir/python-language-server)。
 ### 具体实现方案
-![绘图1](https://cdn.staticaly.com/gh/wuliang142857/pictures-hosting@main/20220916/绘图1.3in3hbne1e80.jpg)
+![绘图1](https://image-hosting.wuliang142857.me/20220916/绘图1.3in3hbne1e80.jpg)
 在这个DEMO中，我们总共需要三个组件：
 - 前端页面，包含monaco-editor
 - 一个Node服务，用于和页面/monaco-editor进行通信。因为LSP协议中，消息本身有很多从语言服务器端发送过来的事件（event），因此这里采用`websocket`作为通信协议。
@@ -421,7 +421,7 @@ function createUrl(path: string): string {
 }
 ```
 #### 最终的代码DEMO
-![20220916_211831](https://cdn.staticaly.com/gh/wuliang142857/pictures-hosting@main/20220916/20220916_211831.ms7z3u43t00.gif)
+![20220916_211831](https://image-hosting.wuliang142857.me/20220916/20220916_211831.ms7z3u43t00.gif)
 #### DEMO代码
 上述的完整DEMO代码在:[wuliang142857/python-lsp-monaco-editor-demo](https://github.com/wuliang142857/python-lsp-monaco-editor-demo)
 #### 前端WebSocket建议使用reconnecting-websocket
