@@ -60,13 +60,6 @@ export const zhSidebar = sidebar({
       children: "structure",
     },
     {
-      text: "网络加速",
-      icon: "acceleration",
-      prefix: "speed-my-network/",
-      link: "speed-my-network/",
-      children: "structure",
-    },
-    {
       text: "瞎折腾",
       icon: "toy",
       prefix: "toy/",
@@ -86,13 +79,6 @@ export const zhSidebar = sidebar({
       prefix: "virtual/",
       link: "virtual/",
       children: "structure",
-    },
-    {
-      text: "地图",
-      icon: "map",
-      prefix: "map/",
-      link: "map/",
-      children: "structure",
-    },
+    }
   ]
 });
