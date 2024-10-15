@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "vuepress build docs && cp baidu_verify_codeva-eBV2lrbEv2.html dist",
+    "build": "vuepress build docs && cp baidu_verify_codeva-eBV2lrbEv2.html dist && cp google8f0eec9657b0e51b.html dist",
     "clean": "vuepress dev docs --clean-cache",
     "dev": "vuepress dev docs"
   },
