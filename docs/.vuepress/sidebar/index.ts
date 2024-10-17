@@ -79,6 +79,13 @@ export const zhSidebar = sidebar({
       prefix: "virtual/",
       link: "virtual/",
       children: "structure",
+    },
+    {
+      text: "地图",
+      icon: "map",
+      prefix: "map/",
+      link: "map/",
+      children: "structure",
     }
   ]
 });
