@@ -1,7 +1,11 @@
 ---
 home: false
 title: 首页
----
+head:
+    - - meta
+      - name: bytedance-verification-code
+        content: aoaIafLOrn9ocwOB6/b7
+---`[README.md](README.md)`
 
 ## 🛠 安装
 
