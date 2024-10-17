@@ -5,11 +5,7 @@ import { zhSidebar } from "./sidebar";
 export default hopeTheme({
   hostname: "https://www.wuliang142857.me/",
 
-  author: {
-    name: "wuliang142857",
-    url: "https://www.wuliang142857.me/",
-    email: "wuliang142857@gmail.com"
-  },
+  author: false,
   lastUpdated: false,
   pageInfo: false,
 
