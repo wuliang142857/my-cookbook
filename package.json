@@ -21,8 +21,5 @@
     "vue": "^3.2.45",
     "vuepress": "2.0.0-beta.60",
     "vuepress-theme-hope": "2.0.0-beta.160"
-  },
-  "dependencies": {
-    "xml2js": "^0.6.2"
   }
 }
