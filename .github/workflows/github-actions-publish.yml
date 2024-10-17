@@ -18,12 +18,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          
+          cache: 'pnpm'  # 添加这行来启用pnpm的缓存机制
+        
       - name: Install dependencies
-        run: yarn install --no-lockfile
+        run: pnpm install --no-lockfile
         
       - name: Build
-        run: yarn run build
+        run: pnpm run build
         
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
