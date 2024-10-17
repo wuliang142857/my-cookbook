@@ -3,8 +3,6 @@ import theme from "./theme.js";
 import * as path from "path";
 import {containerPlugin} from "@vuepress/plugin-container";
 import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
-import {nprogressPlugin} from "@vuepress/plugin-nprogress";
-import {activeHeaderLinksPlugin} from "@vuepress/plugin-active-header-links";
 import {shikiPlugin} from "@vuepress/plugin-shiki";
 import {searchPlugin} from "@vuepress/plugin-search";
 import {feed, seo, sitemap} from "vuepress-theme-hope";
@@ -52,8 +50,6 @@ export default defineUserConfig({
       }
     }),
     mediumZoomPlugin(),
-    nprogressPlugin(),
-    activeHeaderLinksPlugin(),
     shikiPlugin({
       theme: "github-light",
     }),
