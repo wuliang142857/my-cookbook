@@ -15,23 +15,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          version: 9
-          run_install: false
-          
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'  # 添加这行来启用pnpm的缓存机制
         
       - name: Install dependencies
-        run: pnpm install --no-lockfile
+        run: npm install --no-lockfile
         
       - name: Build
-        run: pnpm run build
+        run: npm run build
         
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
