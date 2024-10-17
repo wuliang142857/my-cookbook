@@ -2,7 +2,7 @@
 icon: postgresql
 ---
 
-# PostgreSQL Tips
+# PostgreSQL小技巧
 
 ## 按字段对某个表或者分区进行快速去重
 

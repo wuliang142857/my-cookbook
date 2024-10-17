@@ -2,7 +2,7 @@
 icon: python
 ---
 
-# pybind11 Tips
+# pybind11小技巧
 
 [pybind11](https://github.com/pybind/pybind11/)是一个简化C++和Python相互调用的一个库，相比[Boost.Python](https://www.boost.org/libs/python/)更现代化，更易用。
 

@@ -4,7 +4,7 @@ icon: cmake
 
 # CMake输出所有的变量
 
-有時候爲了調試看看CMAKE定義了哪些變量，可以在CMakeLists.txt中加入：
+有时候为了查看具体有哪些变量，为此可以在CMakeLists.txt中加入：
 
 ````cmake
 get_cmake_property(_variableNames VARIABLES)
