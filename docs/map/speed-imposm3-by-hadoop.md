@@ -61,154 +61,240 @@ icon: openstreetmap
 const _ = require("lodash");
 const cheerio = require('cheerio');
 const axios = require("axios");
-const proxy_prefix = ""
-const index_page = "http://download.geofabrik.de/";
-const { URL } = require('url');
+const {URL} = require('url');
 const fs = require("fs");
 const path = require("path");
 const crypto = require('crypto');
-async function getPQueue() {
-    const { default: PQueue } = await import('p-queue');  // 动态导入 PQueue
-    return PQueue;
-}
+const winston = require('winston');
+const {SingleBar} = require('cli-progress');
+
+const PROXY_PREFIX = ""
+const INDEX_PAGE = "https://download.geofabrik.de/";
+
+const logger = winston.createLogger({
+    // 定义日志级别
+    level: 'info',
+    // 定义日志的格式
+    format: winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`),
+    // 定义日志的输出
+    transports: [
+        // 控制台输出
+        new winston.transports.Console({
+            format: winston.format.combine(
+                winston.format.timestamp({
+                    format: 'YYYY-MM-DD HH:mm:ss'
+                }),
+                winston.format.colorize(),
+                winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+            )
+        })
+    ]
+});
+
 async function getPage(url) {
-    let response = await axios.get(`${proxy_prefix}${url}`);
-    return response.data;
-}
-
-function getContinent(html) {
-    const $ = cheerio.load(html);
-    let results = [];
-    $("#subregions:last .subregion a").each((index, element) => {
-        results.push(`${index_page}${$(element).attr("href")}`);
-    });
-    return results;
-}
-
-function getCountry(html) {
-    const $ = cheerio.load(html);
-    let results = [];
-    $("#subregions:last .subregion a").each((index, element) => {
-        let url = `${index_page}${$(element).attr("href")}`;
-        if (!url.endsWith(".html")) {
-            return;
-        }
-        results.push(url);
-    });
-    return results;
-}
-
-async function getAllDownloadUrls(countryHomeUrl) {
-    let results = [];
-    let html = await getPage(countryHomeUrl);
-    const $ = cheerio.load(html);
-    const hasState = $("#subregions").length > 1;
-    if (hasState) {
-        $("#subregions:last a").each((index, element) => {
-            let $element = $(element);
-            let href = $element.attr("href");
-            if (href.endsWith(".osm.pbf")) {
-                const fullUrl = new URL(href, countryHomeUrl);
-                results.push(fullUrl.href);
-            }
-        });
-    } else {
-        let got = false;
-        $("a").each((index, element) => {
-            if (got) {
-                return;
-            }
-            let $element = $(element);
-            let href = $element.attr("href");
-            if (href.endsWith(".osm.pbf")) {
-                const fullUrl = new URL(href, countryHomeUrl);
-                results.push(fullUrl.href);
-                got = true;
-            }
-        });
-    }
-    console.log(`${countryHomeUrl}: ${results.length}`);
-    return results;
-}
-
-
-function calculateMD5(filename) {
-    return new Promise((resolve, reject) => {
-        const hash = crypto.createHash('md5');
-        const stream = fs.createReadStream(filename);
-
-        stream.on('data', (chunk) => {
-            hash.update(chunk);
-        });
-
-        stream.on('end', () => {
-            const md5Hash = hash.digest('hex').toLowerCase();
-            resolve(md5Hash);
-        });
-
-        stream.on('error', (err) => {
-            reject(err);
-        });
-    });
-}
-
-async function download(url) {
-    let filename = path.join(process.argv[2], url.replaceAll(index_page, "").replaceAll("/", "-").replaceAll("-latest", ""));
-    console.log(`get ${url} => ${filename}`);
     while (true) {
         try {
-            let response = await axios.get(`${proxy_prefix}${url}`, {
-                responseType: "stream"
+            let response = await axios.get(`${PROXY_PREFIX}/${url}`, {
+                rejectUnauthorized: false,
+                userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
             });
-            await new Promise((resolve, reject) => {
-                const stream = fs.createWriteStream(filename);
-                response.data.pipe(stream);
-                stream.on('finish', resolve);  // 写入完成时 resolve
-                stream.on('error', reject);    // 写入出错时 reject
-            });
-            const md5Hash = await calculateMD5(filename);
-            let md5Response = await axios.get(`${proxy_prefix}${url}.md5`);
-            let expect = _.split(md5Response.data.trim(), "\t")[0];
-            if (expect === md5Hash) {
-                console.error(`MD5 mismatch for ${url}, expect: ${expect}, actual: ${md5Hash}, retrying ...`);
+            if (response.status !== 200) {
                 continue;
             }
-            break;
+            return response.data;
+
         } catch (e) {
-            console.error(`Download failed for ${url}, retrying...`);
-            continue;
         }
     }
+}
+
+/**
+ * 是否有子区域
+ */
+async function hasSubRegions(url) {
+    if (url === INDEX_PAGE) {
+        return true;
+    }
+    const html = await getPage(url);
+    const $ = cheerio.load(html);
+    return $("#subregions").length > 1;
+}
+
+async function getFinalDownloadUrl(currentUrl) {
+    let osmUrl = {
+        url: "",
+        md5sum: ""
+    }
+    const $ = cheerio.load(await getPage(currentUrl));
+
+    $(".download-main a").each((index, element) => {
+        if (osmUrl.url.length > 0) {
+            return;
+        }
+        let $element = $(element);
+        let href = $element.attr("href");
+        if (href.endsWith(".osm.pbf")) {
+            const fullUrl = new URL(href, currentUrl);
+            osmUrl.url = fullUrl.href;
+        }
+    });
+
+    $(".download-main a").each((index, element) => {
+        if (osmUrl.md5sum.length > 0) {
+            return;
+        }
+        let $element = $(element);
+        let href = $element.attr("href");
+        if (href.endsWith(".osm.pbf.md5")) {
+            osmUrl.md5sum = $element.text();
+        }
+    });
+
+    return osmUrl;
+}
+
+async function getDownloadUrls(url) {
+    let results = [];
+
+    const isLastPage = !await hasSubRegions(url);
+    if (isLastPage) {
+        const finalDownloadUrl = await getFinalDownloadUrl(url);
+        logger.info(`${url} is last page, osm.pbf: ${finalDownloadUrl.url}`);
+        results.push(finalDownloadUrl);
+        return results;
+    }
+
+    const html = await getPage(url);
+    const $ = cheerio.load(html);
+    for (const element of $("#subregions:last .subregion a")) {
+        const href = $(element).attr("href");
+        const fullUrl = new URL(href, url);
+        logger.info(`${url} is index page, goto ${fullUrl.href}`);
+        for (const r of await getDownloadUrls(fullUrl.href)) {
+            results.push(r);
+        }
+    }
+    return results;
+}
+
+async function downloadFile(url, outputPath) {
+    // 创建一个新的进度条实例
+    const progressBar = new SingleBar({
+        format: '下载进度 |{bar}| {percentage}% || {value}/{total} Chunks',
+        barCompleteChar: '\u2588',
+        barIncompleteChar: '\u2591',
+        hideCursor: true
+    });
+
+    try {
+        // 发起GET请求
+        const response = await axios({
+            method: 'get',
+            url: `${PROXY_PREFIX}/${url}`,
+            responseType: 'stream',
+            rejectUnauthorized: false,
+            userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+        });
+
+        // 准备写入文件流
+        const writer = fs.createWriteStream(outputPath);
+
+        // 获取内容长度
+        const totalLength = response.headers['content-length'];
+
+        // 初始化进度条
+        progressBar.start(totalLength, 0);
+
+        let receivedLength = 0;
+
+        // 监听数据事件
+        response.data.on('data', (chunk) => {
+            receivedLength += chunk.length;
+            progressBar.update(receivedLength);
+        });
+
+        // 数据写入文件
+        response.data.pipe(writer);
+
+        return new Promise((resolve, reject) => {
+            writer.on('finish', () => {
+                progressBar.stop();
+                resolve(true);
+            });
+
+            writer.on('error', (err) => {
+                progressBar.stop();
+                reject(false);
+            });
+
+            // 处理响应错误
+            response.data.on('error', (err) => {
+                progressBar.stop();
+                writer.close();
+                reject(false);
+            });
+        });
+
+    } catch (error) {
+        progressBar.stop();
+        // 关闭并删除未完成的文件
+        if (fs.existsSync(outputPath)) {
+            fs.unlinkSync(outputPath);
+        }
+        return false;
+    }
+}
+
+async function getMD5SUM(filename) {
+    return new Promise((resolve, reject) => {
+        const stream = fs.createReadStream(filename);
+        const hash = crypto.createHash('md5');
+        stream.on('data', chunk => {
+            hash.update(chunk, 'utf8');
+        });
+        stream.on('end', () => {
+            const md5 = hash.digest('hex');
+            resolve(md5);
+        });
+        stream.on('error', reject);
+    });
 }
 
 async function main() {
-    const indexPage = await getPage(index_page);
-    const continentUrls = getContinent(indexPage);
-    console.log(continentUrls);
-    const allCountryHomeUrls = [];
-    for (const continentUrl of continentUrls) {
-        const countries = getCountry(await getPage(continentUrl))
-        console.log(`${continentUrl} ${countries.length}`);
-        for (const countryUrl of countries) {
-            allCountryHomeUrls.push(countryUrl);
-        }
+    const outputDir = fs.realpathSync(process.argv[2]);
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, {recursive: true, mode: 0o755});
     }
-    const allDownloadUls = [
-        "http://download.geofabrik.de/antarctica-latest.osm.pbf"
-    ];
-    for (const homeUrl of allCountryHomeUrls) {
-        for (const downloadUrl of await getAllDownloadUrls(homeUrl)) {
-            allDownloadUls.push(downloadUrl);
-        }
-    }
-    console.log(`all ${allDownloadUls.length}`);
 
-    for (const url of allDownloadUls) {
-        console.log(url);
+    const downloads = await getDownloadUrls(INDEX_PAGE);
+    for (const osm of downloads) {
+        logger.info(`Downloading ${osm.url}`);
+        const targetFilename = _.join(_.split(_.replace(_.replace(new URL(osm.url).pathname, /^\//, ""), "-latest", ""), "/"), "-");
+        const targetFile = path.join(outputDir, targetFilename);
+        while (true) {
+            try {
+                const success = await downloadFile(osm.url, targetFile);
+                if (!success) {
+                    continue;
+                }
+                const calValue = await getMD5SUM(targetFile);
+                if (calValue !== osm.md5sum) {
+                    logger.error(`${targetFile} md5sum mismatch, expected: ${osm.md5sum}, actual: ${calValue}`);
+                    continue;
+                }
+            } catch (e) {}
+            break;
+        }
+
     }
 }
 
-main();
+main().then(async () => {
+    logger.info("下载完成");
+}).catch((e) => {
+    logger.error(`下载失败: ${e}`);
+})
+
 ```
 
 另外，如果就是想自己切的话，[geoboundaries](https://www.geoboundaries.org/globalDownloads.html)也提供了三级粒度的GeoHash值，直接拿来用就可以了。
