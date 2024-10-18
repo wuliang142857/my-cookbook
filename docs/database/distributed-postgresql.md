@@ -389,7 +389,7 @@ version: '3.8'
 
 services:
   citus-coordinator:
-    image: harbor-dmz.yunzhen-data.com/ccc/postgis/postgis-citus:16-3.4
+    image: postgis/postgis-citus:16-3.4
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -411,7 +411,7 @@ services:
           - node.role == manager
 
   citus-worker1:
-    image: harbor-dmz.yunzhen-data.com/ccc/postgis/postgis-citus:16-3.4
+    image: postgis/postgis-citus:16-3.4
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -433,7 +433,7 @@ services:
           - node.hostname == hadoop-metal-002  # 确保这是唯一的主机名
 
   citus-worker2:
-    image: harbor-dmz.yunzhen-data.com/ccc/postgis/postgis-citus:16-3.4
+    image: postgis/postgis-citus:16-3.4
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -455,7 +455,7 @@ services:
           - node.hostname == hadoop-metal-003  # 确保这是唯一的主机名
 
   pgpool:
-    image: mirrors.yz-core.com/docker.io/bitnami/pgpool:latest
+    image: bitnami/pgpool:latest
     environment:
       - PGPOOL_BACKEND_NODES=0:citus-coordinator:5432
       - PGPOOL_SR_CHECK_USER=postgres
