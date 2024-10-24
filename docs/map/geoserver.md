@@ -229,9 +229,34 @@ imposm3依赖[leveldb](https://github.com/google/leveldb)和[libgeos](https://gi
 
 但我们使用[geosolutions-it/osm-styles](https://github.com/geosolutions-it/osm-styles)相比OpenStreetMap完整的[amenity](https://wiki.openstreetmap.org/wiki/Key:amenity)、[Symbols](https://wiki.openstreetmap.org/wiki/OpenStreetMap_Carto/Symbols)，还是确实了不少的。要补充完整的话，得改两个地方：
 
-（1）mapping.yml文件中三处有`amenity`的都改成`__any__`：
+（1）mapping.yml文件中`tables -> amenities -> type_mappings -> points`下的所有类型都改成`__any__`:
 
-![](https://image-hosting.wuliang142857.me/2024/10/0a95d6e1393198cfb0c2356e4dca7a59.png)
+```yaml
+    type_mappings:
+        points:
+            aeroway:
+            - __any__
+            tourism:
+            - __any__
+            amenity:
+            - __any__  
+            shop:
+            - __any__
+            leisure:
+            - __any__
+            man_made:
+            - __any__
+            natural:
+            - __any__
+            historic:
+            - __any__
+            highway:
+            - __any__
+            power:
+            - __any__
+```
+
+
 
 （2）样式补充：进入 样式 ，找到 amenities：
 
