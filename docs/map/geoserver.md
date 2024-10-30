@@ -6,6 +6,12 @@ icon: geoserver
 
 ## 一、背景
 
+因为业务的需要，需要提供纯离线版本的全球地图。在这种情况下，全球地图的数据来源自然是来自[OpenStreetMap](https://www.openstreetmap.org/)，地图服务则采用[GeoServer](https://geoserver.org/)。
+
+GeoServer是一款开放的地图服务，支持多种数据源，也支持自定义各类样式。
+
+我不太喜欢暗色系，因此比较喜欢的明亮系的，于是其中样式和数据依赖[geosolutions-it/osm-styles](https://github.com/geosolutions-it/osm-styles)，然后在此基于上Fork了一份代码，做了一些优化：[wuliang142857/osm-styles](https://github.com/wuliang142857/osm-styles)。
+
 ## 二、具体步骤
 
 ### 2.1 使用imposm3导入OpenStreetMap数据到PostgreSQL中
@@ -221,7 +227,7 @@ imposm3依赖[leveldb](https://github.com/google/leveldb)和[libgeos](https://gi
 
 然后clone [imposm3](https://github.com/omniscale/imposm3)代码，直接`make build`就可以。
 
-### 3.2 支持所有amenity
+### 3.2 支持所有type
 
 在地图上，很多POI信息都会被渲染成“图标+文字”的形式：
 
@@ -262,7 +268,7 @@ imposm3依赖[leveldb](https://github.com/google/leveldb)和[libgeos](https://gi
 
 ![](https://image-hosting.wuliang142857.me/2024/10/985e27d53f33cc6e32e6883f6710765a.png)
 
-修改其中的样式（内容比较长，可以复制出来修改）：可以找一个已有的amenity然后照着修改。
+修改其中的样式（内容比较长，可以复制出来修改）：可以找一个已有的`type`然后照着修改。
 
 ![](https://image-hosting.wuliang142857.me/2024/10/50df110a28b992d338424bbad52c2a65.png)
 
@@ -274,12 +280,25 @@ imposm3依赖[leveldb](https://github.com/google/leveldb)和[libgeos](https://gi
 
 ![](https://image-hosting.wuliang142857.me/2024/10/a83d659aaed53eb53c4703be484b2d36.png)
 
-- 自定义的`amenity`显示的字体太小
+- 自定义的`type`显示的字体太小
 
 这两个的解决办法：
 
-- 问题一：针对朝韩字体，还是修改`amenities`这个样式，将其中的`Noto Sans CJK KR Regular` 改成：`Noto Sans CJK KR`即可。
-- 问题二：针对自定义的`amenity`显示的字体太小，一个比较简单的办法是加入`font-family`的定义，比如：
+- 问题一：针对朝韩字体，问题在于[geosolutions-it/osm-styles](https://github.com/geosolutions-it/osm-styles)中关于朝韩文字的`font-family`配置的是：`Noto Sans CJK KR Regular`，我们需要改成：`Noto Sans CJK KR`:
+
+```bash
+cd data_dir/workspaces/osm/styles
+
+# 对所有SLD文件进行替换
+grep -rnil "font-family" *.sld|xargs grep -li "Noto Sans CJK KR"|xargs sed -s -i 's#<sld:CssParameter name="font-family">Noto Sans CJK KR Regular</sld:CssParameter>#<CssParameter name="font-family">Noto Sans CJK KR</CssParameter>#g'
+
+# 对所有CSS文件进行替换
+grep -rnil "font-family" *.css|xargs grep -il 'Noto Sans CJK KR'|xargs sed -s -i 's#Noto Sans CJK KR Regular#Noto Sans CJK KR#g'
+```
+
+
+
+- 问题二：针对自定义的`type`显示的字体太小，一个比较简单的办法是加入`font-family`的定义，比如：
 
 ```css
 [type = 'weighbridge'][@sd < 6k] {
