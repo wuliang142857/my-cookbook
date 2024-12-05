@@ -42,3 +42,8 @@ alias vimdiff="/snap/bin/nvim -D"
 export EDITOR=/snap/bin/nvim
 ```
 
+## 参考
+
+- [Enable snaps on CentOS and install Neovim](https://snapcraft.io/install/nvim/centos)
+- [阿里云epel镜像](https://developer.aliyun.com/mirror/epel/)
+
