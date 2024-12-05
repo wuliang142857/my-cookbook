@@ -38,7 +38,7 @@ snap install nvim --classic
 
 ```bash
 alias vim=/snap/bin/nvim
-alias vimdiff="/snap/bin/nvim -D"
+alias vimdiff="/snap/bin/nvim -d"
 export EDITOR=/snap/bin/nvim
 ```
 
