@@ -36,26 +36,13 @@ cd osxcross
 在代码目录下运行`./build.sh`即可，需要等待一会：
 
 ```bash
-./build.sh
+TARGET_DIR=/opt/cross-tools/osxcross ./build.sh
 ```
 
-如果编译没有问题的话，会在target目录下生成相应的工具链等：
+如果编译没有问题的话，可以类似设置一下环境变量：
 
 ```bash
-target/
-├── bin
-├── include
-├── lib
-├── libexec
-├── SDK
-├── share
-└── toolchain.cmake
-```
-
-另外，可以类似设置一下环境变量：
-
-```bash
-export PATH=/opt/cross-tools/osxcross/target/bin:$PATH
+export PATH=/opt/cross-tools/osxcross/bin:$PATH
 ```
 
 ### 测试
