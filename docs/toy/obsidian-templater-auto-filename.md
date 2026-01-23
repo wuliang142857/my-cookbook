@@ -1,3 +1,7 @@
+---
+icon: obsidian
+---
+
 # Obsidian Templater 自动文件名配置
 
 使用 Templater 插件实现新建笔记时自动按日期格式命名文件。

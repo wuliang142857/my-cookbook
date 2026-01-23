@@ -47,7 +47,7 @@ PS：
 
 ### 2.2 下载GeoServer并且解压
 
-从[GeoServer][https://geoserver.org/release/stable/]下载稳定版，因为我本地环境没有tomcat之类的环境，因此直接 ==Platform Independent Binary==：
+从[GeoServer](https://geoserver.org/release/stable/)下载稳定版，因为我本地环境没有tomcat之类的环境，因此直接 ==Platform Independent Binary==：
 
 ![](https://image-hosting.wuliang142857.me/2024/10/a421013f045178dde540ced1bd56e90e.png)
 
