@@ -7,4 +7,4 @@ node_modules/
 .idea/*
 dist/*
 docs/.vuepress/.cache/*
-docs/.vuepress/.temp/*
+docs/.vuepress/.temp/*.astro/
