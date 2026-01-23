@@ -1,34 +1,38 @@
+# ABOUTME: GitHub Actions workflow for automatic deployment to Cloudflare Pages.
+# ABOUTME: Triggers on push to main branch, builds Astro site and publishes to Cloudflare.
+
 name: 自动部署
 on:
   push:
-    branches: 
+    branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: production
     strategy:
       matrix:
-        node-version: [ 20.x ]
+        node-version: [20.x]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-        
+
       - name: Install dependencies
-        run: npm install --no-lockfile
-        
-      - name: Build
+        run: npm ci
+
+      - name: Build Astro site
         run: npm run build
-        
-      - name: Publish
-        uses: cloudflare/wrangler-action@2.0.0
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages publish dist --branch=main --project-name=cookbook
+          command: pages deploy dist --project-name=cookbook

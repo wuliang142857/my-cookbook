@@ -1,0 +1,640 @@
+/* ABOUTME: Custom CSS implementing Emacs-style light theme for Starlight.
+   ABOUTME: Features cream background, colorful headings, and classic Emacs syntax colors. */
+
+/* ============================================
+   Font Imports - Inter + Source Han Sans + JetBrains Mono
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ============================================
+   CSS Variables - Emacs Light Color Palette
+   ============================================ */
+:root {
+  /* Primary colors */
+  --sl-color-accent-low: #e6f3ff;
+  --sl-color-accent: #0066cc;
+  --sl-color-accent-high: #004499;
+
+  /* Text colors */
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #333333;
+  --sl-color-gray-2: #555555;
+  --sl-color-gray-3: #777777;
+  --sl-color-gray-4: #999999;
+  --sl-color-gray-5: #cccccc;
+  --sl-color-gray-6: #e8e8e8;
+
+  /* Background colors - Emacs cream/off-white */
+  --sl-color-black: #fffff8;
+  --sl-color-bg: #fffff8;
+  --sl-color-bg-nav: #f5f5f0;
+  --sl-color-bg-sidebar: #fafaf5;
+  --sl-color-bg-inline-code: #f0f0e8;
+
+  /* Border colors */
+  --sl-color-hairline: #e0e0d8;
+  --sl-color-hairline-light: #d0d0c8;
+
+  /* Heading colors - muted and subtle */
+  --heading-h1-color: #555555;
+  --heading-h2-color: #666666;
+  --heading-h3-color: #777777;
+  --heading-h4-color: #888888;
+
+  /* Font families - Inter + Source Han Sans + JetBrains Mono */
+  --sl-font: 'Inter', 'Noto Sans SC', 'Source Han Sans CN', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* ============================================
+   Light Theme - Override dark defaults
+   ============================================ */
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+  --sl-color-bg: #fffff8;
+  --sl-color-bg-nav: #f5f5f0;
+  --sl-color-bg-sidebar: #fafaf5;
+  --sl-color-text: #333333;
+  --sl-color-text-accent: #0066cc;
+
+  /* Starlight specific */
+  --sl-hue-accent: 212;
+  --sl-hue-blue: 212;
+  --sl-hue-green: 134;
+  --sl-hue-orange: 25;
+  --sl-hue-purple: 270;
+  --sl-hue-red: 0;
+  --sl-hue-yellow: 41;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+body {
+  font-family: var(--sl-font);
+  background-color: var(--sl-color-bg);
+  color: var(--sl-color-text);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sl-markdown-content,
+main {
+  font-weight: 400;
+}
+
+/* ============================================
+   Links
+   ============================================ */
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #004499;
+}
+
+/* ============================================
+   Headings - Emacs Style Colorful
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  border-bottom: none;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  color: var(--heading-h1-color);
+  font-size: 1.1em;
+}
+
+h2 {
+  color: var(--heading-h2-color);
+  font-size: 1em;
+}
+
+h3 {
+  color: var(--heading-h3-color);
+  font-size: 0.95em;
+}
+
+h4 {
+  color: var(--heading-h4-color);
+  font-size: 0.9em;
+}
+
+/* ============================================
+   Code Blocks - Emacs Style
+   ============================================ */
+
+/* Hide the terminal window header (three dots) and bottom divider */
+.expressive-code .frame.has-title:not(.is-terminal) .header,
+.expressive-code .frame:not(.has-title):not(.is-terminal) .header,
+.expressive-code .header,
+.ec-line.del::before,
+.frame .header,
+.expressive-code .copy,
+.expressive-code figure::after,
+.expressive-code .frame::after,
+.expressive-code pre::after {
+  display: none !important;
+}
+
+/* Remove bottom border/divider from code blocks */
+.expressive-code figure,
+.expressive-code .frame,
+.expressive-code pre {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide code block scroll indicator / progress bar */
+.expressive-code .frame .copy,
+.expressive-code .copy-button,
+.expressive-code [data-code] + div,
+.expressive-code figure > div:last-child:not(.frame),
+div.expressive-code + div,
+.ec-line-numbers,
+[class*="progress"],
+.frame > div:not(.highlight) {
+  display: none !important;
+}
+
+pre {
+  background-color: #f8f8f0 !important;
+  border: 1px solid #e0e0d8;
+  border-radius: 4px;
+  padding: 16px;
+  overflow-x: visible;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  word-break: break-all !important;
+}
+
+pre code {
+  font-family: var(--sl-font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  background: transparent !important;
+  color: #333333;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}
+
+/* Ensure expressive-code blocks also wrap */
+.expressive-code pre,
+.expressive-code code,
+.expressive-code .ec-line {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  word-break: break-all !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background-color: #f0f0e8;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-family: var(--sl-font-mono);
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #d14;
+}
+
+/* ============================================
+   Syntax Highlighting - Emacs Colors
+   ============================================ */
+.astro-code,
+.shiki {
+  background-color: #f8f8f0 !important;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #999988;
+  font-style: italic;
+}
+
+/* Keywords */
+.token.keyword,
+.token.tag,
+.token.selector {
+  color: #a626a4;
+}
+
+/* Strings */
+.token.string,
+.token.attr-value {
+  color: #50a14f;
+}
+
+/* Functions */
+.token.function {
+  color: #4078f2;
+}
+
+/* Numbers */
+.token.number,
+.token.boolean {
+  color: #986801;
+}
+
+/* Variables */
+.token.variable {
+  color: #e45649;
+}
+
+/* Operators */
+.token.operator {
+  color: #0184bc;
+}
+
+/* Class names */
+.token.class-name {
+  color: #c18401;
+}
+
+/* Punctuation */
+.token.punctuation {
+  color: #383a42;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+th, td {
+  border: 1px solid #e0e0d8;
+  padding: 8px 12px;
+}
+
+th {
+  background-color: #f5f5f0;
+  font-weight: 600;
+  color: #333333;
+}
+
+tr:nth-child(even) {
+  background-color: #fafaf5;
+}
+
+tr:nth-child(odd) {
+  background-color: #fffff8;
+}
+
+/* ============================================
+   Blockquotes
+   ============================================ */
+blockquote {
+  border-left: 4px solid #00ced1;
+  color: #666666;
+  padding-left: 16px;
+  margin-left: 0;
+  background-color: #f8f8f5;
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Horizontal Rules
+   ============================================ */
+hr {
+  border: none;
+  border-top: 1px solid #e0e0d8;
+  margin: 24px 0;
+}
+
+/* ============================================
+   Lists
+   ============================================ */
+ul, ol {
+  padding-left: 2em;
+}
+
+li {
+  margin: 0.25em 0;
+}
+
+/* ============================================
+   Sidebar Styling
+   ============================================ */
+.sidebar {
+  background-color: var(--sl-color-bg-sidebar);
+}
+
+.sidebar a {
+  color: #555555;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #0066cc;
+}
+
+/* Current page - subtle highlight without blue background */
+.sidebar a[aria-current="page"],
+nav a[aria-current="page"],
+[aria-current="page"] {
+  color: #0066cc !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+/* Override Starlight's default blue background for current page */
+a[aria-current="page"],
+.sidebar li a[aria-current="page"],
+nav[aria-label="主要"] a[aria-current="page"] {
+  background: transparent !important;
+  background-color: #f0f0e8 !important;
+  border-radius: 4px;
+}
+
+/* Sidebar group labels (categories) - force black color */
+summary,
+details summary,
+.sidebar summary,
+.sidebar details summary,
+nav summary,
+nav details summary,
+[data-sl-sidebar-state] summary {
+  color: #333333 !important;
+  font-weight: 600 !important;
+}
+
+/* Sidebar text weight */
+nav[aria-label="主要"] {
+  font-weight: 500;
+}
+
+nav[aria-label="主要"] a {
+  color: #555555;
+  font-weight: 500;
+}
+
+/* Override Starlight default sidebar group colors */
+.sl-sidebar summary,
+starlight-sidebar summary,
+[class*="sidebar"] summary {
+  color: #333333 !important;
+  font-weight: 600 !important;
+}
+
+/* Fix sidebar category label color - .large class inside .group-label */
+.group-label,
+.group-label .large,
+nav .group-label,
+nav .group-label .large,
+summary .group-label,
+summary .group-label .large,
+summary .large {
+  color: #333333 !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+nav {
+  background-color: var(--sl-color-bg-nav);
+}
+
+header {
+  background-color: var(--sl-color-bg-nav);
+  border-bottom: 1px solid #e0e0d8;
+}
+
+/* ============================================
+   Search
+   ============================================ */
+.search-input {
+  background-color: #ffffff;
+  border: 1px solid #e0e0d8;
+  color: #333333;
+}
+
+.search-input::placeholder {
+  color: #999999;
+}
+
+/* ============================================
+   Content Container
+   ============================================ */
+.sl-markdown-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Expand main content to full width (since right sidebar is hidden) */
+:root {
+  --sl-content-width: 100% !important;
+  --sl-sidebar-width: 18rem;
+}
+
+.main-frame,
+main {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.content-panel,
+.main-pane,
+.sl-container,
+[data-has-toc] .main-pane,
+.sl-markdown-content {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-inline-end: 0 !important;
+}
+
+/* Remove right sidebar space completely */
+.right-sidebar-container,
+aside.right-sidebar {
+  display: none !important;
+  width: 0 !important;
+}
+
+/* Make content grid use full width */
+.content-panel {
+  grid-template-columns: 1fr !important;
+}
+
+article {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-right: 2rem;
+}
+
+/* ============================================
+   Starlight Specific Overrides
+   ============================================ */
+starlight-toc nav {
+  background-color: transparent;
+}
+
+.right-sidebar {
+  background-color: var(--sl-color-bg);
+}
+
+/* Hide right sidebar TOC */
+.right-sidebar,
+starlight-toc,
+[data-pagefind-ignore="all"].right-sidebar-container {
+  display: none !important;
+}
+
+/* Hide pagination links (prev/next page) */
+.pagination-links {
+  display: none !important;
+}
+
+/* Hide mobile bottom navigation bar */
+starlight-menu-button,
+mobile-starlight-toc,
+.mobile-preferences,
+nav[aria-label="分页"] {
+  display: none !important;
+}
+
+/* Hide Astro dev toolbar */
+astro-dev-toolbar,
+[data-astro-dev-toolbar],
+astro-dev-toolbar-window {
+  display: none !important;
+}
+
+/* Hide theme switcher */
+starlight-theme-select,
+[data-theme-select],
+.sl-flex select[aria-label*="主题"],
+select[aria-label*="theme"] {
+  display: none !important;
+}
+
+/* Mobile menu */
+starlight-menu-button button {
+  color: #555555;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  color: #777777;
+}
+
+.breadcrumbs a {
+  color: #0066cc;
+}
+
+/* Page footer */
+.pagination-links a {
+  background-color: #f5f5f0;
+  border: 1px solid #e0e0d8;
+  color: #555555;
+}
+
+.pagination-links a:hover {
+  border-color: #0066cc;
+  color: #0066cc;
+}
+
+/* ============================================
+   Scrollbar Styling (Webkit)
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
+}
+
+/* ============================================
+   Selection
+   ============================================ */
+::selection {
+  background-color: rgba(0, 102, 204, 0.2);
+  color: #333333;
+}
+
+/* ============================================
+   Tip/Warning/Danger Boxes (Admonitions)
+   ============================================ */
+.starlight-aside {
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.starlight-aside--tip {
+  background-color: rgba(46, 160, 67, 0.1);
+  border-left: 4px solid #2ea043;
+}
+
+.starlight-aside--caution {
+  background-color: rgba(210, 153, 34, 0.1);
+  border-left: 4px solid #d29922;
+}
+
+.starlight-aside--danger {
+  background-color: rgba(248, 81, 73, 0.1);
+  border-left: 4px solid #f85149;
+}
+
+.starlight-aside--note {
+  background-color: rgba(0, 102, 204, 0.1);
+  border-left: 4px solid #0066cc;
+}
+
+/* ============================================
+   Site Title
+   ============================================ */
+[data-sl-site-title],
+.site-title,
+header a[href="/"],
+header .site-title a {
+  color: #666666 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+[data-sl-site-title]:hover,
+.site-title:hover,
+header a[href="/"]:hover,
+header .site-title a:hover {
+  color: #555555 !important;
+  text-decoration: none !important;
+}
+
+
+/* ============================================
+   Hide Starlight auto-generated page title (the small one at top)
+   Keep the markdown content h1
+   ============================================ */
+.sl-container > h1.astro-j6tvhyss,
+main > h1:first-child:not(.sl-heading-wrapper h1),
+header h1[id="_top"] {
+  display: none !important;
+}
