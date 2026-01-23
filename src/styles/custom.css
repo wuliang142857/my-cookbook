@@ -427,6 +427,24 @@ header {
   color: #333333;
 }
 
+/* Pagefind search modal */
+[data-pagefind-ui] input,
+.pagefind-ui__search-input,
+dialog input[type="search"],
+dialog input[type="text"],
+.search-dialog input,
+[role="dialog"] input {
+  color: #333333 !important;
+  background-color: #ffffff !important;
+}
+
+/* Search modal placeholder */
+[data-pagefind-ui] input::placeholder,
+.pagefind-ui__search-input::placeholder,
+dialog input::placeholder {
+  color: #999999 !important;
+}
+
 .search-input::placeholder {
   color: #999999;
 }

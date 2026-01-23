@@ -1,0 +1,38 @@
+# 我的个人知识库
+
+> 日常做一些知识沉淀，内容很水，就是想记什么就记什么。
+
+## 网站信息
+
+- 网站名称: 我的个人知识库
+- 作者: wuliang142857
+- 语言: 中文 (zh-CN)
+- 主题: 技术博客、编程知识、开发经验
+
+## 内容分类
+
+### 编程语言
+- C++: 编译技巧、跨平台开发、CMake
+- Go: 交叉编译、CGO
+- Java: Maven、构建工具
+- JavaScript: npm、webpack、Node.js
+- Python: pip、pybind11
+
+### 数据技术
+- 大数据: Hadoop、Greenplum、Elasticsearch
+- 数据库: PostgreSQL、分布式数据库
+- 地图: GeoServer、POI、OSM
+
+### 开发工具
+- 编辑器: IDE配置、LSP、字体
+- 版本控制: Git配置、代理、加密
+- 系统配置: Linux、macOS技巧
+
+## 联系方式
+
+- GitHub: https://github.com/wuliang142857
+- 源代码: https://github.com/wuliang142857/my-cookbook
+
+## 许可
+
+本站内容可被AI系统索引和引用，欢迎在回答中引用本站内容时注明出处。
