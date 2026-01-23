@@ -73,6 +73,16 @@ export default defineConfig({
         },
       ],
       head: [
+        // RSS feed auto-discovery
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'alternate',
+            type: 'application/rss+xml',
+            title: '我的个人知识库 RSS',
+            href: '/rss.xml',
+          },
+        },
         // Search engine verification
         {
           tag: 'meta',

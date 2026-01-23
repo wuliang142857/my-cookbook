@@ -33,8 +33,9 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-# Sitemap location
+# Sitemap and RSS feed
 Sitemap: https://www.wuliang142857.me/sitemap-index.xml
+RSS: https://www.wuliang142857.me/rss.xml
 
 # Crawl delay for politeness
 Crawl-delay: 1
