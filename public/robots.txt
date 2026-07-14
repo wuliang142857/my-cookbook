@@ -1,5 +1,5 @@
-# ABOUTME: Robots.txt for search engines and AI search crawlers.
-# ABOUTME: Keeps the static knowledge base indexable and points agents to sitemap/llms.txt.
+# ABOUTME: Generated robots.txt for search engines and AI search crawlers.
+# ABOUTME: Run npm run seo:generate to update this file.
 
 User-agent: *
 Allow: /

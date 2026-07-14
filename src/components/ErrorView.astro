@@ -1,0 +1,379 @@
+---
+// ABOUTME: Shared static error page view for Cloudflare Pages and Astro routes.
+// ABOUTME: Keeps 404/500 pages aligned with the light Emacs cookbook theme.
+
+import '../styles/custom.css';
+
+type QuickLink = {
+  href: string;
+  label: string;
+  note: string;
+};
+
+interface Props {
+  status: '404' | '500';
+  title: string;
+  description: string;
+  command: string;
+  detail: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+  quickLinks: QuickLink[];
+}
+
+const {
+  status,
+  title,
+  description,
+  command,
+  detail,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+  quickLinks,
+} = Astro.props;
+
+const siteName = '技术笔记索引';
+const pageTitle = `${status} · ${title} | ${siteName}`;
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#f7f5ee" />
+    <meta name="color-scheme" content="light" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/icon/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body class="error-body">
+    <main class="error-page" aria-labelledby="error-title">
+      <a class="error-brand" href="/" aria-label="返回首页">
+        <span class="error-brand-mark" aria-hidden="true">λ</span>
+        <span>{siteName}</span>
+      </a>
+
+      <section class="error-shell">
+        <div class="error-copy">
+          <p class="error-kicker">buffer: *missing-note*</p>
+          <h1 id="error-title">{title}</h1>
+          <p class="error-description">{description}</p>
+          <div class="error-actions" aria-label="错误页操作">
+            <a class="error-button error-button-primary" href={primaryHref}>{primaryLabel}</a>
+            <a class="error-button" href={secondaryHref}>{secondaryLabel}</a>
+          </div>
+        </div>
+
+        <div class="error-buffer" aria-label="错误详情">
+          <div class="error-buffer-bar">
+            <span>{status}</span>
+            <span>read-only</span>
+          </div>
+          <div class="error-buffer-line">
+            <span class="error-prompt">M-x</span>
+            <code>{command}</code>
+          </div>
+          <p>{detail}</p>
+          <dl class="error-registers">
+            <div>
+              <dt>home</dt>
+              <dd><a href="/">打开首页索引</a></dd>
+            </div>
+            <div>
+              <dt>rss</dt>
+              <dd><a href="/rss.xml">查看订阅源</a></dd>
+            </div>
+            <div>
+              <dt>map</dt>
+              <dd><a href="/sitemap-index.xml">读取站点地图</a></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <nav class="error-links" aria-label="常用入口">
+        {quickLinks.map((link) => (
+          <a href={link.href}>
+            <span>{link.label}</span>
+            <small>{link.note}</small>
+          </a>
+        ))}
+      </nav>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(.error-body) {
+    display: grid;
+    min-height: 100vh;
+  }
+
+  .error-page {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: clamp(1rem, 3vw, 2.5rem);
+    width: 100%;
+  }
+
+  .error-brand {
+    align-items: center;
+    color: var(--text);
+    display: inline-flex;
+    font-weight: 600;
+    gap: 0.55rem;
+    justify-self: start;
+    text-decoration: none;
+  }
+
+  .error-brand:hover {
+    color: var(--mint);
+  }
+
+  .error-brand-mark {
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--mint);
+    display: inline-flex;
+    font-family: var(--sl-font-mono);
+    height: 2rem;
+    justify-content: center;
+    width: 2rem;
+  }
+
+  .error-shell {
+    background:
+      linear-gradient(90deg, rgba(138, 59, 63, 0.07) 1px, transparent 1px) 0 0 / 4.5rem 100%,
+      radial-gradient(circle at 1px 1px, rgba(79, 70, 55, 0.12) 1px, transparent 0) 0 0 / 22px 22px,
+      var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 1.05fr);
+    overflow: hidden;
+    padding: clamp(1.25rem, 4vw, 3rem);
+    position: relative;
+  }
+
+  .error-shell::before {
+    background: linear-gradient(90deg, transparent, rgba(138, 59, 63, 0.36), transparent);
+    content: "";
+    height: 1px;
+    inset: 0 0 auto;
+    position: absolute;
+  }
+
+  .error-copy {
+    align-self: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .error-kicker {
+    color: var(--mint);
+    font-family: var(--sl-font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+  }
+
+  .error-copy h1 {
+    color: var(--text);
+    font-size: clamp(2.5rem, 8vw, 5.75rem);
+    line-height: 0.95;
+    margin: 0;
+    max-width: 8ch;
+  }
+
+  .error-description {
+    color: var(--text-soft);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    margin: 1.25rem 0 0;
+    max-width: 33rem;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .error-button {
+    align-items: center;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    display: inline-flex;
+    font-weight: 600;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.9rem;
+    text-decoration: none;
+  }
+
+  .error-button:hover {
+    border-color: var(--line-strong);
+    color: var(--mint);
+  }
+
+  .error-button-primary {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: #fffdf8;
+  }
+
+  .error-button-primary:hover {
+    background: #743237;
+    color: #fffdf8;
+  }
+
+  .error-buffer {
+    background: rgba(255, 253, 248, 0.76);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    color: var(--text-soft);
+    min-width: 0;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .error-buffer-bar {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    color: var(--text-muted);
+    display: flex;
+    font-family: var(--sl-font-mono);
+    font-size: 0.78rem;
+    justify-content: space-between;
+    margin: -0.15rem 0 1rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .error-buffer-line {
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    display: flex;
+    gap: 0.55rem;
+    min-height: 3.2rem;
+    overflow-x: auto;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .error-prompt {
+    color: var(--mint);
+    display: inline-block;
+    flex: 0 0 auto;
+    font-family: var(--sl-font-mono);
+    font-weight: 600;
+    hyphens: none !important;
+    min-width: 3.2rem;
+    overflow-wrap: normal !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+
+  .error-buffer-line code {
+    color: var(--text);
+    flex: 0 0 auto;
+    font-family: var(--sl-font-mono);
+    font-size: 0.92rem;
+    overflow-wrap: normal !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+
+  .error-buffer p {
+    margin: 1rem 0;
+  }
+
+  .error-registers {
+    display: grid;
+    gap: 0;
+    margin: 0.75rem 0 0;
+  }
+
+  .error-registers div {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 4rem 1fr;
+    padding: 0.75rem 0;
+  }
+
+  .error-registers dt {
+    color: var(--mint);
+    font-family: var(--sl-font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .error-registers dd {
+    margin: 0;
+  }
+
+  .error-links {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .error-links a {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    display: grid;
+    gap: 0.35rem;
+    min-height: 6.5rem;
+    padding: 0.9rem;
+    text-decoration: none;
+  }
+
+  .error-links a:hover {
+    border-color: var(--line-strong);
+    color: var(--mint);
+  }
+
+  .error-links span {
+    font-weight: 600;
+  }
+
+  .error-links small {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 760px) {
+    .error-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .error-links {
+      grid-template-columns: 1fr;
+    }
+
+    .error-links a {
+      min-height: 0;
+    }
+  }
+ </style>

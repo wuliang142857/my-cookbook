@@ -99,6 +99,7 @@ export default defineConfig({
     starlight({
       title: siteName,
       description: siteDescription,
+      disable404Route: true,
       defaultLocale: 'zh-CN',
       locales: {
         root: {

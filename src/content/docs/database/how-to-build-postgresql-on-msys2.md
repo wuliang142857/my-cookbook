@@ -1,7 +1,6 @@
 ---
 title: "如何在MSYS2上编译PostgreSQL"
 description: "虽然PostgreSQL官方确实也提供了基于EDB制作的PostgreSQL for Windows，但一方面整体比较庞大，不太适合作为软件的一部分被集成；另一方面相关特性也不能被自定义，插件的安装都是问题。因此，我们还是需要自己重…"
-
 ---
 
 # 如何在MSYS2上编译PostgreSQL
@@ -14,7 +13,7 @@ description: "虽然PostgreSQL官方确实也提供了基于EDB制作的PostgreS
 
 ### 2.1 准备MSYS2环境
 
-MSYS2提供了一套基于[Mingw-w64](https://www.mingw-w64.org/) 的编译构建环境，非常好用。具体配置参考：[在Windows上使用MSYS2准备构建环境](msys2-introduction)
+MSYS2提供了一套基于[Mingw-w64](https://www.mingw-w64.org/) 的编译构建环境，非常好用。具体配置参考：[在Windows上使用MSYS2准备构建环境](/toy/msys2-introduction/)
 
 ### 2.2 编译PostgreSQL
 
@@ -196,6 +195,4 @@ $$ LANGUAGE plpython3u;
 
 SELECT upper_case('hello, world!');
 ```
-
-
 

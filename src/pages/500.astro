@@ -1,0 +1,23 @@
+---
+import ErrorView from '../components/ErrorView.astro';
+
+export const prerender = true;
+---
+
+<ErrorView
+  status="500"
+  title="服务暂时断在这里"
+  description="请求已经到达站点，但页面生成或边缘服务返回了异常。稍后重试通常可以恢复。"
+  command="site-check --retry"
+  detail="如果这个页面持续出现，优先确认部署状态、Cloudflare Pages 构建日志和最近一次提交。"
+  primaryHref="/"
+  primaryLabel="回到首页"
+  secondaryHref="https://github.com/wuliang142857/my-cookbook"
+  secondaryLabel="查看仓库"
+  quickLinks={[
+    { href: '/rss.xml', label: 'RSS', note: '确认静态资源是否可读' },
+    { href: '/sitemap-index.xml', label: 'Sitemap', note: '检查发布后的 URL 列表' },
+    { href: '/llms.txt', label: 'llms.txt', note: '查看 AI 发现入口' },
+    { href: '/55fc09c95960efa836b09c545ae7c78d.txt', label: 'IndexNow key', note: '验证根目录静态文件' },
+  ]}
+/>

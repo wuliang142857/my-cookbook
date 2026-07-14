@@ -20,7 +20,7 @@ my-cookbook/
 ├── tsconfig.json             # TypeScript strict mode
 ├── src/
 │   ├── content/
-│   │   └── docs/             # Markdown documentation (48 articles)
+│   │   └── docs/             # Markdown documentation (49 Markdown pages)
 │   │       ├── bigdata/      # Hadoop, Greenplum, Elasticsearch
 │   │       ├── cpp/          # Cross-compile, CMake, cJSON
 │   │       ├── database/     # PostgreSQL, distributed DB
@@ -37,9 +37,11 @@ my-cookbook/
 │   └── styles/
 │       └── custom.css        # Emacs-style light theme
 ├── public/
+│   ├── _worker.js            # Exact 200 responses for selected verification files
 │   ├── robots.txt            # SEO + AI crawler rules
 │   ├── llms.txt              # AI-friendly site summary
 │   ├── favicon.ico           # Site favicon
+│   ├── site.webmanifest      # Install/icon metadata
 │   └── logo.svg              # Site logo
 └── .github/
     └── workflows/
@@ -58,6 +60,9 @@ npm run dev
 # Build for production
 npm run build
 
+# Regenerate SEO discovery assets only
+npm run seo:generate
+
 # Preview production build
 npm run preview
 ```
@@ -67,10 +72,11 @@ npm run preview
 ### Adding New Articles
 
 1. Create a new `.md` file in the appropriate category under `src/content/docs/`
-2. Add frontmatter with title:
+2. Add frontmatter with `title` and `description`:
    ```yaml
    ---
    title: Article Title Here
+   description: One concise search/result summary.
    ---
    ```
 3. Write content in Markdown format
@@ -96,24 +102,28 @@ npm run preview
 
 ### Key Configuration Files
 
-- **`astro.config.mjs`**: Starlight theme config, sidebar categories, SEO meta tags, RSS discovery link, JSON-LD structured data
+- **`astro.config.mjs`**: Starlight theme config, sidebar categories, SEO meta tags, RSS/sitemap/llms discovery links, JSON-LD structured data
 - **`src/styles/custom.css`**: Emacs-style light theme with Inter + Noto Sans SC fonts, code blocks using JetBrains Mono
 - **`src/pages/rss.xml.js`**: RSS 2.0 feed generator using @astrojs/rss
+- **`scripts/generate-seo-assets.mjs`**: Generates `public/llms.txt`, `public/robots.txt`, and compatibility `public/sitemap.xml` before production builds
+- **`public/_worker.js`**: Cloudflare Pages worker that serves selected webmaster verification files with direct `200 OK` responses instead of clean-URL redirects
 
 ### Features
 
 - **Search**: Pagefind (built into Starlight, auto-indexed on build)
-- **SEO**: robots.txt, sitemap.xml, meta tags, Open Graph, Twitter Cards
+- **SEO**: generated robots.txt, generated llms.txt, sitemap index, compatibility sitemap, meta tags, Open Graph, Twitter Cards, JSON-LD
+- **Search submission**: IndexNow publish hook plus Google, Bing, Baidu, and ByteDance verification assets
 - **AI Crawlers**: Explicitly allowed (GPTBot, ClaudeBot, etc.)
-- **Theme**: Custom Emacs-style light theme (cream background #fffff8)
+- **Theme**: Custom Emacs-style light theme with warm paper surfaces and muted wine/sepia accents
 
 ## Deployment
 
 Deployment is automatic via GitHub Actions:
 
 1. Push to `main` branch triggers workflow
-2. Workflow runs `npm ci` and `npm run build`
+2. Workflow runs `npm ci` and `npm run build`; build first runs `npm run seo:generate`
 3. Built `dist/` folder is deployed to Cloudflare Pages
+4. Workflow runs non-blocking IndexNow submission after deployment
 
 **Required Secrets**:
 - `CF_API_TOKEN`: Cloudflare API token

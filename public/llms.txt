@@ -9,6 +9,7 @@
 - Author: wuliang142857
 - Source: https://github.com/wuliang142857/my-cookbook
 - Sitemap: https://www.wuliang142857.me/sitemap-index.xml
+- Direct sitemap: https://www.wuliang142857.me/sitemap-0.xml
 - RSS: https://www.wuliang142857.me/rss.xml
 - IndexNow key: https://www.wuliang142857.me/55fc09c95960efa836b09c545ae7c78d.txt
 - License: MIT for source code. Article quotations should attribute the source page URL.
@@ -19,24 +20,118 @@
 - [RSS](https://www.wuliang142857.me/rss.xml): 全站文章订阅源。
 - [Sitemap](https://www.wuliang142857.me/sitemap-index.xml): 搜索引擎和 AI crawler 的完整 URL 列表。
 
-## Topic Routes
-
-- [大数据](https://www.wuliang142857.me/bigdata/): Hadoop、Greenplum、Elasticsearch、Ambari 相关构建和配置记录。
-- [C++](https://www.wuliang142857.me/cpp/): CMake、cJSON、跨平台编译和运行环境记录。
-- [数据库](https://www.wuliang142857.me/database/): PostgreSQL、MSYS2 构建和分布式数据库笔记。
-- [地图](https://www.wuliang142857.me/map/): GeoServer、OpenStreetMap、POI 去重和瓦片服务。
-- [版本控制](https://www.wuliang142857.me/version-control/): Git 代理、仓库复制、文件加密和 SSH 兼容性。
-- [Python](https://www.wuliang142857.me/python/): pybind11、pip 内部 API 和 pyftpdlib。
-- [瞎折腾](https://www.wuliang142857.me/toy/): Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。
-
 ## Representative Notes
 
-- [如何在MacOS下编译hadoop](https://www.wuliang142857.me/bigdata/how-to-build-hadoop-on-mac/): Mac 环境下 Hadoop 编译依赖与步骤。
-- [如何编译Greenplum 6](https://www.wuliang142857.me/bigdata/how-to-compile-greenplum6/): Ubuntu/UOS 上编译 Greenplum 6 的依赖、参数和兼容修正。
-- [git使用Socks5代理的合理配置](https://www.wuliang142857.me/version-control/git-proxy/): Git HTTP、HTTPS、SSH 代理配置方式。
-- [使用GeoServer+OpenStreetMap搭建地图服务](https://www.wuliang142857.me/map/geoserver/): OSM 数据、GeoServer 和地图服务部署记录。
-- [命令行速查手册](https://www.wuliang142857.me/toy/command-cheatsheet/): 常用 shell、ffmpeg、SSH 等命令速查。
-- [Linux 软件包制作指南](https://www.wuliang142857.me/toy/linux-package-build/): DEB/RPM 软件包结构、脚本和构建模板。
+- [如何在MacOS下编译hadoop](https://www.wuliang142857.me/bigdata/how-to-build-hadoop-on-mac/): 最近因为需要用C++写一个MapReduce程序，虽然比较简单的办法自然是用Hadoop Streaming，但这次打算尝试一下Hadoop Pipes。
+- [如何编译Greenplum 6](https://www.wuliang142857.me/bigdata/how-to-compile-greenplum6/): Greenplum 官方只提供了针对ubuntu 18.04和RHEL 6/7/8的安装包，现在我们需要在ubuntu 20.04和统信上编译&运行。
+- [git使用Socks5代理的合理配置](https://www.wuliang142857.me/version-control/git-proxy/): 国内从github中clone实在太慢了，而且还经常压根连不上。
+- [使用GeoServer+OpenStreetMap搭建地图服务](https://www.wuliang142857.me/map/geoserver/): 因为业务的需要，需要提供纯离线版本的全球地图。在这种情况下，全球地图的数据来源自然是来自OpenStreetMap，地图服务则采用GeoServer。
+- [命令行速查手册](https://www.wuliang142857.me/toy/command-cheatsheet/): 日常开发中常用的命令速查，涵盖 APT、Docker、Git、Windows、Node.js 等。
+- [Linux 软件包制作指南](https://www.wuliang142857.me/toy/linux-package-build/): 制作 DEB（Debian/Ubuntu）和 RPM（RedHat/CentOS）软件包的完整模板。
+
+## Topic Index
+
+### 大数据
+
+Hadoop、Greenplum、Elasticsearch、Ambari 相关构建和配置记录。 共 4 篇。
+
+  - [ElasticSearch使用JDBC协议](https://www.wuliang142857.me/bigdata/crack-elasticsearch-jdbc/)
+  - [如何在MacOS下编译hadoop](https://www.wuliang142857.me/bigdata/how-to-build-hadoop-on-mac/)
+  - [如何在Ambari中更新主机名](https://www.wuliang142857.me/bigdata/how-to-change-hostname-in-ambari/)
+  - [如何编译Greenplum 6](https://www.wuliang142857.me/bigdata/how-to-compile-greenplum6/)
+
+### C++
+
+CMake、cJSON、跨平台编译和运行环境记录。 共 4 篇。
+
+  - [CPP下的随处编译到处运行实践](https://www.wuliang142857.me/cpp/compile-anywhere-run-anywhere-for-cpp/)
+  - [CJSON中的内存释放](https://www.wuliang142857.me/cpp/free-memory-in-cjson/)
+  - [如何在Linux下使用osxcross交叉编译Mac程序](https://www.wuliang142857.me/cpp/how-to-cross-compile-macos-app-in-linux/)
+  - [CMake输出所有的变量](https://www.wuliang142857.me/cpp/print-all-variable-in-cmake/)
+
+### 数据库
+
+PostgreSQL、MSYS2 构建和分布式数据库笔记。 共 3 篇。
+
+  - [集群版PostgreSQL](https://www.wuliang142857.me/database/distributed-postgresql/)
+  - [如何在MSYS2上编译PostgreSQL](https://www.wuliang142857.me/database/how-to-build-postgresql-on-msys2/)
+  - [PostgreSQL小技巧](https://www.wuliang142857.me/database/postgresql-tips/)
+
+### 编辑器
+
+JetBrains IDE、字体、项目配置和 Language Server Protocol 记录。 共 4 篇。
+
+  - [解决Goland的中文乱码问题](https://www.wuliang142857.me/editor/fix-garbled-chinese-in-goland/)
+  - [在CLion中如何修改项目名称](https://www.wuliang142857.me/editor/how-to-change-project-name-in-clion/)
+  - [语言服务器简介](https://www.wuliang142857.me/editor/introduction-language-server-protocol/)
+  - [美化Intellij IDEA的字体显示](https://www.wuliang142857.me/editor/pretty-intellij-idea-font/)
+
+### Go
+
+Go 语言交叉编译和 CGO 场景记录。 共 1 篇。
+
+  - [当CGO遇到交叉编译时的一些小技巧](https://www.wuliang142857.me/go/tips-for-cross-compile-with-cgo/)
+
+### Java
+
+Maven、许可证检查和 Java 构建工具记录。 共 1 篇。
+
+  - [解决org.apache.rat:apache-rat-plugin check, Too many unapproved license](https://www.wuliang142857.me/java/how-to-skip-unapproved-license-check-in-maven/)
+
+### JavaScript
+
+npm、webpack、node-gyp 和 Node.js 构建问题记录。 共 3 篇。
+
+  - [如何修复node-gyp rebuild非常慢/卡死的问题](https://www.wuliang142857.me/javascript/how-fix-node-gyp-rebuild-slow/)
+  - [如何修复[@types/webpack] 'devServer' does not exist in type 'Configuration'](https://www.wuliang142857.me/javascript/how-to-fix-devserver-does-not-exist-in-type-configuration-for-webpack/)
+  - [npm离线安装](https://www.wuliang142857.me/javascript/npm-offline-install/)
+
+### 地图
+
+GeoServer、OpenStreetMap、POI 去重和瓦片服务。 共 3 篇。
+
+  - [使用GeoServer+OpenStreetMap搭建地图服务](https://www.wuliang142857.me/map/geoserver/)
+  - [基于Hadoop和imposm3来加速OpenStreetMap数据的导入](https://www.wuliang142857.me/map/speed-imposm3-by-hadoop/)
+  - [如何对互联网上挖掘到的POI数据进行去重](https://www.wuliang142857.me/map/unique-poi/)
+
+### Python
+
+pybind11、pip 内部 API 和 pyftpdlib。 共 3 篇。
+
+  - [如何import PipSession和parse_requirements](https://www.wuliang142857.me/python/how-to-import-pipsession-and-parserequirements/)
+  - [如何使用pyftpdlib搭建一个简易的FTP服务器](https://www.wuliang142857.me/python/how-to-setup-ftp-server-via-pyftpdlib/)
+  - [pybind11小技巧](https://www.wuliang142857.me/python/pybind11-tips/)
+
+### 瞎折腾
+
+Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 16 篇。
+
+  - [一种自动注册Outlook邮箱的方法](https://www.wuliang142857.me/toy/auto-register-outlook-email/)
+  - [命令行速查手册](https://www.wuliang142857.me/toy/command-cheatsheet/)
+  - [ImageMagick中的convert命令使用汇总](https://www.wuliang142857.me/toy/convert-command/)
+  - [ffmpeg使用样例汇总](https://www.wuliang142857.me/toy/ffmpeg-tips/)
+  - [如何通过RDP协议访问VirtualBox中的Windows虚拟机](https://www.wuliang142857.me/toy/how-to-remote-login-windows-in-virtualbox/)
+  - [如何设置core dump时coredump文件的路径和文件名](https://www.wuliang142857.me/toy/how-to-setup-coredump-filename-etc/)
+  - [在CentOS7上安装neovim](https://www.wuliang142857.me/toy/install-neovim-on-centos7/)
+  - [iTerm2下使用rz和sz](https://www.wuliang142857.me/toy/iterm2-zmodem/)
+  - [Linux 软件包制作指南](https://www.wuliang142857.me/toy/linux-package-build/)
+  - [Linux 系统配置指南](https://www.wuliang142857.me/toy/linux-system-config/)
+  - [MacPorts](https://www.wuliang142857.me/toy/macport/)
+  - [在Windows上使用MSYS2准备构建环境](https://www.wuliang142857.me/toy/msys2-introduction/)
+  - [Obsidian Templater 自动文件名配置](https://www.wuliang142857.me/toy/obsidian-templater-auto-filename/)
+  - [为HHKB Professional 2映射R_Shift-ESC到波浪号](https://www.wuliang142857.me/toy/remap-rshift-ecs-to-tilde-for-hhkb/)
+  - [使用树莓派来创建NAS服务器](https://www.wuliang142857.me/toy/set-up-nas-via-raspberry/)
+  - [SSH 完整指南](https://www.wuliang142857.me/toy/ssh-guide/)
+
+### 版本控制
+
+Git 代理、仓库复制、文件加密和 SSH 兼容性。 共 5 篇。
+
+  - [如何复制一个git仓库](https://www.wuliang142857.me/version-control/duplicating-a-repository/)
+  - [如何解决当git describe时出现“No names found, cannot describe anything”的错误](https://www.wuliang142857.me/version-control/git-no-names-found-cannot-describe-anything/)
+  - [git使用Socks5代理的合理配置](https://www.wuliang142857.me/version-control/git-proxy/)
+  - [如何对git项目中的文件进行加密](https://www.wuliang142857.me/version-control/how-to-encrypt-files-in-git-repository/)
+  - [如何解决no matching host key type found. Their offer: ssh-rsa,ssh-dss](https://www.wuliang142857.me/version-control/how-to-fix-no-matching-host-key-type-found-their-offer-ssh-rsa-ssh-dss/)
 
 ## AI Citation Guidance
 

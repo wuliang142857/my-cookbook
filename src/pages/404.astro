@@ -1,0 +1,23 @@
+---
+import ErrorView from '../components/ErrorView.astro';
+
+export const prerender = true;
+---
+
+<ErrorView
+  status="404"
+  title="没有这条笔记"
+  description="当前地址没有匹配到公开笔记。可能是链接拼写错误，也可能是旧路径已经整理到新的主题目录。"
+  command="find-note --fallback=index"
+  detail="这个页面不会进入搜索索引。你可以回到首页，从主题、命令或常用入口重新定位。"
+  primaryHref="/"
+  primaryLabel="回到首页"
+  secondaryHref="/toy/command-cheatsheet/"
+  secondaryLabel="打开命令速查"
+  quickLinks={[
+    { href: '/bigdata/how-to-build-hadoop-on-mac/', label: 'Hadoop on Mac', note: '构建路径、依赖和上下文' },
+    { href: '/version-control/git-proxy/', label: 'Git 代理配置', note: 'HTTPS、SSH 与 socks5' },
+    { href: '/map/geoserver/', label: '地图服务', note: 'GeoServer + OpenStreetMap' },
+    { href: '/toy/ssh-guide/', label: 'SSH 指南', note: '密钥、代理、隧道和排错' },
+  ]}
+/>

@@ -22,7 +22,7 @@ npm run preview
 
 ```
 .
-├── public/              # 静态资源
+├── public/              # 静态资源、站长验证文件、robots、llms.txt
 ├── src/
 │   ├── assets/          # 图片等资源
 │   ├── content/
@@ -44,9 +44,10 @@ npm run preview
 - **Python** - pip、pybind11、FTP 服务
 - **瞎折腾** - 系统配置、命令行工具、小技巧
 - **版本控制** - Git 配置、代理、加密
-- **虚拟化** - Docker、VirtualBox
 - **地图** - GeoServer、POI、OSM 数据处理
 
 ## 搜索引擎收录
 
-站点已配置 sitemap、robots、llms.txt、站长验证文件和 IndexNow 自动提交。各平台提交入口与注意事项见 [SEARCH_ENGINE_SUBMISSION.md](./SEARCH_ENGINE_SUBMISSION.md)。
+站点已配置 sitemap、robots、llms.txt、站长验证文件、OG 图和 IndexNow 自动提交。各平台提交入口与当前状态见 [SEARCH_ENGINE_SUBMISSION.md](./SEARCH_ENGINE_SUBMISSION.md)。
+
+`npm run build` 会先执行 `npm run seo:generate`，自动刷新 `public/llms.txt`、`public/robots.txt` 和兼容用的 `public/sitemap.xml`，再由 Astro 生成正式的 `sitemap-index.xml` 与 `sitemap-0.xml`。

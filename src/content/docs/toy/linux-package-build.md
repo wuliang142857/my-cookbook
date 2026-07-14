@@ -1,7 +1,6 @@
 ---
 title: "Linux 软件包制作指南"
 description: "制作 DEB（Debian/Ubuntu）和 RPM（RedHat/CentOS）软件包的完整模板。"
-
 ---
 
 # Linux 软件包制作指南
@@ -173,7 +172,7 @@ debuild -aarm64 -d -us -uc -b
 
 创建 `rpm/deb-demo.spec`：
 
-```spec
+```text
 %define release 1
 %define __os_install_post %{nil}
 
