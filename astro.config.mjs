@@ -240,7 +240,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             name: 'bytedance-verification-code',
-            content: 'aoaIafLOrn9ocwOB6/b7',
+            content: 's7VKpqSphzXoXfNAslZZ',
           },
         },
         {
