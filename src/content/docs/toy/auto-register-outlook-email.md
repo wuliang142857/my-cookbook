@@ -1,5 +1,6 @@
 ---
 title: "一种自动注册Outlook邮箱的方法"
+description: "记录一个自动注册 Outlook 邮箱的脚本演示和相关自动化流程，保留视频示例与操作上下文。"
 ---
 
 # 一种自动注册Outlook邮箱的方法

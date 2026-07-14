@@ -1,5 +1,6 @@
 ---
 title: "解决org.apache.rat:apache-rat-plugin check, Too many unapproved license"
+description: "记录 Maven 构建中 apache-rat-plugin 报 Too many unapproved license 的跳过方式和配置要点。"
 
 ---
 

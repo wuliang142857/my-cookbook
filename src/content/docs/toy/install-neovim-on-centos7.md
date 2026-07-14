@@ -1,5 +1,6 @@
 ---
 title: "在CentOS7上安装neovim"
+description: "虽然之前在ubuntu下我不喜欢snapd，但无奈我们的hadoop集群是在CentOS7上，想用neovim，因此最简单的方法还是通过snapd来安装。"
 
 ---
 

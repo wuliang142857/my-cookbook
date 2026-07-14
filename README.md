@@ -1,6 +1,6 @@
-# 我的个人知识库
+# 技术笔记索引
 
-使用 [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/) 构建的个人知识库。
+使用 [Astro](https://astro.build/) + [Starlight](https://starlight.astro.build/) 构建的个人技术笔记索引，沉淀编译构建、环境配置、数据系统、地图服务和开发工具相关的命令、配置路径与排错上下文。
 
 ## 安装启动方法
 
@@ -46,3 +46,7 @@ npm run preview
 - **版本控制** - Git 配置、代理、加密
 - **虚拟化** - Docker、VirtualBox
 - **地图** - GeoServer、POI、OSM 数据处理
+
+## 搜索引擎收录
+
+站点已配置 sitemap、robots、llms.txt、站长验证文件和 IndexNow 自动提交。各平台提交入口与注意事项见 [SEARCH_ENGINE_SUBMISSION.md](./SEARCH_ENGINE_SUBMISSION.md)。

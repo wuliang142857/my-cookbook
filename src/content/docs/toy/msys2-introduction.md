@@ -1,5 +1,6 @@
 ---
 title: "在Windows上使用MSYS2准备构建环境"
+description: "很多时候，习惯了Unix/Linux的工具链，因此在Windows上自然也复用这种方式，至少得是个GCC for Windows的方式。"
 
 ---
 

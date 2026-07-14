@@ -1,5 +1,6 @@
 ---
 title: "PostgreSQL小技巧"
+description: "整理 PostgreSQL 常用 SQL 技巧和性能更好的查询写法，便于日常数据库排查与开发复用。"
 
 ---
 

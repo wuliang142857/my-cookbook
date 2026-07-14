@@ -1,5 +1,6 @@
 ---
 title: "如何修复[@types/webpack] 'devServer' does not exist in type 'Configuration'"
+description: "对于前端代码的编写，我比较推崇TypeScript，并且既然用了TypeScript，我们就需要把任何变量的类型写全了，而不是偷懒使用any。"
 
 ---
 

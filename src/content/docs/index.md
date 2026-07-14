@@ -1,6 +1,6 @@
 ---
 title: 首页
-description: 我的个人知识库 - 日常做一些知识沉淀
+description: 面向编译构建、环境配置、数据系统、地图服务和开发工具的个人技术笔记索引。
 ---
 
 <section class="home-console" aria-labelledby="home-console-title">

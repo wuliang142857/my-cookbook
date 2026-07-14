@@ -1,5 +1,6 @@
 ---
 title: "git使用Socks5代理的合理配置"
+description: "国内从github中clone实在太慢了，而且还经常压根连不上。"
 
 ---
 

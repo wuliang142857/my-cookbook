@@ -1,1 +1,21 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1673890053328" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4214" id="mx_n_1673890053330" width="128" height="128" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M921.6 0H102.4C46.08 0 0 46.08 0 102.4v819.2c0 56.32 46.08 102.4 102.4 102.4h819.2c56.32 0 102.4-46.08 102.4-102.4V102.4c0-56.32-46.08-102.4-102.4-102.4zM716.8 358.4V409.6c0 30.72 20.48 51.2 51.2 51.2S819.2 481.28 819.2 512v153.6c0 87.04-66.56 153.6-153.6 153.6h-307.2c-87.04 0-153.6-66.56-153.6-153.6V307.2c0-87.04 66.56-153.6 153.6-153.6h204.8c87.04 0 153.6 66.56 153.6 153.6v51.2zM409.6 409.6h133.12c30.72 0 51.2-20.48 51.2-51.2S573.44 307.2 542.72 307.2H409.6c-30.72 0-51.2 20.48-51.2 51.2S378.88 409.6 409.6 409.6z m204.8 153.6H409.6c-30.72 0-51.2 20.48-51.2 51.2s20.48 51.2 51.2 51.2h204.8c30.72 0 51.2-20.48 51.2-51.2s-20.48-51.2-51.2-51.2z" p-id="4215" fill="#515151"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="my-cookbook command note logo">
+  <defs>
+    <linearGradient id="paper" x1="144" y1="104" x2="880" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#eee6d4"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="160" y1="128" x2="864" y2="896" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3a3027"/>
+      <stop offset="1" stop-color="#1f1c18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#ink)"/>
+  <path d="M744 0h56c124 0 224 100 224 224v576c0 124-100 224-224 224H680L928 728V280L744 0Z" fill="#6f4d7a" opacity=".46"/>
+  <rect x="108" y="108" width="808" height="808" rx="172" fill="url(#paper)" stroke="#d8c9ae" stroke-width="24"/>
+  <path d="M214 270h596M214 754h596" stroke="#d8c9ae" stroke-width="20" stroke-linecap="round" opacity=".72"/>
+  <path d="M326 364 466 512 326 660" fill="none" stroke="#8a3b3f" stroke-width="78" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M546 646h176" fill="none" stroke="#b06b2d" stroke-width="70" stroke-linecap="round"/>
+  <circle cx="706" cy="344" r="38" fill="#6f4d7a"/>
+  <path d="M552 374h126M552 462h220M552 550h150" stroke="#3f382f" stroke-width="34" stroke-linecap="round" opacity=".9"/>
+  <path d="M194 194h636v636" fill="none" stroke="#fffaf0" stroke-width="26" stroke-linecap="round" opacity=".62"/>
+</svg>

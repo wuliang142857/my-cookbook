@@ -1,5 +1,6 @@
 ---
 title: "如何解决no matching host key type found. Their offer: ssh-rsa,ssh-dss"
+description: "记录 Git/SSH 报 no matching host key type found 时的兼容算法配置和修复方式。"
 
 ---
 

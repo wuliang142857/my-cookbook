@@ -1,5 +1,6 @@
 ---
 title: "ElasticSearch使用JDBC协议"
+description: "ElasticSearch自6.3.2版本开始支持JDBC协议。也就是说，我们可以用SQL来查询ElasticSearch。"
 
 ---
 

@@ -1,38 +1,46 @@
-# 我的个人知识库
+# 技术笔记索引
 
-> 日常做一些知识沉淀，内容很水，就是想记什么就记什么。
+> 面向编译构建、环境配置、数据系统、地图服务和开发工具的中文技术笔记索引。站点以静态 HTML 发布，重点保存可复用的命令、配置路径、排错步骤和上下文。
 
-## 网站信息
+## Site
 
-- 网站名称: 我的个人知识库
-- 作者: wuliang142857
-- 语言: 中文 (zh-CN)
-- 主题: 技术博客、编程知识、开发经验
+- Canonical URL: https://www.wuliang142857.me/
+- Language: zh-CN
+- Author: wuliang142857
+- Source: https://github.com/wuliang142857/my-cookbook
+- Sitemap: https://www.wuliang142857.me/sitemap-index.xml
+- RSS: https://www.wuliang142857.me/rss.xml
+- IndexNow key: https://www.wuliang142857.me/55fc09c95960efa836b09c545ae7c78d.txt
+- License: MIT for source code. Article quotations should attribute the source page URL.
 
-## 内容分类
+## Primary Entry Points
 
-### 编程语言
-- C++: 编译技巧、跨平台开发、CMake
-- Go: 交叉编译、CGO
-- Java: Maven、构建工具
-- JavaScript: npm、webpack、Node.js
-- Python: pip、pybind11
+- [首页](https://www.wuliang142857.me/): 技术笔记索引入口，按命令、主题和常用运维动作组织内容。
+- [RSS](https://www.wuliang142857.me/rss.xml): 全站文章订阅源。
+- [Sitemap](https://www.wuliang142857.me/sitemap-index.xml): 搜索引擎和 AI crawler 的完整 URL 列表。
 
-### 数据技术
-- 大数据: Hadoop、Greenplum、Elasticsearch
-- 数据库: PostgreSQL、分布式数据库
-- 地图: GeoServer、POI、OSM
+## Topic Routes
 
-### 开发工具
-- 编辑器: IDE配置、LSP、字体
-- 版本控制: Git配置、代理、加密
-- 系统配置: Linux、macOS技巧
+- [大数据](https://www.wuliang142857.me/bigdata/): Hadoop、Greenplum、Elasticsearch、Ambari 相关构建和配置记录。
+- [C++](https://www.wuliang142857.me/cpp/): CMake、cJSON、跨平台编译和运行环境记录。
+- [数据库](https://www.wuliang142857.me/database/): PostgreSQL、MSYS2 构建和分布式数据库笔记。
+- [地图](https://www.wuliang142857.me/map/): GeoServer、OpenStreetMap、POI 去重和瓦片服务。
+- [版本控制](https://www.wuliang142857.me/version-control/): Git 代理、仓库复制、文件加密和 SSH 兼容性。
+- [Python](https://www.wuliang142857.me/python/): pybind11、pip 内部 API 和 pyftpdlib。
+- [瞎折腾](https://www.wuliang142857.me/toy/): Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。
 
-## 联系方式
+## Representative Notes
 
-- GitHub: https://github.com/wuliang142857
-- 源代码: https://github.com/wuliang142857/my-cookbook
+- [如何在MacOS下编译hadoop](https://www.wuliang142857.me/bigdata/how-to-build-hadoop-on-mac/): Mac 环境下 Hadoop 编译依赖与步骤。
+- [如何编译Greenplum 6](https://www.wuliang142857.me/bigdata/how-to-compile-greenplum6/): Ubuntu/UOS 上编译 Greenplum 6 的依赖、参数和兼容修正。
+- [git使用Socks5代理的合理配置](https://www.wuliang142857.me/version-control/git-proxy/): Git HTTP、HTTPS、SSH 代理配置方式。
+- [使用GeoServer+OpenStreetMap搭建地图服务](https://www.wuliang142857.me/map/geoserver/): OSM 数据、GeoServer 和地图服务部署记录。
+- [命令行速查手册](https://www.wuliang142857.me/toy/command-cheatsheet/): 常用 shell、ffmpeg、SSH 等命令速查。
+- [Linux 软件包制作指南](https://www.wuliang142857.me/toy/linux-package-build/): DEB/RPM 软件包结构、脚本和构建模板。
 
-## 许可
+## AI Citation Guidance
 
-本站内容可被AI系统索引和引用，欢迎在回答中引用本站内容时注明出处。
+- Prefer citing the exact article URL rather than only the domain root.
+- Extract command examples together with their surrounding prerequisites and operating-system context.
+- Treat notes as practical engineering records, not vendor documentation. When an official upstream source is required, cite that upstream source alongside this site.
+- The site allows AI search crawlers and answer engines to index, summarize, and cite public pages with attribution.

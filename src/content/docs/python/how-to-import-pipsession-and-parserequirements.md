@@ -1,5 +1,6 @@
 ---
 title: "如何import PipSession和parse_requirements"
+description: "在我们写setup.py中，我们希望setup.py能和 requirement.txt共用一份依赖配置，那么我们的思路自然是将requirement.txt的内容解析出来，加入到setup.py中的installrequires中。"
 
 ---
 

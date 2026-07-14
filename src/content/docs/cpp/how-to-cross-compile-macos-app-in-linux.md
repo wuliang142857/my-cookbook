@@ -1,5 +1,6 @@
 ---
 title: "如何在Linux下使用osxcross交叉编译Mac程序"
+description: "osxcross是一款为Linux提供的针对MacOS的交叉工具链，支持x86、x8664、arm、arm64等多种输出架构，非常方便。"
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "如何通过RDP协议访问VirtualBox中的Windows虚拟机"
+description: "因一些工作需要，有时候不得不通过VirtualBox安装了Windows虚拟机。但我想通过远程访问（RDP协议）这些Windows虚拟机。"
 
 ---
 # 如何通过RDP协议访问VirtualBox中的Windows虚拟机

@@ -1,5 +1,6 @@
 ---
 title: "使用GeoServer+OpenStreetMap搭建地图服务"
+description: "因为业务的需要，需要提供纯离线版本的全球地图。在这种情况下，全球地图的数据来源自然是来自OpenStreetMap，地图服务则采用GeoServer。"
 
 ---
 

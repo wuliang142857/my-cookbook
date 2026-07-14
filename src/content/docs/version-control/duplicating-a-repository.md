@@ -1,5 +1,6 @@
 ---
 title: "如何复制一个git仓库"
+description: "有时候，我们需要复制Github一个仓库到自己、公司的私有库，类似Fork的功能。"
 
 ---
 

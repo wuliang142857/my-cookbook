@@ -1,5 +1,6 @@
 ---
 title: "解决Goland的中文乱码问题"
+description: "记录在 GoLand 中修复中文乱码的字体、编码和 IDE 配置步骤，便于排查 JetBrains 系列工具显示问题。"
 
 ---
 

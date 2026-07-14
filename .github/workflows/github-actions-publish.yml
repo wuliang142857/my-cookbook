@@ -36,3 +36,7 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages deploy dist --project-name=cookbook
+
+      - name: Submit updated URLs to IndexNow
+        run: sleep 20 && npm run indexnow:submit
+        continue-on-error: true

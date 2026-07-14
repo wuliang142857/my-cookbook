@@ -13,8 +13,8 @@ export async function GET(context) {
     .sort((a, b) => a.data.title.localeCompare(b.data.title, 'zh-CN'));
 
   return rss({
-    title: '我的个人知识库',
-    description: '日常做一些知识沉淀，内容很水，就是想记什么就记什么',
+    title: '技术笔记索引',
+    description: '面向编译构建、环境配置、数据系统、地图服务和开发工具的个人技术笔记索引。',
     site: context.site,
     items: articles.map((doc) => ({
       title: doc.data.title,

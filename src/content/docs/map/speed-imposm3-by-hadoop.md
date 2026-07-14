@@ -1,5 +1,6 @@
 ---
 title: "基于Hadoop和imposm3来加速OpenStreetMap数据的导入"
+description: "在基于OpenStreetMap的离线地图建设方案中，osm数据文件需要导入到PostgreSQL中。官方也提供了一些工具来实现这一过程，比如性能相对比较好的 omniscale/imposm3。但问题还是在于OpenStreetM…"
 
 ---
 

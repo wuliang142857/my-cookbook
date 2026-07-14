@@ -1,0 +1,36 @@
+{
+  "name": "技术笔记索引",
+  "short_name": "技术笔记",
+  "description": "面向编译构建、环境配置、数据系统、地图服务和开发工具的个人技术笔记索引。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ee",
+  "theme_color": "#8a3b3f",
+  "icons": [
+    {
+      "src": "/assets/icon/chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon/chrome-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon/chrome-mask-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icon/chrome-mask-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

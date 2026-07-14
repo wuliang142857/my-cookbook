@@ -1,5 +1,6 @@
 ---
 title: "如何编译Greenplum 6"
+description: "Greenplum 官方只提供了针对ubuntu 18.04和RHEL 6/7/8的安装包，现在我们需要在ubuntu 20.04和统信上编译&运行。"
 
 ---
 

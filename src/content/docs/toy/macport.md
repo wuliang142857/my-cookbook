@@ -1,5 +1,6 @@
 ---
 title: "MacPorts"
+description: "之前我一直使用Homebrew，但Home-brew 从4.4开始不支持macOS Monterey(12)了，而公司电脑不能顺便升级系统。因此只能采用替代的方法。而MacPorts支持对macOS的历史版本支持得非常全，从最新的1…"
 
 ---
 

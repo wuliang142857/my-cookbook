@@ -1,5 +1,6 @@
 ---
 title: "SSH 完整指南"
+description: "SSH 配置、优化和常见问题解决方案汇总。"
 
 ---
 

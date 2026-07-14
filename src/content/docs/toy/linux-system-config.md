@@ -1,5 +1,6 @@
 ---
 title: "Linux 系统配置指南"
+description: "常用的 Linux 系统配置，包括网络、电源管理、主机名等。"
 
 ---
 

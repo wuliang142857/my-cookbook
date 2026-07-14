@@ -1,5 +1,6 @@
 ---
 title: "语言服务器简介"
+description: "介绍 Language Server Protocol 的基本概念、编辑器集成方式和常见语言服务器使用场景。"
 
 ---
 # 语言服务器简介

@@ -1,5 +1,6 @@
 ---
 title: "如何在MSYS2上编译PostgreSQL"
+description: "虽然PostgreSQL官方确实也提供了基于EDB制作的PostgreSQL for Windows，但一方面整体比较庞大，不太适合作为软件的一部分被集成；另一方面相关特性也不能被自定义，插件的安装都是问题。因此，我们还是需要自己重…"
 
 ---
 

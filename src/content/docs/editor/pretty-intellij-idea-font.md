@@ -1,5 +1,6 @@
 ---
 title: "美化Intellij IDEA的字体显示"
+description: "Intellij IDEA默认使用安装包里的OpenJDK，渲染出来的菜单字体毛边非常多，例如："
 
 ---
 

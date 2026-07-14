@@ -1,5 +1,6 @@
 ---
 title: "CJSON中的内存释放"
+description: "CJSON是我比较喜欢和常用的JSON解析库，但没注意的话容易内存泄露，主要因为它有两个释放内存的函数：cJSONfree和cJSONDelete。"
 
 ---
 

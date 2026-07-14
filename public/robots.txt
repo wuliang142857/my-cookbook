@@ -1,27 +1,11 @@
-# ABOUTME: Robots.txt for search engine and AI crawlers.
-# ABOUTME: Allows all crawlers including AI bots and points to sitemap.
+# ABOUTME: Robots.txt for search engines and AI search crawlers.
+# ABOUTME: Keeps the static knowledge base indexable and points agents to sitemap/llms.txt.
 
-# Allow all standard search engines
 User-agent: *
 Allow: /
 
-# Explicitly allow AI crawlers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
-
-User-agent: Google-Extended
+# Search engines
+User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
@@ -33,9 +17,60 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-# Sitemap and RSS feed
-Sitemap: https://www.wuliang142857.me/sitemap-index.xml
-RSS: https://www.wuliang142857.me/rss.xml
+User-agent: YandexBot
+Allow: /
 
-# Crawl delay for politeness
-Crawl-delay: 1
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: Sosospider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+# AI search and answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Discovery
+Sitemap: https://www.wuliang142857.me/sitemap-index.xml

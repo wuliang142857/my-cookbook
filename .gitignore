@@ -7,5 +7,6 @@ node_modules/
 .idea/*
 dist/*
 .astro/
+.seo-cache/
 docs/.vuepress/.cache/*
 docs/.vuepress/.temp/*.astro/

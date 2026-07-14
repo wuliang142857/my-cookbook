@@ -1,5 +1,6 @@
 ---
 title: "ImageMagick中的convert命令使用汇总"
+description: "整理 ImageMagick convert 命令的常用参数、图片转换场景和批处理示例。"
 
 ---
 

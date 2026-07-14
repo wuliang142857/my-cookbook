@@ -1,5 +1,6 @@
 ---
 title: "为HHKB Professional 2映射R_Shift-ESC到波浪号"
+description: "记录 HHKB Professional 2 将 R_Shift-Esc 映射为波浪号的键位调整方案和配置要点。"
 
 ---
 

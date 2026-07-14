@@ -1,5 +1,6 @@
 ---
 title: "Linux 软件包制作指南"
+description: "制作 DEB（Debian/Ubuntu）和 RPM（RedHat/CentOS）软件包的完整模板。"
 
 ---
 

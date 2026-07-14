@@ -1,5 +1,6 @@
 ---
 title: "如何解决当git describe时出现“No names found, cannot describe anything”的错误"
+description: "一般而言，我们喜欢直接将git项目仓库的Tag号打包到代码中，这样至少可以很明确地知道线上究竟是哪一个版本。"
 
 ---
 

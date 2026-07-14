@@ -1,5 +1,6 @@
 ---
 title: "集群版PostgreSQL"
+description: "记录 PostgreSQL 集群方案、架构图和部署思路，梳理分布式数据库选型与实践中的关键注意事项。"
 
 ---
 

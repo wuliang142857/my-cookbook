@@ -1,5 +1,6 @@
 ---
 title: "如何设置core dump时coredump文件的路径和文件名"
+description: "core dump所生产的core文件是我们还原异常的重要信息。"
 
 ---
 

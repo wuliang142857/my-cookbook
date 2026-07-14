@@ -1,5 +1,6 @@
 ---
 title: "pybind11小技巧"
+description: "pybind11是一个简化C++和Python相互调用的一个库，相比Boost.Python更现代化，更易用。"
 
 ---
 

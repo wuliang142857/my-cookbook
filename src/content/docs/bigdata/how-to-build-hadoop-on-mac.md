@@ -1,5 +1,6 @@
 ---
 title: "如何在MacOS下编译hadoop"
+description: "最近因为需要用C++写一个MapReduce程序，虽然比较简单的办法自然是用Hadoop Streaming，但这次打算尝试一下Hadoop Pipes。"
 
 ---
 

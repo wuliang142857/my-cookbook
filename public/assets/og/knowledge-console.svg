@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="技术笔记索引分享图">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#eee6d4"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="95" y1="88" x2="1105" y2="542" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3a3027"/>
+      <stop offset="1" stop-color="#1f1c18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0 0h1200v630H0z" fill="#fffdf8"/>
+  <path d="M0 0h1200v630H0z" fill="none" stroke="#ddd6c4" stroke-width="2"/>
+  <path d="M80 80h1040v470H80z" fill="#fffaf0" stroke="#d8c9ae" stroke-width="3"/>
+  <path d="M80 154h1040" stroke="#d8c9ae" stroke-width="2"/>
+  <circle cx="126" cy="117" r="13" fill="#8a3b3f"/>
+  <circle cx="168" cy="117" r="13" fill="#b06b2d"/>
+  <circle cx="210" cy="117" r="13" fill="#6f4d7a"/>
+  <rect x="142" y="220" width="180" height="180" rx="42" fill="url(#ink)"/>
+  <rect x="166" y="244" width="132" height="132" rx="28" fill="#f7f1e4"/>
+  <path d="M196 286 226 316 196 346" fill="none" stroke="#8a3b3f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M248 344h34" stroke="#b06b2d" stroke-width="16" stroke-linecap="round"/>
+  <text x="370" y="285" fill="#202018" font-family="PingFang SC, Hiragino Sans GB, Helvetica Neue, Arial, sans-serif" font-size="70" font-weight="800">技术笔记索引</text>
+  <text x="374" y="354" fill="#5a5448" font-family="PingFang SC, Hiragino Sans GB, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="500">编译构建 / 环境配置 / 数据系统 / 工具链排错</text>
+  <text x="374" y="420" fill="#8a3b3f" font-family="Menlo, Monaco, SFMono-Regular, monospace" font-size="28" font-weight="700">&gt; search build hadoop mac</text>
+  <path d="M374 462h566" stroke="#d8c9ae" stroke-width="2"/>
+  <text x="374" y="510" fill="#202018" font-family="PingFang SC, Hiragino Sans GB, Helvetica Neue, Arial, sans-serif" font-size="25">可复用命令、配置路径和排错上下文。</text>
+</svg>

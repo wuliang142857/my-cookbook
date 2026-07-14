@@ -1,5 +1,6 @@
 ---
 title: "命令行速查手册"
+description: "日常开发中常用的命令速查，涵盖 APT、Docker、Git、Windows、Node.js 等。"
 
 ---
 

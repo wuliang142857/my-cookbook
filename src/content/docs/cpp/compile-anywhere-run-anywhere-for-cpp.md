@@ -1,5 +1,6 @@
 ---
 title: "CPP下的随处编译到处运行实践"
+description: "因为我们公司的主要技术栈都是JAVA，JAVA在跨平台特性的口号就是：一次编写，到处运行（Write Once, Run Anywhere）。当然，这主要归功于JAVA虚拟机（JVM）的作用。"
 
 ---
 

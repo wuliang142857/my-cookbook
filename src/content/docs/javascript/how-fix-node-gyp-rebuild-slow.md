@@ -1,5 +1,6 @@
 ---
 title: "如何修复node-gyp rebuild非常慢/卡死的问题"
+description: "记录 node-gyp rebuild 下载依赖缓慢或卡死时的镜像、缓存和离线修复思路。"
 
 ---
 
