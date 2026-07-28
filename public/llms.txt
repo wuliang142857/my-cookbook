@@ -104,9 +104,10 @@ pybind11、pip 内部 API 和 pyftpdlib。 共 3 篇。
 
 ### 瞎折腾
 
-Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 16 篇。
+Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 17 篇。
 
   - [一种自动注册Outlook邮箱的方法](https://www.wuliang142857.me/toy/auto-register-outlook-email/)
+  - [在 iTerm2 中将 macOS 图片剪贴板粘贴到远端 Codex](https://www.wuliang142857.me/toy/codex-ssh-image-clipboard/)
   - [命令行速查手册](https://www.wuliang142857.me/toy/command-cheatsheet/)
   - [ImageMagick中的convert命令使用汇总](https://www.wuliang142857.me/toy/convert-command/)
   - [ffmpeg使用样例汇总](https://www.wuliang142857.me/toy/ffmpeg-tips/)
