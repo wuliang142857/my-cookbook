@@ -104,7 +104,7 @@ pybind11、pip 内部 API 和 pyftpdlib。 共 3 篇。
 
 ### 瞎折腾
 
-Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 17 篇。
+Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 20 篇。
 
   - [一种自动注册Outlook邮箱的方法](https://www.wuliang142857.me/toy/auto-register-outlook-email/)
   - [在 iTerm2 中将 macOS 图片剪贴板粘贴到远端 Codex](https://www.wuliang142857.me/toy/codex-ssh-image-clipboard/)
@@ -116,13 +116,16 @@ Linux、macOS、SSH、ffmpeg、NAS、软件包制作和命令行速查。 共 17
   - [在CentOS7上安装neovim](https://www.wuliang142857.me/toy/install-neovim-on-centos7/)
   - [iTerm2下使用rz和sz](https://www.wuliang142857.me/toy/iterm2-zmodem/)
   - [Linux 软件包制作指南](https://www.wuliang142857.me/toy/linux-package-build/)
+  - [Linux 截图与滚动长截图：X11、Wayland 和内容重叠拼接](https://www.wuliang142857.me/toy/linux-screenshot-and-scrolling-capture/)
   - [Linux 系统配置指南](https://www.wuliang142857.me/toy/linux-system-config/)
+  - [macOS 截图与滚动长截图：从 CoreGraphics 采集到重叠拼接](https://www.wuliang142857.me/toy/macos-screenshot-and-scrolling-capture/)
   - [MacPorts](https://www.wuliang142857.me/toy/macport/)
   - [在Windows上使用MSYS2准备构建环境](https://www.wuliang142857.me/toy/msys2-introduction/)
   - [Obsidian Templater 自动文件名配置](https://www.wuliang142857.me/toy/obsidian-templater-auto-filename/)
   - [为HHKB Professional 2映射R_Shift-ESC到波浪号](https://www.wuliang142857.me/toy/remap-rshift-ecs-to-tilde-for-hhkb/)
   - [使用树莓派来创建NAS服务器](https://www.wuliang142857.me/toy/set-up-nas-via-raspberry/)
   - [SSH 完整指南](https://www.wuliang142857.me/toy/ssh-guide/)
+  - [Windows 截图与滚动长截图：GDI BitBlt 和相邻帧拼接](https://www.wuliang142857.me/toy/windows-screenshot-and-scrolling-capture/)
 
 ### 版本控制
 
