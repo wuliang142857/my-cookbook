@@ -88,9 +88,10 @@ npm、webpack、node-gyp 和 Node.js 构建问题记录。 共 3 篇。
 
 ### 地图
 
-GeoServer、OpenStreetMap、POI 去重和瓦片服务。 共 3 篇。
+GeoServer、OpenStreetMap、POI 去重和瓦片服务。 共 4 篇。
 
   - [使用GeoServer+OpenStreetMap搭建地图服务](https://www.wuliang142857.me/map/geoserver/)
+  - [使用 planet.pmtiles 搭建高性能地图服务](https://www.wuliang142857.me/map/planet-pmtiles/)
   - [基于Hadoop和imposm3来加速OpenStreetMap数据的导入](https://www.wuliang142857.me/map/speed-imposm3-by-hadoop/)
   - [如何对互联网上挖掘到的POI数据进行去重](https://www.wuliang142857.me/map/unique-poi/)
 
