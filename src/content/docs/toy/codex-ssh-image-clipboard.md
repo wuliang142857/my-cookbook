@@ -29,8 +29,9 @@ description: "通过 XQuartz、SSH X11 转发和 LaunchAgent 剪贴板桥接，�
 | iTerm2 | 3.6.10 |
 | XQuartz | 2.8.6 |
 | 本机 xclip | 0.13 |
+| 桥接器 xclip helper | 0.13-strict |
 | 远端系统 | Ubuntu 22.04 |
-| Codex CLI | 0.145.0 |
+| Codex CLI | 0.149.1 |
 
 ## 现象
 
@@ -83,6 +84,21 @@ XQuartz 的 Pasteboard 代理能够在 macOS 和 X11 之间转换文本与图片
 
 因此，继续使用 iTerm2 且要求只按 `Ctrl-V`，需要一个独立于窗口焦点的剪贴板桥接器。
 
+另外，不能直接把 Homebrew 的 `xclip 0.13` 当作桥接器 owner。Codex 0.149.1
+使用的 `arboard 3.6.1` 会先请求文件列表，再请求 `image/png`；`xclip 0.13`
+却会把当前数据返回给所有不支持的 target，并将属性类型标成原始 target。
+当前 X11 剪贴板是文本时，这会触发：
+
+```text
+Unknown error while interacting with the clipboard:
+incorrect type received from clipboard
+```
+
+图片足够大、进入 X11 的 INCR 分段传输后，错误的文件列表请求还会卡住
+`xclip` owner。因此这两个现象分别与 target 类型和大数据传输有关，不能靠
+压缩图片或延迟重试彻底解决。下文会构建一个只供桥接器使用的兼容版本，
+让不支持的 target 按 ICCCM 要求返回失败。
+
 ## 基础配置
 
 ### 安装并配置 XQuartz
@@ -113,21 +129,70 @@ defaults read org.xquartz.X11 sync_pasteboard
 
 安装 XQuartz 后建议注销并重新登录 macOS，确保 SSH 能找到 `/opt/X11/bin/xauth`。
 
-### 安装本机 xclip
+### 构建桥接器专用的 strict xclip
 
-桥接器通过本机 `xclip` 直接成为 XQuartz `CLIPBOARD` 的 owner：
-
-```bash
-brew install xclip
-```
-
-确认安装路径：
+不要覆盖 Homebrew 管理的 `xclip`。从 xclip 0.13 的固定版本构建一个独立
+helper，只修改不支持 target 的响应：
 
 ```bash
-command -v xclip
+(
+set -e
+mkdir -p "$HOME/.local/bin"
+strict_xclip_src="$(mktemp -d)"
+cleanup_strict_xclip_src() {
+    rm -rf -- "$strict_xclip_src"
+}
+trap cleanup_strict_xclip_src EXIT
+
+git clone --depth 1 --branch 0.13 \
+    https://github.com/astrand/xclip.git "$strict_xclip_src"
+
+patch -l -d "$strict_xclip_src" -p1 <<'PATCH'
+diff --git a/xclib.c b/xclib.c
+index cf55f2e..6d2c698 100644
+--- a/xclib.c
++++ b/xclib.c
+@@ -373,6 +373,10 @@ xcin(Display * dpy,
+                 (int) (sizeof(types) / sizeof(Atom))
+         );
+     }
++    else if (evt.xselectionrequest.target != target) {
++        /* ICCCM 2.2: reject conversion targets that we do not support. */
++        *pty = None;
++    }
+     else if (len > chunk_size) {
+         /* send INCR response */
+         XChangeProperty(dpy, *win, *pty, inc, 32, PropModeReplace, 0, 0);
+@@ -415,4 +419,8 @@ xcin(Display * dpy,
+     if (evt.xselectionrequest.target == targets)
+         return 0;
+-
++
++    /* Unsupported targets are not successful paste operations. */
++    if (evt.xselectionrequest.target != target)
++        return 0;
++
+     /* if len < chunk_size, then the data was sent all at
+PATCH
+
+clang -O2 \
+    -I/opt/X11/include \
+    -DPACKAGE_NAME='"xclip"' \
+    -DPACKAGE_VERSION='"0.13-strict"' \
+    "$strict_xclip_src/xclip.c" \
+    "$strict_xclip_src/xclib.c" \
+    "$strict_xclip_src/xcprint.c" \
+    -L/opt/X11/lib -lX11 -lXmu \
+    -o "$strict_xclip_src/codex-xclip-strict"
+
+install -m 0755 "$strict_xclip_src/codex-xclip-strict" \
+    "$HOME/.local/bin/codex-xclip-strict"
+)
+"$HOME/.local/bin/codex-xclip-strict" -version
 ```
 
-Apple Silicon Homebrew 通常返回 `/opt/homebrew/bin/xclip`，Intel Mac 通常是 `/usr/local/bin/xclip`。
+期望版本为 `xclip version 0.13-strict`。编译需要 Xcode Command Line Tools；
+如果 `clang` 不存在，先运行 `xcode-select --install`。
 
 ### 配置 SSH X11 转发
 
@@ -168,9 +233,10 @@ x11forwarding yes
 
 - 优先直接读取 Pasteboard 中的 PNG，其他图片再转换为 PNG，并写入 X11
   的 `image/png` target。
-- 每 50ms 检查一次变化；如果 Pasteboard 已声明图片但数据暂时不可读，
+- 每 10ms 检查一次变化；如果 Pasteboard 已声明图片但数据暂时不可读，
   保留当前 X11 剪贴板并继续重试，不使用空文本覆盖图片。
-- 文本写入 `UTF8_STRING`，防止图片之后复制文本时仍粘贴上一张旧图。
+- 图片和文本 owner 都以前台子进程运行；剪贴板变化时先终止旧 owner，再由
+  strict helper 接管，避免残留旧图片，并能在 helper 异常退出后自动重试。
 - 使用 SHA-256 避免重复写入相同内容。
 - 动态读取 `launchctl getenv DISPLAY`，不固化 XQuartz 每次登录生成的 socket 地址。
 - XQuartz 尚未运行时尝试在后台启动，并保留待同步内容继续重试。
@@ -193,14 +259,11 @@ import AppKit
 import CryptoKit
 import Foundation
 
-private let xclipPath = [
-    "/opt/homebrew/bin/xclip",
-    "/usr/local/bin/xclip",
-].first {
-    FileManager.default.isExecutableFile(atPath: $0)
-} ?? ""
+private let xclipPath = FileManager.default.homeDirectoryForCurrentUser
+    .appendingPathComponent(".local/bin/codex-xclip-strict")
+    .path
 
-private let pollInterval: TimeInterval = 0.05
+private let pollInterval: TimeInterval = 0.01
 private let retryInterval: TimeInterval = 2
 
 struct ClipboardPayload {
@@ -309,15 +372,59 @@ private func startXQuartz() {
     try? process.run()
 }
 
-private func sync(_ payload: ClipboardPayload, display: String) -> Bool {
+private func x11Targets(display: String) -> Set<String>? {
     let process = Process()
-    let input = Pipe()
-    let errors = Pipe()
+    let output = Pipe()
     var environment = ProcessInfo.processInfo.environment
     environment["DISPLAY"] = display
 
     process.executableURL = URL(fileURLWithPath: xclipPath)
     process.arguments = [
+        "-selection", "clipboard",
+        "-target", "TARGETS",
+        "-out",
+    ]
+    process.environment = environment
+    process.standardOutput = output
+    process.standardError = FileHandle.nullDevice
+
+    do {
+        try process.run()
+        process.waitUntilExit()
+    } catch {
+        return nil
+    }
+
+    guard process.terminationStatus == 0 else {
+        return nil
+    }
+
+    let data = output.fileHandleForReading.readDataToEndOfFile()
+    guard let targets = String(data: data, encoding: .utf8) else {
+        return nil
+    }
+
+    return Set(targets.split(whereSeparator: \Character.isWhitespace).map(String.init))
+}
+
+private func stopOwner(_ process: Process?) {
+    guard let process, process.isRunning else {
+        return
+    }
+
+    process.terminate()
+    process.waitUntilExit()
+}
+
+private func startOwner(_ payload: ClipboardPayload, display: String) -> Process? {
+    let process = Process()
+    let input = Pipe()
+    var environment = ProcessInfo.processInfo.environment
+    environment["DISPLAY"] = display
+
+    process.executableURL = URL(fileURLWithPath: xclipPath)
+    process.arguments = [
+        "-quiet",
         "-selection", "clipboard",
         "-target", payload.target,
         "-in",
@@ -325,31 +432,49 @@ private func sync(_ payload: ClipboardPayload, display: String) -> Bool {
     process.environment = environment
     process.standardInput = input
     process.standardOutput = FileHandle.nullDevice
-    process.standardError = errors
+    process.standardError = FileHandle.nullDevice
 
     do {
         try process.run()
         input.fileHandleForWriting.write(payload.data)
         try input.fileHandleForWriting.close()
-        process.waitUntilExit()
     } catch {
+        stopOwner(process)
         log("sync failed: \(error)")
-        return false
+        return nil
     }
 
-    guard process.terminationStatus == 0 else {
-        let data = errors.fileHandleForReading.readDataToEndOfFile()
-        let message = String(data: data, encoding: .utf8)?
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        log("xclip exited \(process.terminationStatus): \(message ?? "unknown error")")
-        return false
+    for _ in 0..<20 {
+        if !process.isRunning {
+            return nil
+        }
+        if x11Targets(display: display)?.contains(payload.target) == true {
+            return process
+        }
+        Thread.sleep(forTimeInterval: 0.005)
     }
 
+    stopOwner(process)
+    return nil
+}
+
+private func sync(
+    _ payload: ClipboardPayload,
+    display: String,
+    ownerProcess: inout Process?
+) -> Bool {
+    stopOwner(ownerProcess)
+    ownerProcess = nil
+
+    guard let process = startOwner(payload, display: display) else {
+        return false
+    }
+    ownerProcess = process
     return true
 }
 
-guard !xclipPath.isEmpty else {
-    log("xclip is missing; install it with: brew install xclip")
+guard FileManager.default.isExecutableFile(atPath: xclipPath) else {
+    log("strict xclip helper is missing: \(xclipPath)")
     exit(1)
 }
 
@@ -357,6 +482,7 @@ let pasteboard = NSPasteboard.general
 var observedChangeCount = -1
 var pendingPayload: ClipboardPayload?
 var lastSyncedSignature: String?
+var ownerProcess: Process?
 var nextRetryAt = Date.distantPast
 var lastXQuartzStartAttempt = Date.distantPast
 
@@ -364,6 +490,12 @@ log("bridge started")
 
 while true {
     autoreleasepool {
+        if let process = ownerProcess, !process.isRunning {
+            ownerProcess = nil
+            lastSyncedSignature = nil
+            observedChangeCount = -1
+        }
+
         let changeCount = pasteboard.changeCount
         if changeCount != observedChangeCount {
             if let payload = readPayload(from: pasteboard) {
@@ -380,7 +512,11 @@ while true {
         let now = Date()
         if let payload = pendingPayload, now >= nextRetryAt {
             if let display = currentDisplay() {
-                if sync(payload, display: display) {
+                if sync(
+                    payload,
+                    display: display,
+                    ownerProcess: &ownerProcess
+                ) {
                     lastSyncedSignature = payload.signature
                     pendingPayload = nil
                 } else {
@@ -537,7 +673,7 @@ codex
 [Image #1]
 ```
 
-如果偶尔出现下面的错误：
+如果出现下面的错误：
 
 ```text
 Failed to paste image: no image on clipboard: The clipboard contents were not
@@ -550,11 +686,29 @@ available in the requested format or the clipboard is empty.
 xclip -selection clipboard -target TARGETS -out
 ```
 
-复制图片后结果应包含 `image/png`。如果只有 `UTF8_STRING`，等待几百毫秒
-后重试，并用 `osascript -e 'clipboard info'` 确认 Mac 剪贴板是否仍有图片；
-如果仍有 `image/png`，再使用前面的 `/tmp/clipboard-test.png` 命令检查图片
-是否能够完整读出。桥接器不会在图片已声明但数据暂时不可读时写入空文本，
-因此无需通过压缩普通截图来规避这个错误。
+复制图片后结果应包含 `image/png`。如果持续只有 `UTF8_STRING`，用
+`osascript -e 'clipboard info'` 确认 Mac 剪贴板是否仍有图片，再检查
+LaunchAgent 日志；如果已经有 `image/png`，使用前面的
+`/tmp/clipboard-test.png` 命令检查图片是否能够完整读出。
+
+如果再次看到 `incorrect type received from clipboard`，说明当前 owner 仍是
+未修补的 `xclip`，而不是 strict helper。检查并重启：
+
+```bash
+"$HOME/.local/bin/codex-xclip-strict" -version
+
+bridge_pid="$(launchctl print \
+    "gui/$(id -u)/com.local.codex-clipboard-x11-bridge" |
+    awk '/pid =/ { print $3; exit }')"
+pgrep -P "$bridge_pid" -fl codex-xclip-strict
+
+launchctl kickstart -k \
+    "gui/$(id -u)/com.local.codex-clipboard-x11-bridge"
+```
+
+版本应为 `0.13-strict`，并且桥接器应只有一个对应的 owner 子进程。无需通过
+压缩图片规避错误；strict helper 已同时处理不支持的 target 和大图 INCR
+传输。
 
 ## tmux 的额外注意事项
 
@@ -603,7 +757,8 @@ launchctl bootout \
 ## 参考
 
 - [Codex Image inputs](https://learn.chatgpt.com/docs/image-inputs)
-- [Codex CLI 图片剪贴板实现](https://github.com/openai/codex/blob/rust-v0.145.0/codex-rs/tui/src/clipboard_paste.rs)
-- [Codex CLI Ctrl-V 快捷键](https://github.com/openai/codex/blob/rust-v0.145.0/codex-rs/tui/src/keymap.rs)
+- [Codex CLI 图片剪贴板实现](https://github.com/openai/codex/blob/rust-v0.149.1/codex-rs/tui/src/clipboard_paste.rs)
+- [Codex CLI Ctrl-V 快捷键](https://github.com/openai/codex/blob/rust-v0.149.1/codex-rs/tui/src/chatwidget/interaction.rs)
+- [arboard 3.6.1 X11 剪贴板实现](https://github.com/1Password/arboard/blob/v3.6.1/src/platform/linux/x11.rs)
 - [XQuartz Pasteboard 代理实现](https://github.com/XQuartz/xorg-server/blob/master/hw/xquartz/pbproxy/x-selection.m)
 - [xclip](https://github.com/astrand/xclip)
