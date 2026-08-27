@@ -92,15 +92,24 @@ brew install --cask xquartz
 open -a XQuartz
 ```
 
-打开 XQuartz 的“偏好设置 → 粘贴板”，至少启用：
+自定义桥接器会直接成为 X11 `CLIPBOARD` 的 owner，因此应关闭 XQuartz
+自带的 Pasteboard 同步，避免两个同步器相互覆盖：
 
-- 启用同步
-- 粘贴板改变时更新 `CLIPBOARD`
-- `CLIPBOARD` 改变时更新粘贴板
+```bash
+defaults write org.xquartz.X11 sync_pasteboard -bool false
+```
 
-`PRIMARY` 同步与 Codex 图片粘贴无关，可按需开启。
+也可以在 XQuartz 的“偏好设置 → 粘贴板”中取消“启用同步”。修改后退出并
+重新打开 XQuartz。关闭该功能后，远端 X11 剪贴板不会反向写回 Mac；本文
+需要的 Mac 到远端同步仍由桥接器负责。
 
-![XQuartz 粘贴板同步设置](https://image-hosting.wuliang142857.me/docs/2026/07/28/xquartz-pasteboard-settings-7d943ef0.png)
+重新打开后确认设置：
+
+```bash
+defaults read org.xquartz.X11 sync_pasteboard
+```
+
+期望输出为 `0`。
 
 安装 XQuartz 后建议注销并重新登录 macOS，确保 SSH 能找到 `/opt/X11/bin/xauth`。
 
@@ -157,9 +166,12 @@ x11forwarding yes
 
 桥接器使用 `NSPasteboard.changeCount` 检测变化，只有剪贴板真正变化时才读取内容：
 
-- 图片转换为 PNG，并写入 X11 的 `image/png` target。
+- 优先直接读取 Pasteboard 中的 PNG，其他图片再转换为 PNG，并写入 X11
+  的 `image/png` target。
+- 每 50ms 检查一次变化；如果 Pasteboard 已声明图片但数据暂时不可读，
+  保留当前 X11 剪贴板并继续重试，不使用空文本覆盖图片。
 - 文本写入 `UTF8_STRING`，防止图片之后复制文本时仍粘贴上一张旧图。
-- 使用 SHA-256 避免 XQuartz 双向同步造成循环。
+- 使用 SHA-256 避免重复写入相同内容。
 - 动态读取 `launchctl getenv DISPLAY`，不固化 XQuartz 每次登录生成的 socket 地址。
 - XQuartz 尚未运行时尝试在后台启动，并保留待同步内容继续重试。
 
@@ -188,7 +200,7 @@ private let xclipPath = [
     FileManager.default.isExecutableFile(atPath: $0)
 } ?? ""
 
-private let pollInterval: TimeInterval = 0.25
+private let pollInterval: TimeInterval = 0.05
 private let retryInterval: TimeInterval = 2
 
 struct ClipboardPayload {
@@ -209,8 +221,15 @@ private func signature(kind: String, data: Data) -> String {
     return "\(kind):\(digest.map { String(format: "%02x", $0) }.joined())"
 }
 
-private func pngData(from image: NSImage) -> Data? {
+private func pngData(from pasteboard: NSPasteboard) -> Data? {
+    if let data = pasteboard.data(forType: .png), !data.isEmpty {
+        return data
+    }
+
     guard
+        let image = pasteboard
+            .readObjects(forClasses: [NSImage.self], options: nil)?
+            .first as? NSImage,
         let tiffData = image.tiffRepresentation,
         let bitmap = NSBitmapImageRep(data: tiffData)
     else {
@@ -220,18 +239,20 @@ private func pngData(from image: NSImage) -> Data? {
     return bitmap.representation(using: .png, properties: [:])
 }
 
-private func readPayload(from pasteboard: NSPasteboard) -> ClipboardPayload {
-    if
-        let image = pasteboard
-            .readObjects(forClasses: [NSImage.self], options: nil)?
-            .first as? NSImage,
-        let data = pngData(from: image)
-    {
+private func readPayload(from pasteboard: NSPasteboard) -> ClipboardPayload? {
+    let imageIsAdvertised = pasteboard.availableType(from: [.png, .tiff]) != nil
+        || pasteboard.canReadObject(forClasses: [NSImage.self], options: nil)
+
+    if let data = pngData(from: pasteboard) {
         return ClipboardPayload(
             target: "image/png",
             data: data,
             signature: signature(kind: "image/png", data: data)
         )
+    }
+
+    guard !imageIsAdvertised else {
+        return nil
     }
 
     let text = pasteboard.string(forType: .string) ?? ""
@@ -345,11 +366,14 @@ while true {
     autoreleasepool {
         let changeCount = pasteboard.changeCount
         if changeCount != observedChangeCount {
-            observedChangeCount = changeCount
-            let payload = readPayload(from: pasteboard)
-            if payload.signature != lastSyncedSignature {
-                pendingPayload = payload
+            if let payload = readPayload(from: pasteboard) {
+                observedChangeCount = changeCount
+                pendingPayload = payload.signature == lastSyncedSignature
+                    ? nil
+                    : payload
                 nextRetryAt = Date.distantPast
+            } else {
+                pendingPayload = nil
             }
         }
 
@@ -512,6 +536,25 @@ codex
 ```text
 [Image #1]
 ```
+
+如果偶尔出现下面的错误：
+
+```text
+Failed to paste image: no image on clipboard: The clipboard contents were not
+available in the requested format or the clipboard is empty.
+```
+
+先在同一 `DISPLAY` 的远端 shell 中检查 X11 当前公开的 target：
+
+```bash
+xclip -selection clipboard -target TARGETS -out
+```
+
+复制图片后结果应包含 `image/png`。如果只有 `UTF8_STRING`，等待几百毫秒
+后重试，并用 `osascript -e 'clipboard info'` 确认 Mac 剪贴板是否仍有图片；
+如果仍有 `image/png`，再使用前面的 `/tmp/clipboard-test.png` 命令检查图片
+是否能够完整读出。桥接器不会在图片已声明但数据暂时不可读时写入空文本，
+因此无需通过压缩普通截图来规避这个错误。
 
 ## tmux 的额外注意事项
 
