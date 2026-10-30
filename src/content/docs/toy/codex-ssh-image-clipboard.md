@@ -725,7 +725,110 @@ tmux attach
 # 新建窗口后重新启动或恢复 Codex
 ```
 
-如果 Codex 进程是在 X11 转发配置之前启动的，必须重新启动该进程；剪贴板桥接器无法修改既有进程的环境。
+对于依赖 X11 的远端 Linux Codex，如果进程是在 X11 转发配置之前启动的，
+需要重新启动该进程；剪贴板桥接器无法修改既有进程的环境。远端 macOS
+原生剪贴板的情况见下一节。
+
+## 远端是 macOS：还需要写入原生剪贴板
+
+上面的方案验证于远端 Linux。远端是 Mac mini 等 macOS 主机时，原生
+Codex 使用 macOS Pasteboard；即使 `ssh -Y` 后 `xclip` 能读到 PNG，
+原生剪贴板也可能仍只有文字，Codex 因此提示 `no image on clipboard`。
+仅更新 `DISPLAY` 或重启 Codex 不能补上这段数据传递。
+
+2026-10-30 在 mini 的 `~/zone/omni-lume-studio/dev-slot-a` 排查时，
+已验证 X11 可以读取 342,089 字节的 PNG，而原生剪贴板只有文字。
+增加 X11 → Pasteboard 同步后，原生接口成功读到相同大小的 PNG。
+该验证覆盖图片传递与原生读取；Codex 界面的实际附图仍需按 `Ctrl-V` 确认。
+
+### 在远端构建导入程序
+
+在远端 macOS 保存以下内容为
+`~/.local/share/codex-x11-clipboard-bridge/x11-import.swift`。
+沿用前文安装的 `~/.local/bin/codex-xclip-strict`，需要 Xcode Command Line Tools：
+
+```swift
+import AppKit
+import Foundation
+
+let helper = FileManager.default.homeDirectoryForCurrentUser
+    .appendingPathComponent(".local/bin/codex-xclip-strict").path
+var previous: Data?
+while true {
+    autoreleasepool {
+        let process = Process()
+        let output = Pipe()
+        process.executableURL = URL(fileURLWithPath: helper)
+        process.arguments = ["-selection", "clipboard", "-target", "image/png", "-out"]
+        process.standardOutput = output
+        process.standardError = FileHandle.nullDevice
+        do {
+            try process.run()
+            let data = output.fileHandleForReading.readDataToEndOfFile()
+            process.waitUntilExit()
+            if process.terminationStatus != 0 || data.isEmpty {
+                previous = nil
+            } else if data != previous, NSImage(data: data) != nil {
+                let clipboard = NSPasteboard.general
+                clipboard.clearContents()
+                if clipboard.setData(data, forType: .png) {
+                    previous = data
+                    print("Imported PNG: \(data.count) bytes")
+                    fflush(stdout)
+                }
+            }
+        } catch { exit(1) }
+    }
+    Thread.sleep(forTimeInterval: 0.5)
+}
+```
+
+编译：
+
+```bash
+swiftc -O ~/.local/share/codex-x11-clipboard-bridge/x11-import.swift \
+    -o ~/.local/bin/codex-x11-image-import
+```
+
+### 在当前 SSH 转发中运行
+
+先从本机连接，在进入 tmux 之前启动同步：
+
+```bash
+ssh -Y mini
+echo "$DISPLAY"
+# 应为 localhost:N.0；不要使用 mini 自己的 org.xquartz:0 地址
+~/.local/bin/codex-xclip-strict -selection clipboard -target TARGETS -out
+
+# 保留这个 SSH 窗口，在前台运行；Ctrl-C 停止
+~/.local/bin/codex-x11-image-import
+```
+
+本机复制图片后，日志应出现 `Imported PNG: … bytes`。在另一个连接中检查：
+
+```bash
+ssh mini '/usr/bin/osascript -e "clipboard info"'
+```
+
+输出应包含 `PNGf`。随后在原来的 Codex 中按 `Ctrl-V`；这个同步直接写入
+mini 的原生剪贴板，无需修改已经运行的 Codex 的 `DISPLAY`。
+
+同步会覆盖 mini 当前的原生剪贴板，只处理图片，不同步文字。多个连接共享
+同一个 macOS 用户剪贴板，因此只运行一个导入进程。SSH 重连后，先停止旧
+进程，再在新的 `ssh -Y mini` 会话中启动；不要写死 `localhost:11.0` 等地址。
+程序不会自动跟随新连接，连接断开后也不应保留旧后台进程继续轮询。
+
+本次现场修复曾以 `nohup` 在远端后台启动。清理时先定位进程，再对确认的
+PID 执行 `kill`，随后改用上述前台启动方式：
+
+```bash
+pgrep -fl codex-x11-image-import
+# kill <确认的同步进程 PID>
+```
+
+这里不需要本机的 `com.local.codex-mini-image-sync` LaunchAgent；该旧方案
+已停用并删除。前文负责本机 Pasteboard → X11 的
+`com.local.codex-clipboard-x11-bridge` 仍然需要保留。
 
 ## 服务管理与卸载
 
